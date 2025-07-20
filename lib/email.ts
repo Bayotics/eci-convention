@@ -1,0 +1,297 @@
+import { Resend } from "resend"
+
+const resend = new Resend(process.env.RESEND_API_KEY)
+
+interface RegistrationData {
+  firstName: string
+  lastName: string
+  email: string
+  chapterName: string
+  registrationCategory: string
+  attendanceDays: string[]
+  ticketPrice: number
+  paymentId: string
+  registrationId: string
+}
+
+function generateConfirmationEmailHTML(registrationData: RegistrationData): string {
+  const dayLabels = {
+    day1: "Thursday, Sept 18 - Economic Development & Youth",
+    day2: "Friday, Sept 19 - Community Service & Reflection",
+    day3: "Saturday, Sept 20 - Health, Governance & Celebration",
+    day4: "Sunday, Sept 21 - Spiritual Reflection & Farewell",
+  }
+
+  const attendanceDaysList = registrationData.attendanceDays
+    .map(
+      (day) =>
+        `<li style="color: #1f2937; margin-bottom: 8px; font-size: 16px;">${dayLabels[day as keyof typeof dayLabels]}</li>`,
+    )
+    .join("")
+
+  return `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>ECI@25 Registration Confirmation</title>
+    </head>
+    <body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f9fafb;">
+      <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff;">
+        <!-- Header -->
+        <div style="text-align: center; margin-bottom: 30px; border-bottom: 3px solid #7c3aed; padding: 30px 20px 20px 20px; background: linear-gradient(135deg, #7c3aed 0%, #059669 100%); color: white;">
+          <h1 style="color: white; font-size: 32px; margin: 0 0 10px 0; font-weight: bold;">ECI@25</h1>
+          <p style="color: rgba(255,255,255,0.9); font-size: 18px; margin: 0 0 15px 0;">25th International Convention</p>
+          <div style="background-color: rgba(255,255,255,0.2); padding: 12px 24px; border-radius: 25px; display: inline-block;">
+            <p style="color: white; font-size: 20px; font-weight: bold; margin: 0;">✅ Registration Confirmed!</p>
+          </div>
+        </div>
+
+        <div style="padding: 0 20px;">
+          <!-- Welcome Message -->
+          <div style="margin-bottom: 30px;">
+            <h2 style="color: #1f2937; font-size: 28px; margin-bottom: 15px;">Welcome to ECI@25, ${registrationData.firstName}!</h2>
+            <p style="color: #4b5563; font-size: 16px; line-height: 1.6; margin: 0;">
+              Thank you for registering for the 25th Eko Club International Convention in Newark, NJ. We're thrilled to have
+              you join us for this historic celebration from September 18-21, 2025.
+            </p>
+          </div>
+
+          <!-- Registration Details -->
+          <div style="background-color: #f9fafb; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid #7c3aed;">
+            <h3 style="color: #1f2937; font-size: 22px; margin-bottom: 20px; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">
+              📋 Registration Details
+            </h3>
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr>
+                <td style="padding: 10px 0; color: #6b7280; font-weight: bold; width: 40%; border-bottom: 1px solid #f3f4f6;">Registration ID:</td>
+                <td style="padding: 10px 0; color: #1f2937; font-weight: bold; border-bottom: 1px solid #f3f4f6;">${registrationData.registrationId}</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 0; color: #6b7280; font-weight: bold; border-bottom: 1px solid #f3f4f6;">Name:</td>
+                <td style="padding: 10px 0; color: #1f2937; border-bottom: 1px solid #f3f4f6;">${registrationData.firstName} ${registrationData.lastName}</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 0; color: #6b7280; font-weight: bold; border-bottom: 1px solid #f3f4f6;">Email:</td>
+                <td style="padding: 10px 0; color: #1f2937; border-bottom: 1px solid #f3f4f6;">${registrationData.email}</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 0; color: #6b7280; font-weight: bold; border-bottom: 1px solid #f3f4f6;">Chapter:</td>
+                <td style="padding: 10px 0; color: #1f2937; border-bottom: 1px solid #f3f4f6;">${registrationData.chapterName}</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 0; color: #6b7280; font-weight: bold; border-bottom: 1px solid #f3f4f6;">Ticket Type:</td>
+                <td style="padding: 10px 0; color: #1f2937; border-bottom: 1px solid #f3f4f6;">${registrationData.registrationCategory.charAt(0).toUpperCase() + registrationData.registrationCategory.slice(1)} Pass</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 0; color: #6b7280; font-weight: bold; border-bottom: 1px solid #f3f4f6;">Amount Paid:</td>
+                <td style="padding: 10px 0; color: #059669; font-weight: bold; font-size: 20px; border-bottom: 1px solid #f3f4f6;">$${registrationData.ticketPrice}</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 0; color: #6b7280; font-weight: bold;">Payment ID:</td>
+                <td style="padding: 10px 0; color: #1f2937; font-size: 12px; font-family: monospace;">${registrationData.paymentId}</td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- Attendance Days -->
+          <div style="background-color: #eff6ff; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid #3b82f6;">
+            <h3 style="color: #1f2937; font-size: 20px; margin-bottom: 15px;">📅 Your Convention Days</h3>
+            <ul style="margin: 0; padding-left: 20px; list-style-type: none;">
+              ${attendanceDaysList}
+            </ul>
+          </div>
+
+          <!-- Event Information -->
+          <div style="background-color: #f0fdf4; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid #22c55e;">
+            <h3 style="color: #1f2937; font-size: 20px; margin-bottom: 15px;">🎯 Event Information</h3>
+            <div style="margin-bottom: 15px;">
+              <p style="color: #1f2937; font-weight: bold; margin: 0 0 5px 0;">📅 Dates:</p>
+              <p style="color: #4b5563; margin: 0; font-size: 16px;">September 18-21, 2025</p>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <p style="color: #1f2937; font-weight: bold; margin: 0 0 5px 0;">📍 Venue:</p>
+              <p style="color: #4b5563; margin: 0; font-size: 16px;">DoubleTree by Hilton Hotel Newark Airport</p>
+              <p style="color: #4b5563; margin: 0; font-size: 14px;">128 Frontage Rd, Newark, NJ 07114</p>
+            </div>
+            <div>
+              <p style="color: #1f2937; font-weight: bold; margin: 0 0 5px 0;">🎯 Theme:</p>
+              <p style="color: #4b5563; margin: 0; font-size: 16px; font-style: italic;">"Bridging Generations, Building Communities"</p>
+            </div>
+          </div>
+
+          <!-- Next Steps -->
+          <div style="background-color: #fef3c7; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid #f59e0b;">
+            <h3 style="color: #1f2937; font-size: 20px; margin-bottom: 15px;">🚀 What's Next?</h3>
+            <ul style="margin: 0; padding-left: 0; list-style: none;">
+              <li style="color: #1f2937; margin-bottom: 12px; padding-left: 25px; position: relative;">
+                <span style="position: absolute; left: 0; color: #22c55e; font-weight: bold;">✅</span>
+                <strong>Convention Materials:</strong> Will be mailed to you 2 weeks before the event
+              </li>
+              <li style="color: #1f2937; margin-bottom: 12px; padding-left: 25px; position: relative;">
+                <span style="position: absolute; left: 0; color: #22c55e; font-weight: bold;">✅</span>
+                <strong>Hotel Booking:</strong> Use group code "ECI25" for special rates at the venue
+              </li>
+              <li style="color: #1f2937; margin-bottom: 12px; padding-left: 25px; position: relative;">
+                <span style="position: absolute; left: 0; color: #22c55e; font-weight: bold;">✅</span>
+                <strong>Travel Information:</strong> Detailed travel guide will be sent soon
+              </li>
+              <li style="color: #1f2937; margin-bottom: 12px; padding-left: 25px; position: relative;">
+                <span style="position: absolute; left: 0; color: #22c55e; font-weight: bold;">✅</span>
+                <strong>Updates:</strong> Follow us on social media for the latest convention news
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Information -->
+          <div style="background-color: #f3f4f6; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+            <h3 style="color: #1f2937; font-size: 20px; margin-bottom: 15px;">📞 Need Help?</h3>
+            <p style="color: #4b5563; margin: 0 0 15px 0; line-height: 1.6;">
+              If you have any questions or need assistance, please don't hesitate to contact us:
+            </p>
+            <div style="background-color: white; padding: 15px; border-radius: 8px;">
+              <p style="color: #1f2937; margin: 0 0 8px 0;">
+                <strong>📧 Email:</strong> <a href="mailto:info@eciconvention.org" style="color: #7c3aed;">info@eciconvention.org</a>
+              </p>
+              <p style="color: #1f2937; margin: 0 0 8px 0;">
+                <strong>📱 Phone:</strong> <a href="tel:+15551234567" style="color: #7c3aed;">+1 (555) 123-4567</a>
+              </p>
+              <p style="color: #1f2937; margin: 0;">
+                <strong>🌐 Website:</strong> <a href="https://www.eciconvention.org" style="color: #7c3aed;">www.eciconvention.org</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; background: linear-gradient(135deg, #7c3aed 0%, #059669 100%); color: white; padding: 30px 20px;">
+          <p style="margin: 0 0 15px 0; font-size: 24px; font-weight: bold;">🎉 See you in Newark!</p>
+          <p style="margin: 0 0 10px 0; font-size: 16px;">Eko Club International - Bridging Generations, Building Communities</p>
+          <p style="margin: 0; font-size: 14px; opacity: 0.8;">© 2025 Eko Club International. All rights reserved.</p>
+        </div>
+      </div>
+    </body>
+    </html>
+  `
+}
+
+function generateAdminNotificationHTML(registrationData: RegistrationData): string {
+  const dayLabels = {
+    day1: "Thursday, Sept 18 - Economic Development & Youth",
+    day2: "Friday, Sept 19 - Community Service & Reflection",
+    day3: "Saturday, Sept 20 - Health, Governance & Celebration",
+    day4: "Sunday, Sept 21 - Spiritual Reflection & Farewell",
+  }
+
+  const attendanceDaysList = registrationData.attendanceDays
+    .map((day) => dayLabels[day as keyof typeof dayLabels])
+    .join(", ")
+
+  return `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>New ECI@25 Registration</title>
+    </head>
+    <body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f9fafb;">
+      <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 20px;">
+        <div style="text-align: center; margin-bottom: 30px; padding: 20px; background: linear-gradient(135deg, #7c3aed 0%, #059669 100%); border-radius: 12px; color: white;">
+          <h1 style="color: white; font-size: 28px; margin: 0 0 10px 0;">🎉 New ECI@25 Registration</h1>
+          <p style="color: rgba(255,255,255,0.9); font-size: 16px; margin: 0;">Registration completed successfully</p>
+        </div>
+        
+        <div style="background-color: #f9fafb; padding: 25px; border-radius: 12px; margin: 20px 0; border-left: 4px solid #7c3aed;">
+          <h3 style="color: #1f2937; font-size: 20px; margin-bottom: 20px;">Registration Details</h3>
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+              <td style="padding: 8px 0; color: #6b7280; font-weight: bold; width: 30%; border-bottom: 1px solid #e5e7eb;">Name:</td>
+              <td style="padding: 8px 0; color: #1f2937; border-bottom: 1px solid #e5e7eb;">${registrationData.firstName} ${registrationData.lastName}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0; color: #6b7280; font-weight: bold; border-bottom: 1px solid #e5e7eb;">Email:</td>
+              <td style="padding: 8px 0; color: #1f2937; border-bottom: 1px solid #e5e7eb;">${registrationData.email}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0; color: #6b7280; font-weight: bold; border-bottom: 1px solid #e5e7eb;">Chapter:</td>
+              <td style="padding: 8px 0; color: #1f2937; border-bottom: 1px solid #e5e7eb;">${registrationData.chapterName}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0; color: #6b7280; font-weight: bold; border-bottom: 1px solid #e5e7eb;">Category:</td>
+              <td style="padding: 8px 0; color: #1f2937; border-bottom: 1px solid #e5e7eb;">${registrationData.registrationCategory.charAt(0).toUpperCase() + registrationData.registrationCategory.slice(1)}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0; color: #6b7280; font-weight: bold; border-bottom: 1px solid #e5e7eb;">Amount:</td>
+              <td style="padding: 8px 0; color: #059669; font-weight: bold; font-size: 18px; border-bottom: 1px solid #e5e7eb;">$${registrationData.ticketPrice}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0; color: #6b7280; font-weight: bold; border-bottom: 1px solid #e5e7eb;">Payment ID:</td>
+              <td style="padding: 8px 0; color: #1f2937; font-size: 12px; font-family: monospace; border-bottom: 1px solid #e5e7eb;">${registrationData.paymentId}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0; color: #6b7280; font-weight: bold; border-bottom: 1px solid #e5e7eb;">Registration ID:</td>
+              <td style="padding: 8px 0; color: #1f2937; font-weight: bold; border-bottom: 1px solid #e5e7eb;">${registrationData.registrationId}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0; color: #6b7280; font-weight: bold;">Attendance Days:</td>
+              <td style="padding: 8px 0; color: #1f2937;">${attendanceDaysList}</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div style="background-color: #eff6ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
+          <p style="color: #1f2937; margin: 0; text-align: center;">
+            <strong>Registration completed on:</strong> ${new Date().toLocaleString()}
+          </p>
+        </div>
+      </div>
+    </body>
+    </html>
+  `
+}
+
+export async function sendRegistrationConfirmation(registrationData: RegistrationData) {
+  try {
+    const { data, error } = await resend.emails.send({
+      from: "ECI@25 Convention <www@ekoclub.org>",
+      to: [registrationData.email],
+      bcc: ["abolajiabdullah001@gmail.com"], // Send copy to admin
+      subject: `Registration Confirmed - ECI@25 Convention | ${registrationData.firstName} ${registrationData.lastName}`,
+      html: generateConfirmationEmailHTML(registrationData),
+    })
+
+    if (error) {
+      console.error("Email sending error:", error)
+      return { success: false, error }
+    }
+
+    console.log("Registration confirmation email sent:", data)
+    return { success: true, data }
+  } catch (error) {
+    console.error("Email service error:", error)
+    return { success: false, error }
+  }
+}
+
+export async function sendAdminNotification(registrationData: RegistrationData) {
+  try {
+    const { data, error } = await resend.emails.send({
+      from: "ECI@25 Registration System <www@ekoclub.org>",
+      to: ["abolajiabdullah001@gmail.com"],
+      subject: `New Registration - ${registrationData.firstName} ${registrationData.lastName} (${registrationData.chapterName})`,
+      html: generateAdminNotificationHTML(registrationData),
+    })
+
+    if (error) {
+      console.error("Admin notification error:", error)
+      return { success: false, error }
+    }
+
+    return { success: true, data }
+  } catch (error) {
+    console.error("Admin notification service error:", error)
+    return { success: false, error }
+  }
+}
