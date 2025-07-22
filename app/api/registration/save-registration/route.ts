@@ -1,7 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { connectDB } from "@/lib/mongodb"
 import Registration from "@/models/registration"
-import Payment from "@/models/payment"
 import { sendRegistrationConfirmation, sendAdminNotification } from "@/lib/email"
 
 export async function POST(request: NextRequest) {
@@ -21,15 +20,6 @@ export async function POST(request: NextRequest) {
 
     if (existingRegistration) {
       return NextResponse.json({ error: "You have already registered for this event" }, { status: 400 })
-    }
-
-    // Get payment information if paymentId is provided
-    let ticketPrice = 0
-    if (registrationData.paymentId) {
-      const payment = await Payment.findOne({ paymentId: registrationData.paymentId })
-      if (payment) {
-        ticketPrice = payment.amount
-      }
     }
 
     // Create new registration
@@ -52,26 +42,22 @@ export async function POST(request: NextRequest) {
       chapterName: registrationData.chapterName,
       registrationCategory: registrationData.registrationCategory,
       attendanceDays: registrationData.attendanceDays,
-      ticketPrice,
+      ticketPrice: 0, // Will be fetched from payment if needed
       paymentId: registrationData.paymentId || "",
       registrationId,
     }
 
-    try {
-      await sendRegistrationConfirmation(emailData)
-      await sendAdminNotification(emailData)
-    } catch (emailError) {
-      console.error("Email sending error:", emailError)
-      // Don't fail the registration if email fails
-    }
+    const emailResult = await sendRegistrationConfirmation(emailData)
+    const adminResult = await sendAdminNotification(emailData)
 
     return NextResponse.json({
       success: true,
       registrationId,
+      emailSent: emailResult.success,
       message: "Registration completed successfully",
     })
   } catch (error) {
-    console.error("Registration error:", error)
-    return NextResponse.json({ error: "Failed to complete registration" }, { status: 500 })
+    console.error("Save registration error:", error)
+    return NextResponse.json({ error: "Failed to save registration" }, { status: 500 })
   }
 }
