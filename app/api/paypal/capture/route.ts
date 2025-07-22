@@ -1,6 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { sendRegistrationConfirmation, sendAdminNotification } from "@/lib/email"
-import { saveRegistration } from "@/lib/registration"
 
 const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID
 const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET
@@ -90,35 +89,6 @@ export async function POST(request: NextRequest) {
         timestamp: new Date().toISOString(),
       })
 
-      // Save registration to database
-      const registrationDataToSave = {
-        registrationId,
-        firstName: registrationData.firstName,
-        lastName: registrationData.lastName,
-        email: registrationData.email,
-        chapterName: registrationData.chapterName,
-        gender: registrationData.gender,
-        shirtSize: registrationData.shirtSize,
-        attendanceDays: registrationData.attendanceDays,
-        registrationCategory: registrationData.registrationCategory,
-        dietaryRestrictions: registrationData.dietaryRestrictions,
-        ticketPrice: registrationData.ticketPrice,
-        paymentId,
-        paymentStatus: "completed" as const,
-        registrationDate: new Date(),
-        emailSent: emailResult.success,
-        adminNotified: adminResult.success,
-      }
-
-      // Save to database
-      try {
-        await saveRegistration(registrationDataToSave)
-        console.log("Registration saved to database:", registrationId)
-      } catch (dbError) {
-        console.error("Database save error:", dbError)
-        // Don't fail the registration if database save fails
-      }
-
       return NextResponse.json({
         success: true,
         captureData: captureDetails,
@@ -176,35 +146,6 @@ export async function POST(request: NextRequest) {
 
         const emailResult = await sendRegistrationConfirmation(completeRegistrationData)
         const adminResult = await sendAdminNotification(completeRegistrationData)
-
-        // Save registration to database
-        const registrationDataToSave = {
-          registrationId,
-          firstName: registrationData.firstName,
-          lastName: registrationData.lastName,
-          email: registrationData.email,
-          chapterName: registrationData.chapterName,
-          gender: registrationData.gender,
-          shirtSize: registrationData.shirtSize,
-          attendanceDays: registrationData.attendanceDays,
-          registrationCategory: registrationData.registrationCategory,
-          dietaryRestrictions: registrationData.dietaryRestrictions,
-          ticketPrice: registrationData.ticketPrice,
-          paymentId,
-          paymentStatus: "completed" as const,
-          registrationDate: new Date(),
-          emailSent: emailResult.success,
-          adminNotified: adminResult.success,
-        }
-
-        // Save to database
-        try {
-          await saveRegistration(registrationDataToSave)
-          console.log("Registration saved to database:", registrationId)
-        } catch (dbError) {
-          console.error("Database save error:", dbError)
-          // Don't fail the registration if database save fails
-        }
 
         return NextResponse.json({
           success: true,
