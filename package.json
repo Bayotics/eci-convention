@@ -46,6 +46,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "latest",
     "jsonwebtoken": "latest",
+    "jspdf": "^3.0.1",
     "lucide-react": "^0.454.0",
     "mongodb": "latest",
     "mongoose": "^8.16.4",

@@ -18,8 +18,11 @@ import {
   Building,
   Award,
   Plane,
+  Download,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
+import jsPDF from "jspdf"
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -52,29 +55,19 @@ const agendaData = {
         type: "registration",
         icon: Plane,
       },
-      {
-        id: "welcome-party",
-        time: "7:00 PM - 10:00 PM",
-        title: "Welcome Party/Eko Club International Cultural Picnic",
-        description: "Join us for an evening of cultural celebration, networking, and traditional Nigerian cuisine.",
-        location: "Hotel Grand Ballroom",
-        organizer: "ECI Northeast Region",
-        type: "cultural",
-        icon: Heart,
-        speakers: ["Regional Coordinators", "Cultural Committee"],
-      },
     ],
   },
   "2025-09-18": {
     date: "Thursday, September 18, 2025",
     day: "Day 2",
-    theme: "Economic Development & Youth Engagement",
+    theme: "Youth Engagement & Tour",
     sessions: [
       {
         id: "registration-2",
-        time: "8:00 AM - 10:00 AM",
-        title: "Late Registration and Accreditation",
-        description: "Final opportunity for registration and credential collection.",
+        time: "12:00 PM - 1:00 PM",
+        title: "Welcome and site seeing event with continued participants registration",
+        description:
+          "A tour round the event environment and final opportunity for registration and credential collection.",
         location: "Registration Desk",
         organizer: "ECI Registration Committee",
         type: "registration",
@@ -82,20 +75,19 @@ const agendaData = {
       },
       {
         id: "economic-session",
-        time: "10:30 AM - 12:30 PM",
-        title: "Economic Advancement Session",
-        description: "Exploring opportunities for economic growth and development in Nigeria and the diaspora.",
+        time: "03:00 PM - 04:00 PM",
+        title: "Welcome party",
+        description: "Welcome Party/Eko Club International Cultural Picnic Hosted by ECI Northeast Region",
         location: "Main Conference Hall",
-        organizer: "Consular General Office in Collaboration with ECI",
+        organizer: "ECI NorthEast region",
         type: "panel",
         icon: Building,
-        speakers: ["Hon. Olatunbosun Alake", "Economic Development Experts"],
       },
       {
         id: "lunch-break",
-        time: "12:30 PM - 2:00 PM",
-        title: "Networking Lunch",
-        description: "Connect with fellow members over a delicious meal.",
+        time: "04:30 PM - 06:00 PM",
+        title: "Youth Dinner",
+        description: "Eko Club International Youth Dinner Organized by The Eko Club Youth Forum.",
         location: "Hotel Restaurant",
         organizer: "ECI Hospitality Committee",
         type: "networking",
@@ -103,36 +95,45 @@ const agendaData = {
       },
       {
         id: "landmarks-tour",
-        time: "2:30 PM - 5:30 PM",
-        title: "Tours of Important Landmarks",
+        time: "6:30 PM - 8:00 PM",
+        title: "Tour of Important Landmark in New York & New Jersey",
         description: "Guided tours of significant historical and cultural sites in Newark and surrounding areas.",
         location: "Various Locations",
         organizer: "ECI Tourism Committee",
         type: "tour",
         icon: MapPin,
       },
-      {
-        id: "youth-dinner",
-        time: "7:00 PM - 10:00 PM",
-        title: "Youth Dinner",
-        description: "Special dinner event for young professionals and students to network and engage.",
-        location: "Hotel Terrace",
-        organizer: "ECI Youth Wing",
-        type: "networking",
-        icon: Users,
-        speakers: ["Youth Leaders", "Mentorship Committee"],
-      },
     ],
   },
   "2025-09-19": {
     date: "Friday, September 19, 2025",
     day: "Day 3",
-    theme: "Community Service & Spiritual Reflection",
+    theme: "Economic Development, Spiritual Reflection & Banquet",
     sessions: [
       {
-        id: "community-outreach",
-        time: "9:00 AM - 12:00 PM",
-        title: "Community Outreach Program",
+        id: "registration-4",
+        time: "6:00 AM - 7:00 AM",
+        title: "Registration & Accreditation",
+        description: "Final opportunity for registration and credential collection.",
+        location: "Registration Desk",
+        organizer: "ECI Registration Committee",
+        type: "registration",
+        icon: Users,
+      },
+      {
+        id: "friday-breakfast",
+        time: "7:30AM - 8:30 AM",
+        title: "Breakfast",
+        description: "Connect with fellow members over a delicious morning meal.",
+        location: "Hotel Restaurant",
+        organizer: "ECI Hospitality Committee",
+        type: "networking",
+        icon: Users,
+      },
+      {
+        id: "community-outreach-i",
+        time: "9:00 AM - 11:00 AM",
+        title: "Community Outreach",
         description: "Giving back to the Newark community through various service projects and initiatives.",
         location: "Local Community Centers",
         organizer: "ECI Community Service Committee",
@@ -141,8 +142,20 @@ const agendaData = {
         speakers: ["Community Leaders", "Service Coordinators"],
       },
       {
+        id: "economic-session",
+        time: "11:30 AM - 12:00 PM",
+        title: "Economic Session",
+        description:
+          "Organized by the Consular General office in Collaboration with Eko Club International. Exploring opportunities for economic growth and development in Nigeria and the diaspora.",
+        location: "Main Conference Hall",
+        organizer: "Consular General Office in Collaboration with ECI",
+        type: "panel",
+        icon: Building,
+        speakers: ["Hon. Olatunbosun Alake", "Economic Development Experts"],
+      },
+      {
         id: "jumaat-prayer",
-        time: "1:00 PM - 2:30 PM",
+        time: "1:30 PM - 2:00 PM",
         title: "Jumaat Prayer",
         description: "Friday congregational prayers for Muslim members of the community.",
         location: "Hotel Prayer Room/Local Mosque",
@@ -151,8 +164,18 @@ const agendaData = {
         icon: Building,
       },
       {
+        id: "friday-lunch",
+        time: "1:30 PM - 2:45 PM",
+        title: "Lunch",
+        description: "Connect with fellow members over a delicious meal.",
+        location: "Hotel Restaurant",
+        organizer: "ECI Hospitality Committee",
+        type: "networking",
+        icon: Users,
+      },
+      {
         id: "town-hall",
-        time: "3:00 PM - 5:00 PM",
+        time: "3:00 PM - 4:00 PM",
         title: "Town Hall Meeting",
         description: "Open forum for members to discuss important issues and share feedback.",
         location: "Main Conference Hall",
@@ -163,8 +186,8 @@ const agendaData = {
       },
       {
         id: "presidential-banquet",
-        time: "7:00 PM - 11:00 PM",
-        title: "Presidential/Fundraising/Award Night Banquet",
+        time: "7:00 PM - 1:00 AM",
+        title: "Presidential/Fundraising/Award Night Banquet (Black tie / Ankara Night)",
         description: "Elegant evening celebrating achievements and raising funds for ECI initiatives.",
         location: "Grand Ballroom",
         organizer: "ECI Executive Committee",
@@ -180,6 +203,16 @@ const agendaData = {
     theme: "Health, Governance & Celebration",
     sessions: [
       {
+        id: "saturday-breakfast",
+        time: "6:00AM - 7:00 AM",
+        title: "Breakfast",
+        description: "Connect with fellow members over a delicious morning meal.",
+        location: "Hotel Restaurant",
+        organizer: "ECI Hospitality Committee",
+        type: "networking",
+        icon: Users,
+      },
+      {
         id: "walk-for-life",
         time: "7:00 AM - 9:00 AM",
         title: "Walk For Life",
@@ -192,7 +225,7 @@ const agendaData = {
       },
       {
         id: "general-sessions",
-        time: "10:00 AM - 12:00 PM",
+        time: "09:00 AM - 11:30 PM",
         title: "General Sessions",
         description: "Important presentations and discussions on ECI's future direction and initiatives.",
         location: "Main Conference Hall",
@@ -202,8 +235,18 @@ const agendaData = {
         speakers: ["Executive Members", "Committee Chairs"],
       },
       {
+        id: "saturday-lunch",
+        time: "12:00 PM - 1:30 PM",
+        title: "Lunch",
+        description: "Connect with fellow members over a delicious meal.",
+        location: "Hotel Restaurant",
+        organizer: "ECI Hospitality Committee",
+        type: "networking",
+        icon: Users,
+      },
+      {
         id: "general-meeting",
-        time: "2:00 PM - 4:00 PM",
+        time: "1:30 PM - 3:00 PM",
         title: "General Meeting and Executive Committee Dissolution",
         description: "Official business meeting and formal dissolution of current executive committee.",
         location: "Main Conference Hall",
@@ -214,7 +257,7 @@ const agendaData = {
       },
       {
         id: "electioneering",
-        time: "4:30 PM - 6:30 PM",
+        time: "3:00 PM - 4:00 PM",
         title: "Electioneering Process",
         description: "Candidate presentations and voting for new executive committee members.",
         location: "Main Conference Hall",
@@ -225,7 +268,7 @@ const agendaData = {
       },
       {
         id: "gala-inauguration",
-        time: "8:00 PM - 12:00 AM",
+        time: "7:00 PM - 02:00 AM",
         title: "Gala Night and New Executive Committee Inauguration",
         description: "Grand celebration and official inauguration of newly elected executive committee.",
         location: "Grand Ballroom",
@@ -242,8 +285,18 @@ const agendaData = {
     theme: "Spiritual Reflection & Farewell",
     sessions: [
       {
+        id: "sunday-breakfast",
+        time: "6:00AM - 9:00 AM",
+        title: "Breakfast",
+        description: "Connect with fellow members over a delicious morning meal.",
+        location: "Hotel Restaurant",
+        organizer: "ECI Hospitality Committee",
+        type: "networking",
+        icon: Users,
+      },
+      {
         id: "church-service",
-        time: "9:00 AM - 11:00 AM",
+        time: "9:00 AM - 10:00 AM",
         title: "Interdenominational Church Service",
         description: "Sunday worship service bringing together members of all Christian denominations.",
         location: "Hotel Conference Hall/Local Church",
@@ -253,19 +306,8 @@ const agendaData = {
         speakers: ["Guest Ministers", "ECI Chaplains"],
       },
       {
-        id: "final-session",
-        time: "12:00 PM - 2:00 PM",
-        title: "Closing Session and Final Remarks",
-        description: "Official closing of ECI@25 with final remarks and appreciation.",
-        location: "Main Conference Hall",
-        organizer: "New ECI Executive Committee",
-        type: "closing",
-        icon: Mic,
-        speakers: ["New President", "Convention Organizers"],
-      },
-      {
         id: "departure",
-        time: "3:00 PM onwards",
+        time: "11:00 AM onwards",
         title: "Departure of Participants",
         description: "Check-out and departure arrangements for all convention attendees.",
         location: "Hotel Lobby",
@@ -299,6 +341,7 @@ export default function AgendaPage() {
   const [activeDay, setActiveDay] = useState<string | null>("2025-09-18")
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedFilter, setSelectedFilter] = useState("all")
+  const [isGeneratingPDF, setIsGeneratingPDF] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -330,6 +373,225 @@ export default function AgendaPage() {
     },
     {} as typeof agendaData,
   )
+
+  const generatePDF = async () => {
+    setIsGeneratingPDF(true)
+
+    try {
+      const pdf = new jsPDF()
+      const pageWidth = pdf.internal.pageSize.width
+      const pageHeight = pdf.internal.pageSize.height
+      const margin = 20
+      let yPosition = margin
+
+      // Helper function to add text with word wrapping
+      const addWrappedText = (text: string, x: number, y: number, maxWidth: number, fontSize = 10) => {
+        pdf.setFontSize(fontSize)
+        const lines = pdf.splitTextToSize(text, maxWidth)
+        pdf.text(lines, x, y)
+        return y + lines.length * fontSize * 0.4
+      }
+
+      // Helper function to check if we need a new page
+      const checkNewPage = (requiredSpace: number) => {
+        if (yPosition + requiredSpace > pageHeight - margin) {
+          pdf.addPage()
+          yPosition = margin
+          return true
+        }
+        return false
+      }
+
+      // Title Page
+      pdf.setFontSize(24)
+      pdf.setFont("helvetica", "bold")
+      pdf.text("ECI@25 Convention", pageWidth / 2, 40, { align: "center" })
+
+      pdf.setFontSize(18)
+      pdf.text("Complete Schedule", pageWidth / 2, 55, { align: "center" })
+
+      // Add ECI Logo
+      try {
+        // Create a canvas element to load and process the image
+        const canvas = document.createElement("canvas")
+        const ctx = canvas.getContext("2d")
+        const img = new Image()
+
+        // Set crossOrigin to handle CORS
+        img.crossOrigin = "anonymous"
+
+        await new Promise((resolve, reject) => {
+          img.onload = () => {
+            // Set canvas size
+            canvas.width = img.width
+            canvas.height = img.height
+
+            // Draw image to canvas
+            ctx?.drawImage(img, 0, 0)
+
+            // Get image data as base64
+            const imageData = canvas.toDataURL("image/png")
+
+            // Add image to PDF (centered, with appropriate size)
+            const logoWidth = 40
+            const logoHeight = (img.height / img.width) * logoWidth
+            const logoX = (pageWidth - logoWidth) / 2
+            const logoY = 62
+
+            pdf.addImage(imageData, "PNG", logoX, logoY, logoWidth, logoHeight)
+            resolve(true)
+          }
+
+          img.onerror = () => {
+            console.warn("Could not load ECI logo for PDF")
+            resolve(false)
+          }
+
+          // Load the logo
+          img.src = "/images/eci-logo.png"
+        })
+
+        // Adjust the y-position for subsequent text to account for logo
+        pdf.setFontSize(14)
+        pdf.setFont("helvetica", "normal")
+        pdf.text("25th International Convention", pageWidth / 2, 95, { align: "center" })
+        pdf.text("September 17-21, 2025", pageWidth / 2, 110, { align: "center" })
+        pdf.text("Newark, New Jersey", pageWidth / 2, 125, { align: "center" })
+
+        pdf.setFontSize(12)
+        pdf.text('"Bridging Generations, Building Communities"', pageWidth / 2, 145, { align: "center" })
+
+        // Venue Information
+        yPosition = 175
+      } catch (error) {
+        console.warn("Error adding logo to PDF:", error)
+        // Fallback to original positioning if logo fails
+        pdf.setFontSize(14)
+        pdf.setFont("helvetica", "normal")
+        pdf.text("25th International Convention", pageWidth / 2, 70, { align: "center" })
+        pdf.text("September 17-21, 2025", pageWidth / 2, 85, { align: "center" })
+        pdf.text("Newark, New Jersey", pageWidth / 2, 100, { align: "center" })
+
+        pdf.setFontSize(12)
+        pdf.text('"Bridging Generations, Building Communities"', pageWidth / 2, 120, { align: "center" })
+
+        // Venue Information
+        yPosition = 150
+      }
+
+      // Add new page for agenda
+      pdf.addPage()
+      yPosition = margin
+
+      // Agenda content
+      Object.entries(agendaData).forEach(([date, dayData], dayIndex) => {
+        // Check if we need space for day header
+        checkNewPage(40)
+
+        // Day header
+        pdf.setFillColor(124, 58, 237) // Purple background
+        pdf.rect(margin, yPosition, pageWidth - 2 * margin, 25, "F")
+
+        pdf.setTextColor(255, 255, 255) // White text
+        pdf.setFontSize(16)
+        pdf.setFont("helvetica", "bold")
+        pdf.text(`${dayData.day} - ${dayData.date}`, margin + 5, yPosition + 10)
+
+        pdf.setFontSize(12)
+        pdf.text(dayData.theme, margin + 5, yPosition + 20)
+
+        yPosition += 35
+        pdf.setTextColor(0, 0, 0) // Reset to black
+
+        // Sessions
+        dayData.sessions.forEach((session, sessionIndex) => {
+          // Check if we need space for session (approximately 50-80 points depending on content)
+          const estimatedHeight = 60 + (session.description.length / 100) * 10
+          checkNewPage(estimatedHeight)
+
+          // Session container
+          pdf.setDrawColor(200, 200, 200)
+          pdf.setLineWidth(0.5)
+          const sessionStartY = yPosition
+
+          // Session title
+          pdf.setFontSize(14)
+          pdf.setFont("helvetica", "bold")
+          yPosition = addWrappedText(session.title, margin + 5, yPosition + 8, pageWidth - 2 * margin - 10, 14)
+
+          // Time and location
+          pdf.setFontSize(10)
+          pdf.setFont("helvetica", "normal")
+          pdf.setTextColor(100, 100, 100)
+          yPosition = addWrappedText(
+            `${session.time} | ${session.location}`,
+            margin + 5,
+            yPosition + 5,
+            pageWidth - 2 * margin - 10,
+            10,
+          )
+
+          // Description
+          pdf.setTextColor(0, 0, 0)
+          yPosition = addWrappedText(session.description, margin + 5, yPosition + 5, pageWidth - 2 * margin - 10, 10)
+
+          // Organizer
+          pdf.setTextColor(100, 100, 100)
+          yPosition = addWrappedText(
+            `Organized by: ${session.organizer}`,
+            margin + 5,
+            yPosition + 5,
+            pageWidth - 2 * margin - 10,
+            9,
+          )
+
+          // Speakers (if any)
+          if (session.speakers && session.speakers.length > 0) {
+            yPosition = addWrappedText(
+              `Speakers: ${session.speakers.join(", ")}`,
+              margin + 5,
+              yPosition + 3,
+              pageWidth - 2 * margin - 10,
+              9,
+            )
+          }
+
+          // Session type badge
+          const typeInfo = sessionTypes[session.type as keyof typeof sessionTypes]
+          pdf.setFontSize(8)
+          pdf.setTextColor(0, 0, 0)
+          pdf.text(typeInfo.label, pageWidth - margin - 40, sessionStartY + 8)
+
+          // Draw session border
+          const sessionHeight = yPosition - sessionStartY + 5
+          pdf.rect(margin, sessionStartY, pageWidth - 2 * margin, sessionHeight)
+
+          yPosition += 10
+          pdf.setTextColor(0, 0, 0) // Reset color
+        })
+
+        yPosition += 10 // Space between days
+      })
+
+      // Footer on last page
+      const totalPages = pdf.getNumberOfPages()
+      for (let i = 1; i <= totalPages; i++) {
+        pdf.setPage(i)
+        pdf.setFontSize(8)
+        pdf.setTextColor(100, 100, 100)
+        pdf.text(`Page ${i} of ${totalPages}`, pageWidth - margin, pageHeight - 10, { align: "right" })
+        pdf.text("© 2025 Eko Club International", margin, pageHeight - 10)
+      }
+
+      // Save the PDF
+      pdf.save("ECI@25-Convention-Schedule.pdf")
+    } catch (error) {
+      console.error("Error generating PDF:", error)
+      alert("Error generating PDF. Please try again.")
+    } finally {
+      setIsGeneratingPDF(false)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -458,7 +720,9 @@ export default function AgendaPage() {
                     </div>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <span className="text-sm text-gray-600">{dayData.sessions.length} sessions</span>
+                    <span className="text-sm text-gray-600">
+                      {dayData.sessions.length} {dayData.sessions.length === 1 ? "session" : "sessions"}
+                    </span>
                     {activeDay === date ? (
                       <ChevronDown className="h-5 w-5 text-gray-600" />
                     ) : (
@@ -569,14 +833,26 @@ export default function AgendaPage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3 text-lg">
-                Register Now
+                <Link href={"/register"}>Register Now</Link>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-3 text-lg bg-white/10 backdrop-blur-sm"
+                onClick={generatePDF}
+                disabled={isGeneratingPDF}
               >
-                Download Full Schedule
+                {isGeneratingPDF ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    Generating PDF...
+                  </>
+                ) : (
+                  <>
+                    <Download className="h-4 w-4 mr-2" />
+                    Download Full Schedule
+                  </>
+                )}
               </Button>
             </div>
           </motion.div>

@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { MemberRegistrationModal } from "@/components/registration/member-registration-modal"
 import { NonMemberRegistrationModal } from "@/components/registration/non-member-registration-modal"
 import { ModifyRegistrationModal } from "@/components/registration/modify-registration-modal"
+import Link from "next/link"
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -254,13 +255,17 @@ export default function RegisterPage() {
                           <strong>Group Code:</strong> ECI25
                         </p>
                         <p>
-                          <strong>Rate:</strong> $139/night
+                          <strong>Rate:</strong> $235/night
                         </p>
                         <p>
                           <strong>Includes:</strong> Free WiFi, Airport Shuttle
                         </p>
                       </div>
-                      <Button className="mt-4 bg-pink-600 hover:bg-pink-700 text-white">Book Now</Button>
+                      <Button className="mt-4 bg-pink-600 hover:bg-pink-700 text-white">
+                       <Link target="_blank" href={'https://www.hilton.com/en/book/reservation/rooms/?ctyhocn=EWRNADT&arrivalDate=2025-09-18&departureDate=2025-09-21&groupCode=CDTECI&room1NumAdults=1&cid=OM%2CWW%2CHILTONLINK%2CEN%2CDirectLink'}>
+                        Book Now
+                       </Link>
+                      </Button>
                     </div>
                   </div>
                 </motion.div>
@@ -292,14 +297,15 @@ export default function RegisterPage() {
                         variant="outline"
                         className="mt-4 border-orange-600 text-orange-600 hover:bg-orange-50 bg-transparent"
                       >
-                        View Options
+                        <Link target="_blank" href={'https://www.rome2rio.com/s/Hotels-Near/DoubleTree-by-Hilton-Hotel-Newark-Airport?source=adwords&gad_source=1&gad_campaignid=21441945537&gbraid=0AAAAADm27_bK4r1CGKBOWtQTwwzIn_szm&gclid=CjwKCAjw1ozEBhAdEiwAn9qbzV2avXt1wXHRCVimm83a0l8C3X0mFxDuUocyFMoVUY8i2gPeYpVExxoCctoQAvD_BwE'}>
+                          View Options
+                        </Link>
                       </Button>
                     </div>
                   </div>
                 </motion.div>
-
                 {/* Housing Assistance Card */}
-                <motion.div
+                {/* <motion.div
                   variants={fadeInUp}
                   initial="initial"
                   whileInView="animate"
@@ -329,7 +335,7 @@ export default function RegisterPage() {
                       </Button>
                     </div>
                   </div>
-                </motion.div>
+                </motion.div> */}
               </div>
             </div>
           </div>
@@ -340,7 +346,6 @@ export default function RegisterPage() {
       <MemberRegistrationModal isOpen={showMemberModal} onClose={() => setShowMemberModal(false)} />
       <NonMemberRegistrationModal isOpen={showNonMemberModal} onClose={() => setShowNonMemberModal(false)} />
       <ModifyRegistrationModal isOpen={showModifyModal} onClose={() => setShowModifyModal(false)} />
-
       <Footer />
     </div>
   )
