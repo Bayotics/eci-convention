@@ -30,21 +30,42 @@ function PaymentPageContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const [selectedTicket, setSelectedTicket] = useState("")
+  const [guestEmail, setGuestEmail] = useState("")
+  const [guestEmailError, setGuestEmailError] = useState("")
   const [isProcessing, setIsProcessing] = useState(false)
   const [paymentError, setPaymentError] = useState("")
 
   const type = searchParams.get("type") // 'member' or 'guest'
   const email = searchParams.get("email") || ""
-
   const membershipType = type === "member" ? "member" : "non-member"
   const tickets = ticketPricing[membershipType]
+  const emailToUse = membershipType === "non-member" ? guestEmail : email
 
+
+  const validateGuestEmail = () => {
+    if (membershipType === "non-member" && !guestEmail.trim()) {
+      setGuestEmailError("Email is required for guests")
+      return false
+    }
+    setGuestEmailError("")
+    return true
+  }
+  function generateMembershipId(length = 19) {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+      result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return result;
+  }
   const createOrder = (data: any, actions: any) => {
     if (!selectedTicket) {
       setPaymentError("Please select a ticket type")
       return Promise.reject(new Error("No ticket selected"))
     }
-
+    if (!validateGuestEmail()) {
+      return Promise.reject(new Error("Guest email required"))
+    }
     const ticketInfo = tickets[selectedTicket as keyof typeof tickets]
     const price = ticketInfo.price
 
@@ -83,13 +104,15 @@ function PaymentPageContent() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email,
+          email: emailToUse,
           membershipStatus: membershipType,
           ticketType: `${selectedTicket}-${membershipType}`,
           amount: ticketInfo.price,
           paymentId: details.id,
           attendanceDays: ticketInfo.days,
           paymentDetails: details,
+          transactionReference: generateMembershipId()
+
         }),
       })
 
@@ -100,7 +123,7 @@ function PaymentPageContent() {
         if (membershipType === "member") {
           router.push(`/register/member/form?email=${encodeURIComponent(email)}`)
         } else {
-          router.push(`/register/guest/form?email=${encodeURIComponent(email)}`)
+          router.push(`/register/guest/form?email=${encodeURIComponent(emailToUse)}`)
         }
       } else {
         setPaymentError(result.error || "Payment processing failed")
@@ -200,7 +223,26 @@ function PaymentPageContent() {
                   </motion.div>
                 ))}
               </div>
-
+              {membershipType === "non-member" && selectedTicket && (
+                <div className="mb-6 max-w-md mx-auto">
+                  <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="guest-email">
+                    Guest Email <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="guest-email"
+                    type="email"
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    placeholder="Enter your email address"
+                    value={guestEmail}
+                    onChange={(e) => setGuestEmail(e.target.value)}
+                    required
+                    disabled={isProcessing}
+                  />
+                  {guestEmailError && (
+                    <p className="text-red-600 text-xs mt-1">{guestEmailError}</p>
+                  )}
+                </div>
+              )}
               {/* Payment Section */}
               {selectedTicket && (
                 <motion.div

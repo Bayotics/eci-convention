@@ -91,10 +91,6 @@ export const RegistrationConfirmationEmail: React.FC<RegistrationConfirmationEma
             </td>
           </tr>
           <tr>
-            <td style={{ padding: "8px 0", color: "#6b7280", fontWeight: "bold" }}>Amount Paid:</td>
-            <td style={{ padding: "8px 0", color: "#059669", fontWeight: "bold", fontSize: "18px" }}>${ticketPrice}</td>
-          </tr>
-          <tr>
             <td style={{ padding: "8px 0", color: "#6b7280", fontWeight: "bold" }}>Payment ID:</td>
             <td style={{ padding: "8px 0", color: "#1f2937", fontSize: "12px" }}>{paymentId}</td>
           </tr>
@@ -102,16 +98,18 @@ export const RegistrationConfirmationEmail: React.FC<RegistrationConfirmationEma
       </div>
 
       {/* Attendance Days */}
-      <div style={{ backgroundColor: "#eff6ff", padding: "20px", borderRadius: "8px", marginBottom: "30px" }}>
+      {/* <div style={{ backgroundColor: "#eff6ff", padding: "20px", borderRadius: "8px", marginBottom: "30px" }}>
         <h3 style={{ color: "#1f2937", fontSize: "20px", marginBottom: "15px" }}>Your Convention Days</h3>
         <ul style={{ margin: "0", paddingLeft: "20px" }}>
-          {attendanceDays.map((day) => (
+          {attendanceDays
+          .filter((day) => dayLabels[day as keyof typeof dayLabels])
+          .map((day) => (
             <li key={day} style={{ color: "#1f2937", marginBottom: "8px", fontSize: "16px" }}>
               {dayLabels[day as keyof typeof dayLabels]}
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
 
       {/* Event Information */}
       <div style={{ backgroundColor: "#f0fdf4", padding: "20px", borderRadius: "8px", marginBottom: "30px" }}>

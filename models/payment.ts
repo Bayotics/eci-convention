@@ -1,6 +1,14 @@
 import mongoose from "mongoose"
 import { Schema } from "mongoose"
 
+function generatereferenceId(length = 19) {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
+  for (let i = 0; i < length; i++) {
+  result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}
 const PaymentSchema = new Schema({
   email: {
     type: String,
@@ -64,6 +72,10 @@ const PaymentSchema = new Schema({
   updatedAt: {
     type: Date,
     default: Date.now,
+  },
+  transactionReference: {
+      type: String,
+      default: generatereferenceId(),
   },
 })
 

@@ -85,10 +85,6 @@ function generateConfirmationEmailHTML(registrationData: RegistrationData): stri
                 <td style="padding: 10px 0; color: #1f2937; border-bottom: 1px solid #f3f4f6;">${registrationData.registrationCategory.charAt(0).toUpperCase() + registrationData.registrationCategory.slice(1)} Pass</td>
               </tr>
               <tr>
-                <td style="padding: 10px 0; color: #6b7280; font-weight: bold; border-bottom: 1px solid #f3f4f6;">Amount Paid:</td>
-                <td style="padding: 10px 0; color: #059669; font-weight: bold; font-size: 20px; border-bottom: 1px solid #f3f4f6;">$${registrationData.ticketPrice}</td>
-              </tr>
-              <tr>
                 <td style="padding: 10px 0; color: #6b7280; font-weight: bold;">Payment ID:</td>
                 <td style="padding: 10px 0; color: #1f2937; font-size: 12px; font-family: monospace;">${registrationData.paymentId}</td>
               </tr>
@@ -96,12 +92,6 @@ function generateConfirmationEmailHTML(registrationData: RegistrationData): stri
           </div>
 
           <!-- Attendance Days -->
-          <div style="background-color: #eff6ff; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid #3b82f6;">
-            <h3 style="color: #1f2937; font-size: 20px; margin-bottom: 15px;">📅 Your Convention Days</h3>
-            <ul style="margin: 0; padding-left: 20px; list-style-type: none;">
-              ${attendanceDaysList}
-            </ul>
-          </div>
 
           <!-- Event Information -->
           <div style="background-color: #f0fdf4; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid #22c55e;">

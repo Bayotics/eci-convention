@@ -14,7 +14,14 @@ export async function POST(request: NextRequest) {
     if (existingPayment) {
       return NextResponse.json({ error: "Payment already processed" }, { status: 400 })
     }
-
+      function generatePaymentId(length = 19) {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        for (let i = 0; i < length; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return result;
+    }
     // Create new payment record
     const payment = new Payment({
       email: email.toLowerCase(),
@@ -27,6 +34,7 @@ export async function POST(request: NextRequest) {
       paymentMethod: "paypal",
       createdAt: new Date(),
       updatedAt: new Date(),
+      transactionReference: generatePaymentId()
     })
 
     await payment.save()
