@@ -54,7 +54,7 @@ export function Header({ isScrolled }: HeaderProps) {
             <Link href="/register" className="hidden sm:block">
               <Button
                 variant="outline"
-                className="bg-pink-500 hover:bg-pink-600 text-white text-sm md:text-lg lg:text-xl px-3 py-2 md:px-4 md:py-2"
+                className="bg-pink-500 hover:bg-pink-600 text-white text-sm md:text-lg lg:text-xl px-3 py-2 md:px-8 md:py-2 font-bold"
               >
                 Register Now
               </Button>
@@ -80,7 +80,7 @@ export function Header({ isScrolled }: HeaderProps) {
               onMouseEnter={() => setIsDropdownOpen(true)}
               onMouseLeave={() => setIsDropdownOpen(false)}
             >
-              <button className="flex items-center text-gray-700 hover:text-purple-600 font-medium text-lg xl:text-xl transition-colors">
+              <button className="flex items-center text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg transition-colors">
                 About Convention
                 <ChevronDown className="ml-1 h-4 w-4 xl:h-5 xl:w-5" />
               </button>
@@ -105,7 +105,7 @@ export function Header({ isScrolled }: HeaderProps) {
                   <li>
                     <Link
                       href="/about"
-                      className="block px-4 py-3 text-gray-800 font-medium hover:bg-gray-50 hover:text-purple-600 transition-colors"
+                      className="block px-4 py-3 text-gray-800 font-bold hover:bg-gray-50 hover:text-purple-600 transition-colors"
                     >
                       About Convention
                     </Link>
@@ -113,7 +113,7 @@ export function Header({ isScrolled }: HeaderProps) {
                   <li>
                     <Link
                       href="/speakers"
-                      className="block px-4 py-3 text-gray-800 font-medium hover:bg-gray-50 hover:text-purple-600 transition-colors"
+                      className="block px-4 py-3 text-gray-800 font-bold hover:bg-gray-50 hover:text-purple-600 transition-colors"
                     >
                       Speakers
                     </Link>
@@ -121,7 +121,7 @@ export function Header({ isScrolled }: HeaderProps) {
                   <li>
                     <Link
                       href="/venue"
-                      className="block px-4 py-3 text-gray-800 font-medium hover:bg-gray-50 hover:text-purple-600 transition-colors"
+                      className="block px-4 py-3 text-gray-800 font-bold hover:bg-gray-50 hover:text-purple-600 transition-colors"
                     >
                       Venue & Logistics
                     </Link>
@@ -133,39 +133,33 @@ export function Header({ isScrolled }: HeaderProps) {
             {/* Other Menu Items */}
             <Link
               href="/agenda"
-              className="text-gray-700 hover:text-purple-600 font-medium text-lg xl:text-xl transition-colors"
+              className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg transition-colors"
             >
               Agenda
             </Link>
             <Link
               href="/speakers"
-              className="text-gray-700 hover:text-purple-600 font-medium text-lg xl:text-xl transition-colors"
+              className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg transition-colors"
             >
               Speakers
             </Link>
             <Link
               href="/venue"
-              className="text-gray-700 hover:text-purple-600 font-medium text-lg xl:text-xl transition-colors"
+              className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg transition-colors"
             >
               Venue
             </Link>
             <Link
               href="/sponsors"
-              className="text-gray-700 hover:text-purple-600 font-medium text-lg xl:text-xl transition-colors"
+              className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg transition-colors"
             >
               Sponsors
             </Link>
             <Link
               href="/sponsors"
-              className="text-gray-700 hover:text-purple-600 font-medium text-lg xl:text-xl transition-colors"
+              className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg transition-colors"
             >
               Contact
-            </Link>
-            <Link
-              href="/admin/login"
-              className="text-gray-700 hover:text-purple-600 font-medium text-lg xl:text-xl transition-colors"
-            >
-              Admin
             </Link>
           </div>
         </nav>
@@ -180,7 +174,7 @@ export function Header({ isScrolled }: HeaderProps) {
             <div className="flex flex-col space-y-3">
               {/* Mobile Register Button */}
               <Link href="/register" onClick={closeMobileMenu} className="sm:hidden">
-                <Button className="w-full bg-pink-500 hover:bg-pink-600 text-white text-lg py-3">Register Now</Button>
+                <Button className="w-full bg-pink-500 hover:bg-pink-600 text-white text-lg py-3 ">Register Now</Button>
               </Link>
 
               {/* About Convention - Mobile Expandable */}

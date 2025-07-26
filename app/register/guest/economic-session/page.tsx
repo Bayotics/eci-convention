@@ -200,11 +200,11 @@ export default function EconomicSessionPage() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                 <div>
                   <span className="font-medium text-green-700">Date:</span>
-                  <p className="text-green-600">Thursday, September 18, 2025</p>
+                  <p className="text-green-600">Friday, September 19, 2025</p>
                 </div>
                 <div>
                   <span className="font-medium text-green-700">Time:</span>
-                  <p className="text-green-600">10:30 AM - 12:30 PM</p>
+                  <p className="text-green-600">11:30 AM - 12:00 PM</p>
                 </div>
                 <div>
                   <span className="font-medium text-green-700">Cost:</span>
