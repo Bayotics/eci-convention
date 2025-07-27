@@ -130,7 +130,7 @@ export function Header() {
             <Link href="/sponsors" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
               Sponsors
             </Link>
-            <Link href="/sponsors" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
+            <Link href="/contact" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
               Contact
             </Link>
           </div>
@@ -203,7 +203,7 @@ export function Header() {
                 Sponsors
               </Link>
               <Link
-                href="/sponsors"
+                href="/contact"
                 onClick={closeMobileMenu}
                 className="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100"
               >

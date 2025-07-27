@@ -40,7 +40,13 @@ export default function RegisterPage() {
 
       {/* Hero Section */}
       <section
-        className={`relative bg-gradient-to-br from-purple-600 via-blue-600 to-teal-500 text-white py-32 ${isScrolled ? "pt-44" : ""}`}
+        className={`relative text-white py-14`}
+        style={{
+          backgroundImage: "url('/images/endless-constellation.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
       >
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="container mx-auto px-4 relative z-10 pt-48">
@@ -93,7 +99,7 @@ export default function RegisterPage() {
                 viewport={{ once: true }}
                 className="mb-12"
               >
-                <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-teal-600 bg-clip-text text-transparent text-center">
+                <h2 className="text-4xl font-bold pb-6 bg-gradient-to-r from-purple-600 to-teal-600 bg-clip-text text-transparent text-center">
                   Event Registration
                 </h2>
                 <p className="text-lg text-gray-600 text-center max-w-2xl mx-auto">
@@ -224,7 +230,7 @@ export default function RegisterPage() {
                 viewport={{ once: true }}
                 className="mb-12"
               >
-                <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent text-center">
+                <h2 className="text-4xl font-bold pb-6 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent text-center">
                   Housing & Accommodation
                 </h2>
                 <p className="text-lg text-gray-600 text-center max-w-2xl mx-auto">
