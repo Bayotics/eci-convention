@@ -32,7 +32,7 @@ export function FeaturedSpeakers() {
       {/* Optional overlay for better text readability */}
       <div className="absolute inset-0 bg-black/20"></div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 pt-48">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}

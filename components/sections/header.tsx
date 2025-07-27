@@ -5,11 +5,7 @@ import { Button } from "@/components/ui/button"
 import { ChevronDown, Menu, X } from "lucide-react"
 import Link from "next/link"
 
-interface HeaderProps {
-  isScrolled: boolean
-}
-
-export function Header({ isScrolled }: HeaderProps) {
+export function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -22,11 +18,8 @@ export function Header({ isScrolled }: HeaderProps) {
   }
 
   return (
-    <header
-      className={`bg-white shadow-sm py-2 md:py-4 px-4 md:px-8 ${isScrolled ? "fixed z-40 w-full shadow-lg" : ""}`}
-      style={isScrolled ? { top: "44px" } : {}}
-    >
-      <div className="container mx-auto px-2 md:px-4">
+    <header className="bg-white py-2 md:py-4 px-4 md:px-8 fixed top-[44px] z-40 w-full shadow-lg sm:pt-12">
+      <div className="container mx-auto px-2 md:px-4 pt-3">
         {/* Logo and Language Row */}
         <div className="flex items-center justify-between mb-2 md:mb-4">
           <div className="flex items-center space-x-2 md:space-x-4">
@@ -63,7 +56,7 @@ export function Header({ isScrolled }: HeaderProps) {
             {/* Mobile Hamburger Menu */}
             <button
               onClick={toggleMobileMenu}
-              className="lg:hidden p-2 text-gray-700 hover:text-purple-600 transition-colors"
+              className="lg:hidden p-2 text-gray-700 hover:text-purple-600"
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -80,40 +73,34 @@ export function Header({ isScrolled }: HeaderProps) {
               onMouseEnter={() => setIsDropdownOpen(true)}
               onMouseLeave={() => setIsDropdownOpen(false)}
             >
-              <button className="flex items-center text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg transition-colors">
-                About Convention
+              <button className="flex items-center text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
+                About
                 <ChevronDown className="ml-1 h-4 w-4 xl:h-5 xl:w-5" />
               </button>
 
-              {/* Dropdown Menu with Animation */}
+              {/* Dropdown Menu */}
               <div
-                className={`absolute top-full left-0 mt-2 w-[280px] xl:w-[300px] bg-white border border-gray-200 rounded-lg shadow-lg z-[9999] overflow-hidden transition-all duration-300 ease-out transform ${
-                  isDropdownOpen
-                    ? "opacity-100 translate-y-0 scale-100"
-                    : "opacity-0 translate-y-[-10px] scale-95 pointer-events-none"
+                className={`absolute top-full left-0 mt-2 w-[280px] xl:w-[300px] bg-white border border-gray-200 rounded-lg shadow-lg z-[9999] overflow-hidden ${
+                  isDropdownOpen ? "opacity-100 visible" : "opacity-0 invisible"
                 }`}
               >
-                {/* Pink Border Animation */}
-                <div
-                  className={`h-[3px] bg-pink-500 transition-all duration-500 ease-out ${
-                    isDropdownOpen ? "w-1/2" : "w-0"
-                  }`}
-                ></div>
+                {/* Pink Border */}
+                <div className={`h-[3px] bg-pink-500 ${isDropdownOpen ? "w-1/2" : "w-0"}`}></div>
 
                 {/* Menu Items */}
                 <ul className="py-2">
                   <li>
                     <Link
                       href="/about"
-                      className="block px-4 py-3 text-gray-800 font-bold hover:bg-gray-50 hover:text-purple-600 transition-colors"
+                      className="block px-4 py-3 text-gray-800 font-bold hover:bg-gray-50 hover:text-purple-600"
                     >
-                      About Convention
+                      About
                     </Link>
                   </li>
                   <li>
                     <Link
                       href="/speakers"
-                      className="block px-4 py-3 text-gray-800 font-bold hover:bg-gray-50 hover:text-purple-600 transition-colors"
+                      className="block px-4 py-3 text-gray-800 font-bold hover:bg-gray-50 hover:text-purple-600"
                     >
                       Speakers
                     </Link>
@@ -121,7 +108,7 @@ export function Header({ isScrolled }: HeaderProps) {
                   <li>
                     <Link
                       href="/venue"
-                      className="block px-4 py-3 text-gray-800 font-bold hover:bg-gray-50 hover:text-purple-600 transition-colors"
+                      className="block px-4 py-3 text-gray-800 font-bold hover:bg-gray-50 hover:text-purple-600"
                     >
                       Venue & Logistics
                     </Link>
@@ -131,50 +118,31 @@ export function Header({ isScrolled }: HeaderProps) {
             </div>
 
             {/* Other Menu Items */}
-            <Link
-              href="/agenda"
-              className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg transition-colors"
-            >
+            <Link href="/agenda" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
               Agenda
             </Link>
-            <Link
-              href="/speakers"
-              className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg transition-colors"
-            >
+            <Link href="/speakers" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
               Speakers
             </Link>
-            <Link
-              href="/venue"
-              className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg transition-colors"
-            >
+            <Link href="/venue" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
               Venue
             </Link>
-            <Link
-              href="/sponsors"
-              className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg transition-colors"
-            >
+            <Link href="/sponsors" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
               Sponsors
             </Link>
-            <Link
-              href="/sponsors"
-              className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg transition-colors"
-            >
+            <Link href="/sponsors" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
               Contact
             </Link>
           </div>
         </nav>
 
         {/* Mobile Navigation Menu */}
-        <div
-          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
+        <div className={`lg:hidden overflow-hidden ${isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
           <nav className="py-4 border-t border-gray-200 mt-2">
             <div className="flex flex-col space-y-3">
               {/* Mobile Register Button */}
               <Link href="/register" onClick={closeMobileMenu} className="sm:hidden">
-                <Button className="w-full bg-pink-500 hover:bg-pink-600 text-white text-lg py-3 ">Register Now</Button>
+                <Button className="w-full bg-pink-500 hover:bg-pink-600 text-white text-lg py-3">Register Now</Button>
               </Link>
 
               {/* About Convention - Mobile Expandable */}
@@ -184,21 +152,21 @@ export function Header({ isScrolled }: HeaderProps) {
                   <Link
                     href="/about"
                     onClick={closeMobileMenu}
-                    className="block text-gray-600 hover:text-purple-600 transition-colors py-1"
+                    className="block text-gray-600 hover:text-purple-600 py-1"
                   >
                     About Convention
                   </Link>
                   <Link
                     href="/speakers"
                     onClick={closeMobileMenu}
-                    className="block text-gray-600 hover:text-purple-600 transition-colors py-1"
+                    className="block text-gray-600 hover:text-purple-600 py-1"
                   >
                     Speakers
                   </Link>
                   <Link
                     href="/venue"
                     onClick={closeMobileMenu}
-                    className="block text-gray-600 hover:text-purple-600 transition-colors py-1"
+                    className="block text-gray-600 hover:text-purple-600 py-1"
                   >
                     Venue & Logistics
                   </Link>
@@ -209,42 +177,42 @@ export function Header({ isScrolled }: HeaderProps) {
               <Link
                 href="/agenda"
                 onClick={closeMobileMenu}
-                className="text-gray-700 hover:text-purple-600 font-medium text-lg transition-colors py-2 border-b border-gray-100"
+                className="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100"
               >
                 Agenda
               </Link>
               <Link
                 href="/speakers"
                 onClick={closeMobileMenu}
-                className="text-gray-700 hover:text-purple-600 font-medium text-lg transition-colors py-2 border-b border-gray-100"
+                className="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100"
               >
                 Speakers
               </Link>
               <Link
                 href="/venue"
                 onClick={closeMobileMenu}
-                className="text-gray-700 hover:text-purple-600 font-medium text-lg transition-colors py-2 border-b border-gray-100"
+                className="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100"
               >
                 Venue
               </Link>
               <Link
                 href="/sponsors"
                 onClick={closeMobileMenu}
-                className="text-gray-700 hover:text-purple-600 font-medium text-lg transition-colors py-2 border-b border-gray-100"
+                className="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100"
               >
                 Sponsors
               </Link>
               <Link
                 href="/sponsors"
                 onClick={closeMobileMenu}
-                className="text-gray-700 hover:text-purple-600 font-medium text-lg transition-colors py-2 border-b border-gray-100"
+                className="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100"
               >
                 Contact
               </Link>
               <Link
                 href="/admin/login"
                 onClick={closeMobileMenu}
-                className="text-gray-700 hover:text-purple-600 font-medium text-lg transition-colors py-2"
+                className="text-gray-700 hover:text-purple-600 font-medium text-lg py-2"
               >
                 Admin
               </Link>

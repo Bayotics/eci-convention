@@ -6,11 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Calendar, MapPin } from "lucide-react"
 import Link from "next/link"
 
-interface HeroSectionProps {
-  isScrolled: boolean
-}
-
-export function HeroSection({ isScrolled }: HeroSectionProps) {
+export function HeroSection() {
   const [videoLoaded, setVideoLoaded] = useState(false)
 
   const handleVideoLoad = () => {
@@ -18,7 +14,7 @@ export function HeroSection({ isScrolled }: HeroSectionProps) {
   }
 
   return (
-    <section className={`relative text-white py-32 overflow-hidden ${isScrolled ? "pt-44" : ""}`}>
+    <section className="relative text-white py-32 overflow-hidden">
       {/* Fallback Image Background - Shows only when video is not loaded */}
       {!videoLoaded && (
         <div
@@ -66,7 +62,7 @@ export function HeroSection({ isScrolled }: HeroSectionProps) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-2xl md:text-2xl italic text-white/90 mb-4"
+            className="text-xl md:text-2xl italic text-white/90 mb-4"
           >
             25th annual convention
           </motion.p>
@@ -76,7 +72,7 @@ export function HeroSection({ isScrolled }: HeroSectionProps) {
             initial={{ opacity: 0, scaleX: 0 }}
             animate={{ opacity: 1, scaleX: 1 }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="w-[10%] h-1 bg-white/70 mb-6"
+            className="w-[10%] h-1 bg-white/60 mb-6"
             style={{ transformOrigin: "left" }}
           ></motion.div>
 
