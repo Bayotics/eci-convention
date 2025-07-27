@@ -7,6 +7,7 @@ import { Header } from "@/components/sections/header"
 import { Footer } from "@/components/sections/footer"
 import { Award, Calendar } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -28,7 +29,7 @@ const keynoteSpeakers = [
     id: "sanwo-olu",
     name: "His Excellency, Mr. Babajide Olusola Sanwo-Olu",
     title: "Executive Governor, Lagos State",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/sanwoolu.jpg?height=400&width=400",
     shortBio: "Visionary leader transforming Lagos State through innovative governance and sustainable development.",
     fullBio: `His Excellency, Mr. Babajide Olusola Sanwo-Olu is the Executive Governor of Lagos State, Nigeria, having assumed office on May 29, 2019. A seasoned administrator and technocrat, Governor Sanwo-Olu has brought a wealth of experience from both the private and public sectors to his role as the chief executive of Nigeria's commercial capital.
 
@@ -60,7 +61,7 @@ Governor Sanwo-Olu's leadership during the COVID-19 pandemic was particularly no
     id: "alake",
     name: "Hon. Olatunbosun Alake",
     title: "Commissioner for Innovation, Science & Technology, Lagos State",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/Tubosun-alake.jpg?height=400&width=400",
     shortBio: "Technology visionary driving innovation and digital transformation across Lagos State.",
     fullBio: `Hon. Olatunbosun Alake serves as the Commissioner for Innovation, Science & Technology in Lagos State, where he has been instrumental in positioning Lagos as Nigeria's technology and innovation hub. With over two decades of experience in technology, business development, and public administration, Commissioner Alake brings a unique blend of technical expertise and strategic leadership to his role.
 
@@ -202,10 +203,17 @@ export default function SpeakersPage() {
 
       {/* Hero/Banner Section */}
       <section
-        className={`relative bg-gradient-to-br from-purple-600 via-blue-600 to-teal-500 text-white py-32 ${isScrolled ? "pt-44" : ""}`}
+        className="relative text-white py-8 sm:py-12 md:py-16 lg:py-20"
+        style={{
+          backgroundImage: "url('/images/speakers-banner.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
       >
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-600/80 via-blue-600/70 to-teal-500/80"></div>
         <div className="absolute inset-0 bg-black/20"></div>
-        <div className="container mx-auto px-4 relative z-10 pt-48">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-[190px] sm:pt-[130px] md:pt-[140px] lg:pt-[150px]">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
@@ -216,7 +224,7 @@ export default function SpeakersPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-lg md:text-xl italic text-white/90 mb-4"
+              className="text-sm sm:text-base md:text-lg lg:text-xl italic text-white/90 mb-3 sm:mb-4"
             >
               Meet our distinguished guests
             </motion.p>
@@ -224,7 +232,7 @@ export default function SpeakersPage() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 text-white drop-shadow-lg leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-white drop-shadow-lg leading-tight"
             >
               Featured Speakers
             </motion.h1>
@@ -232,7 +240,7 @@ export default function SpeakersPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-lg md:text-xl text-white/90 leading-relaxed max-w-3xl"
+              className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 leading-relaxed max-w-3xl"
             >
               Join us for inspiring presentations from visionary leaders, innovators, and change-makers who are shaping
               the future of our communities and the world.
@@ -242,25 +250,25 @@ export default function SpeakersPage() {
       </section>
 
       {/* Keynote Speakers Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-12 sm:py-16 md:py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-teal-600 bg-clip-text text-transparent">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold pb-4 sm:mb-6 bg-gradient-to-r from-purple-600 to-teal-600 bg-clip-text text-transparent">
               Keynote Speakers
             </h2>
-            <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">
               Our distinguished keynote speakers bring decades of leadership experience and visionary insights to
               ECI@25.
             </p>
           </motion.div>
 
-          <div className="space-y-20">
+          <div className="space-y-16 sm:space-y-20">
             {keynoteSpeakers.map((speaker, index) => (
               <motion.div
                 key={speaker.id}
@@ -268,7 +276,7 @@ export default function SpeakersPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-start ${
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-start ${
                   index % 2 === 1 ? "lg:grid-flow-col-dense" : ""
                 }`}
               >
@@ -278,22 +286,24 @@ export default function SpeakersPage() {
                     <img
                       src={speaker.image || "/placeholder.svg"}
                       alt={speaker.name}
-                      className="w-full h-96 object-cover rounded-lg shadow-lg"
+                      className="w-full h-64 sm:h-80 md:h-96 object-cover rounded-lg shadow-lg"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-lg"></div>
-                    <div className="absolute bottom-6 left-6 right-6">
-                      <h3 className="text-2xl font-bold text-white mb-2">{speaker.name}</h3>
-                      <p className="text-white/90 text-lg">{speaker.title}</p>
+                    <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2 leading-tight">
+                        {speaker.name}
+                      </h3>
+                      <p className="text-white/90 text-sm sm:text-base md:text-lg leading-tight">{speaker.title}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Speaker Content */}
                 <div className={`${index % 2 === 1 ? "lg:col-start-1" : ""}`}>
-                  <div className="space-y-6">
+                  <div className="space-y-4 sm:space-y-6">
                     <div>
-                      <h4 className="text-2xl font-bold text-gray-800 mb-4">Biography</h4>
-                      <div className="text-gray-600 leading-relaxed space-y-4">
+                      <h4 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3 sm:mb-4">Biography</h4>
+                      <div className="text-sm sm:text-base text-gray-600 leading-relaxed space-y-3 sm:space-y-4">
                         {speaker.fullBio
                           .split("\n\n")
                           .slice(0, 2)
@@ -304,30 +314,33 @@ export default function SpeakersPage() {
                     </div>
 
                     <div>
-                      <h4 className="text-xl font-bold text-gray-800 mb-4">Key Achievements</h4>
-                      <ul className="space-y-2">
+                      <h4 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">Key Achievements</h4>
+                      <ul className="space-y-2 sm:space-y-3">
                         {speaker.achievements.map((achievement, aIndex) => (
-                          <li key={aIndex} className="flex items-start space-x-3">
-                            <Award className="h-5 w-5 text-purple-600 mt-0.5 flex-shrink-0" />
-                            <span className="text-gray-600">{achievement}</span>
+                          <li key={aIndex} className="flex items-start space-x-2 sm:space-x-3">
+                            <Award className="h-4 w-4 sm:h-5 sm:w-5 text-purple-600 mt-0.5 flex-shrink-0" />
+                            <span className="text-sm sm:text-base text-gray-600 leading-relaxed">{achievement}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
                     <div>
-                      <h4 className="text-xl font-bold text-gray-800 mb-4">Speaking Sessions</h4>
-                      <div className="space-y-4">
+                      <h4 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">Speaking Sessions</h4>
+                      <div className="space-y-3 sm:space-y-4">
                         {speaker.sessions.map((session, sIndex) => (
-                          <div key={sIndex} className="bg-gradient-to-r from-purple-50 to-teal-50 p-6 rounded-lg">
-                            <h5 className="text-lg font-bold text-gray-800 mb-2">{session.title}</h5>
-                            <div className="flex items-center space-x-4 text-sm text-gray-600 mb-3">
+                          <div
+                            key={sIndex}
+                            className="bg-gradient-to-r from-purple-50 to-teal-50 p-4 sm:p-6 rounded-lg"
+                          >
+                            <h5 className="text-base sm:text-lg font-bold text-gray-800 mb-2">{session.title}</h5>
+                            <div className="flex items-center space-x-2 sm:space-x-4 text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">
                               <div className="flex items-center space-x-1">
-                                <Calendar className="h-4 w-4" />
+                                <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
                                 <span>{session.time}</span>
                               </div>
                             </div>
-                            <p className="text-gray-600">{session.description}</p>
+                            <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{session.description}</p>
                           </div>
                         ))}
                       </div>
@@ -340,112 +353,44 @@ export default function SpeakersPage() {
         </div>
       </section>
 
-      {/* Featured Speakers Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-purple-50">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
-              Featured <span className="text-purple-600">Speakers</span>
-            </h2>
-            <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Meet our diverse panel of experts, thought leaders, and innovators who will share their insights and
-              expertise throughout the convention.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {featuredSpeakers.map((speaker, index) => (
-              <motion.div
-                key={speaker.id}
-                variants={fadeInUp}
-                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
-              >
-                <div className="relative">
-                  <img
-                    src={speaker.image || "/placeholder.svg"}
-                    alt={speaker.name}
-                    className="w-full h-64 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-xl font-bold text-white mb-1">{speaker.name}</h3>
-                    <p className="text-white/90 text-sm">{speaker.title}</p>
-                  </div>
-                </div>
-
-                <div className="p-6">
-                  <p className="text-gray-600 leading-relaxed mb-4">{speaker.shortBio}</p>
-
-                  <div className="mb-4">
-                    <h4 className="text-sm font-bold text-gray-800 mb-2">Areas of Expertise</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {speaker.expertise.map((area, eIndex) => (
-                        <span
-                          key={eIndex}
-                          className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-medium"
-                        >
-                          {area}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="text-sm font-bold text-gray-800 mb-2">Speaking Session</h4>
-                    {speaker.sessions.map((session, sIndex) => (
-                      <div key={sIndex} className="bg-gray-50 p-3 rounded-lg">
-                        <h5 className="font-medium text-gray-800 text-sm mb-1">{session.title}</h5>
-                        <div className="flex items-center space-x-1 text-xs text-gray-600">
-                          <Calendar className="h-3 w-3" />
-                          <span>{session.time}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
       {/* Call to Action Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-600 to-teal-600 text-white">
-        <div className="container mx-auto px-4 text-center">
+      <section
+        style={{
+          backgroundImage: "url('/images/circle-scatter-haikei.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+        className="py-12 sm:py-16 md:py-20 text-white"
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold mb-6">Don't Miss These Inspiring Sessions</h2>
-            <p className="text-xl mb-8 text-purple-100 max-w-3xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">
+              Don't Miss These Inspiring Sessions
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-purple-100 max-w-3xl mx-auto leading-relaxed px-4">
               Join us for three days of transformative discussions, networking, and learning from some of the most
               influential leaders of our time.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3 text-lg">
-                Register Now
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-md sm:max-w-none mx-auto">
+              <Button
+                size="lg"
+                className="bg-pink-500 hover:bg-pink-600 text-white px-6 sm:px-8 py-2 sm:py-3 text-base sm:text-lg w-full sm:w-auto"
+              >
+                <Link href={"/register"}>Register Now</Link>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-3 text-lg bg-white/10 backdrop-blur-sm"
+                className="border-white text-white hover:bg-white hover:text-purple-600 px-6 sm:px-8 py-2 sm:py-3 text-base sm:text-lg bg-white/10 backdrop-blur-sm w-full sm:w-auto"
               >
-                View Full Agenda
+                <Link href={"/agenda"}>View Full Agenda</Link>
               </Button>
             </div>
           </motion.div>

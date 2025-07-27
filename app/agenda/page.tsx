@@ -600,10 +600,17 @@ export default function AgendaPage() {
 
       {/* Hero/Banner Section */}
       <section
-        className={`relative bg-gradient-to-br from-purple-600 via-blue-600 to-teal-500 text-white py-32 ${isScrolled ? "pt-44" : ""}`}
+        className={`relative text-white py-14`}
+        style={{
+            backgroundImage: "url('/images/about-us-section.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
       >
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/80 via-blue-600/70 to-teal-500/80"></div>
         <div className="absolute inset-0 bg-black/20"></div>
-        <div className="container mx-auto px-4 relative z-10 pt-48">
+        <div className="container mx-auto px-8 relative z-10 pt-48">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
@@ -817,7 +824,13 @@ export default function AgendaPage() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-600 to-teal-600 text-white">
+      <section className="py-20 text-white"
+      style={{
+            backgroundImage: "url('/images/confetti-doodles.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}>
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
@@ -832,7 +845,7 @@ export default function AgendaPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3 text-lg">
+              <Button size="lg" className="bg-gray-600 hover:bg-pink-600 text-white px-8 py-3 text-lg">
                 <Link href={"/register"}>Register Now</Link>
               </Button>
               <Button

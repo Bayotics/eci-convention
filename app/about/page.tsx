@@ -19,6 +19,7 @@ import {
   Crown,
   Palmtree,
   Mountain,
+  Fish,
   X,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -81,7 +82,7 @@ The Seme-Badagry Expressway has improved connectivity, and there are ongoing eff
   },
   ikorodu: {
     name: "Ikorodu",
-    icon: Mountain,
+    icon: Crown,
     color: "green",
     brief:
       "A rapidly developing area with a dynamic mix of residential, industrial, and commercial zones. Ikorodu is one of the fastest-growing divisions in Lagos State, representing modern urban development.",
@@ -106,7 +107,7 @@ Infrastructure development continues with improved road networks, healthcare fac
   },
   lagosIsland: {
     name: "Lagos Island",
-    icon: Crown,
+    icon: Mountain,
     color: "purple",
     brief:
       "Historically known as Eko, Lagos Island is one of the oldest parts of Lagos where the first settlements were established. It has been a significant commercial and political center for centuries, with its name originating from the Benin Kingdom.",
@@ -131,7 +132,7 @@ Despite modern challenges including congestion and infrastructure strain, Lagos 
   },
   epe: {
     name: "Epe",
-    icon: Network,
+    icon: Fish,
     color: "teal",
     brief:
       "A coastal town with strong fishing and agricultural traditions. Epe is known for its historical connections to the Epe kingdom and its vital role in the region's economy through maritime and agricultural activities.",
