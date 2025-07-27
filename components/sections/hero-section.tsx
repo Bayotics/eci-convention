@@ -41,7 +41,10 @@ export function HeroSection({ isScrolled }: HeroSectionProps) {
         onLoadedData={handleVideoLoad}
         onCanPlayThrough={handleVideoLoad}
       >
-        <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/eyo-bg-Baj7i77MWFpcAh0aElJT2hP1pHhiI8.mp4" type="video/mp4" />
+        <source
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/eyo-bg-Baj7i77MWFpcAh0aElJT2hP1pHhiI8.mp4"
+          type="video/mp4"
+        />
         Your browser does not support the video tag.
       </video>
 
@@ -51,7 +54,7 @@ export function HeroSection({ isScrolled }: HeroSectionProps) {
       )}
 
       {/* Content - Left Aligned */}
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
@@ -63,10 +66,19 @@ export function HeroSection({ isScrolled }: HeroSectionProps) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-lg md:text-xl italic text-white/90 mb-4"
+            className="text-2xl md:text-2xl italic text-white/90 mb-4"
           >
             25th annual convention
           </motion.p>
+
+          {/* Separator border */}
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0 }}
+            animate={{ opacity: 1, scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="w-[10%] h-1 bg-white/70 mb-6"
+            style={{ transformOrigin: "left" }}
+          ></motion.div>
 
           {/* Main heading */}
           <motion.h1

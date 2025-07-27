@@ -37,7 +37,7 @@ export function ConventionExperienceCards() {
           </div>
           <div className="w-1/2">
             <img
-              src="/placeholder.svg?height=400&width=600"
+              src="/images/engaging-panels.jpg?height=400&width=600"
               alt="Engaging Panels"
               className="w-full h-full object-cover"
             />
@@ -55,7 +55,7 @@ export function ConventionExperienceCards() {
           </div>
           <div className="w-1/2">
             <img
-              src="/placeholder.svg?height=400&width=600"
+              src="/images/cultural-exhibitions.jpg?height=400&width=600"
               alt="Cultural Exhibitions"
               className="w-full h-full object-cover"
             />
@@ -66,7 +66,7 @@ export function ConventionExperienceCards() {
         <motion.div variants={fadeInUp} className="flex flex-col md:flex-row min-h-[50vh]">
           <div className="w-1/2">
             <img
-              src="/placeholder.svg?height=400&width=600"
+              src="/images/networking.jpg?height=400&width=600"
               alt="Networking among members"
               className="w-full h-full object-cover"
             />
@@ -83,7 +83,7 @@ export function ConventionExperienceCards() {
         {/* Bottom Right - Gala (Image Left, Caption Right) */}
         <motion.div variants={fadeInUp} className="flex flex-col md:flex-row min-h-[50vh]">
           <div className="w-1/2">
-            <img src="/placeholder.svg?height=400&width=600" alt="Gala Night" className="w-full h-full object-cover" />
+            <img src="/images/gala.jpg?height=400&width=600" alt="Gala Night" className="w-full h-full object-cover" />
           </div>
           <div className="w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center bg-gradient-to-br from-pink-500 to-red-500 text-white">
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">Gala</h3>

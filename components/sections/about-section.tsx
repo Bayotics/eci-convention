@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export function AboutSection() {
   return (
@@ -23,7 +24,11 @@ export function AboutSection() {
             showcase our journey of excellence while charting the course for the next 25 years of impact and service to
             our communities worldwide.
           </p>
-          <Button className="bg-purple-600 hover:bg-purple-700 text-white">Learn More About ECI</Button>
+          <Button className="bg-purple-600 hover:bg-purple-700 text-white">
+              <Link href={'https://eko-club-international.vercel.app/about/our-story'}>
+                Learn More About ECI
+              </Link>
+          </Button>
         </motion.div>
       </div>
     </section>

@@ -47,7 +47,7 @@ export function KeyHighlightsSection() {
           <motion.div variants={fadeInUp} className="text-center">
             <div className="mb-6">
               <img
-                src="/placeholder.svg?height=300&width=400"
+                src="/images/vibrant-community.jpg?height=300&width=400"
                 alt="Networking at ECI Convention"
                 className="w-full h-64 object-cover rounded-lg shadow-lg"
               />
@@ -63,7 +63,7 @@ export function KeyHighlightsSection() {
           <motion.div variants={fadeInUp} className="text-center">
             <div className="mb-6">
               <img
-                src="/placeholder.svg?height=300&width=400"
+                src="/images/convention-calendar.jpg?height=300&width=400"
                 alt="Convention Calendar"
                 className="w-full h-64 object-cover rounded-lg shadow-lg"
               />
@@ -79,7 +79,7 @@ export function KeyHighlightsSection() {
           <motion.div variants={fadeInUp} className="text-center">
             <div className="mb-6">
               <img
-                src="/placeholder.svg?height=300&width=400"
+                src="/images/program-of-events.jpg?height=300&width=400"
                 alt="Program of Events"
                 className="w-full h-64 object-cover rounded-lg shadow-lg"
               />
