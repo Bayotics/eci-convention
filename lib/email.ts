@@ -13,6 +13,54 @@ interface RegistrationData {
   paymentId: string
   registrationId: string
 }
+interface CancelData {
+  firstName: string
+  lastName: string
+  email: string
+  registrationId: string
+}
+function generateCancelConfirmationHTML(cancelData: CancelData): string {
+  return `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Registration Cancelled</title>
+    </head>
+    <body style="font-family: Arial, sans-serif; background: #fff; margin: 0; padding: 0;">
+      <div style="max-width: 600px; margin: 0 auto; padding: 24px;">
+        <h2 style="color: #b91c1c;">ECI Convention Registration Cancelled</h2>
+        <p>Dear ${cancelData.firstName} ${cancelData.lastName},</p>
+        <p>
+          This is to confirm that your registration for the ECI Convention has been <b>cancelled</b>.
+        </p>
+        <table style="margin: 24px 0; font-size: 15px;">
+          <tr>
+            <td style="font-weight: bold; padding-right: 8px;">Name:</td>
+            <td>${cancelData.firstName} ${cancelData.lastName}</td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold; padding-right: 8px;">Email:</td>
+            <td>${cancelData.email}</td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold; padding-right: 8px;">Registration ID:</td>
+            <td>${cancelData.registrationId}</td>
+          </tr>
+        </table>
+        <p>
+          If you did not request this cancellation or have any questions, please contact us at
+          <a href="mailto:info@eciconvention.org">info@eciconvention.org</a>.
+        </p>
+        <p style="color: #6b7280; font-size: 13px; margin-top: 32px;">
+          Thank you,<br />
+          ECI Convention Team
+        </p>
+      </div>
+    </body>
+    </html>
+  `
+}
 
 function generateConfirmationEmailHTML(registrationData: RegistrationData): string {
   const dayLabels = {
@@ -282,6 +330,29 @@ export async function sendAdminNotification(registrationData: RegistrationData) 
     return { success: true, data }
   } catch (error) {
     console.error("Admin notification service error:", error)
+    return { success: false, error }
+  }
+}
+export async function sendCancelConfirmation(cancelData: CancelData) {
+  try {
+    console.log("Cancel function is fired")
+    console.log(cancelData)
+    const { data, error } = await resend.emails.send({
+      from: "ECI@25 Convention <www@ekoclub.org>",
+      to: [cancelData.email],
+      subject: "Your ECI Convention Registration Has Been Cancelled",
+      html: generateCancelConfirmationHTML(cancelData),
+    })
+
+    if (error) {
+      console.error("Cancel confirmation email error:", error)
+      return { success: false, error }
+    }
+
+    console.log("Cancellation confirmation email sent:", data)
+    return { success: true, data }
+  } catch (error) {
+    console.error("Cancel confirmation email service error:", error)
     return { success: false, error }
   }
 }

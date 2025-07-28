@@ -8,6 +8,7 @@ import { motion } from "framer-motion"
 import { TopBar } from "@/components/sections/top-bar"
 import { Header } from "@/components/sections/header"
 import { Footer } from "@/components/sections/footer"
+import { Dialog } from "@/components/ui/dialog"
 import { Edit, Check, AlertCircle, Loader2, Mail, User, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -47,6 +48,9 @@ function PreviewPageContent() {
   const [error, setError] = useState("")
   const [registration, setRegistration] = useState<any>(null)
   const [editData, setEditData] = useState<any>({})
+  const [showCancelDialog, setShowCancelDialog] = useState(false)
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [successMessage, setSuccessMessage] = useState("")
 
   const email = searchParams.get("email") || ""
 
@@ -115,6 +119,33 @@ function PreviewPageContent() {
       setIsSaving(false)
     }
   }
+  const handleDeleteRegistration = async () => {
+  setIsDeleting(true)
+  setError("")
+  setSuccessMessage("")
+  try {
+    const response = await fetch("/api/registration/delete-registration", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    })
+    const result = await response.json()
+    if (result.success) {
+      setSuccessMessage("Registration cancelled successfully! Redirecting to homepage...")
+      setTimeout(() => {
+        router.push("/")
+      }, 2000) // 2 seconds delay
+    } else {
+      setError(result.error || "Failed to delete registration")
+    }
+  } catch (error) {
+    setError("An error occured. Please try again.")
+  } finally {
+    setIsDeleting(false)
+    // Don't close dialog immediately, let user see the message
+    // setShowCancelDialog(false)
+  }
+}
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -462,6 +493,13 @@ function PreviewPageContent() {
                   <Button onClick={() => router.push("/")} className="bg-purple-600 hover:bg-purple-700 text-white">
                     Back to Homepage
                   </Button>
+                  <Button
+                    onClick={() => setShowCancelDialog(true)}
+                    className="bg-red-600 hover:bg-red-700 text-white"
+                    variant="destructive"
+                  >
+                    Cancel Registration
+                  </Button>
                 </div>
                 <p className="text-sm text-gray-600">
                   Need help? Contact us at{" "}
@@ -471,6 +509,41 @@ function PreviewPageContent() {
                 </p>
               </motion.div>
             )}
+           {showCancelDialog && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+              <div className="bg-white rounded-lg shadow-lg p-8 max-w-sm w-full">
+                <h2 className="text-xl font-bold mb-4 text-red-700">Cancel Registration?</h2>
+                {successMessage ? (
+                  <div className="mb-6 text-green-700 bg-green-50 border border-green-200 rounded p-4 text-center">
+                    {successMessage}
+                  </div>
+                ) : (
+                  <p className="mb-6 text-gray-700">
+                    Are you sure you want to cancel your registration? This action cannot be undone.
+                  </p>
+                )}
+                {!successMessage && (
+                  <div className="flex justify-end gap-4">
+                    <Button
+                      onClick={() => setShowCancelDialog(false)}
+                      variant="outline"
+                      className="bg-transparent"
+                      disabled={isDeleting}
+                    >
+                      Go Back
+                    </Button>
+                    <Button
+                      onClick={handleDeleteRegistration}
+                      className="bg-red-600 hover:bg-red-700 text-white"
+                      disabled={isDeleting}
+                    >
+                      {isDeleting ? "Cancelling..." : "Continue"}
+                    </Button>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
           </div>
         </div>
       </section>
