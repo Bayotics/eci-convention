@@ -192,7 +192,7 @@ export default function AboutPage() {
       <Header />
 
       {/* Add padding-top to account for fixed header */}
-      <div className="pt-[120px] sm:pt-[130px] md:pt-[140px] lg:pt-[150px]">
+      <div className="pt-[120px] sm:pt-[130px] md:pt-[140px] lg:pt-[150px] about-banner-hero">
         {/* Hero/Banner Section */}
         <section
           className="relative text-white py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden"
@@ -225,7 +225,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-white drop-shadow-lg leading-tight"
               >
-                About Us
+                About
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 30 }}

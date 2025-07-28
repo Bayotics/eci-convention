@@ -72,3 +72,32 @@
   background-image: url(/public/images/eci-top-bar-img.png);
   background-size: cover;
 }
+@media screen and (min-width: 279px)  and (max-width: 400px) {
+  .app-main-container{
+        padding-top: 30px;
+  }
+  .main-header-app{
+    padding-top: 60px;
+  }
+  .about-banner-hero{
+    padding-top: 82px;
+  }
+  .contact-container-main{
+    padding-top: 82px;
+  }
+}
+@media screen and (min-width: 401px)  and (max-width: 620px) {
+  .app-main-container{
+        padding-top: 58px;
+  }
+  .main-header-app{
+    padding-top: 44px;
+  }
+  .about-banner-hero{
+    padding-top: 90px;
+  }
+  .contact-container-main{
+    padding-top: 90px;
+  }
+}
+

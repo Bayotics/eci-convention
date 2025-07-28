@@ -17,7 +17,7 @@ export default function HomePage() {
       <TopBar />
       <Header />
       {/* Add padding-top to account for fixed header */}
-      <div className="pt-[140px] sm:pt-[140px] md:pt-[150px]">
+      <div className="pt-[140px] sm:pt-[140px] md:pt-[150px] app-main-container">
         <HeroSection />
         <KeyHighlightsGrid />
         <AboutSection />

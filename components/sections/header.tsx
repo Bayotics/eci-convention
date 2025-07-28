@@ -18,7 +18,7 @@ export function Header() {
   }
 
   return (
-    <header className="bg-white py-2 md:py-4 px-4 md:px-8 fixed top-[44px] z-40 w-full shadow-lg sm:pt-12">
+    <header className="bg-white py-2 md:pt-12 px-4 md:px-8 fixed top-[44px] z-40 w-full shadow-lg sm:pt-12 main-header-app">
       <div className="container mx-auto px-2 md:px-4 pt-3">
         {/* Logo and Language Row */}
         <div className="flex items-center justify-between mb-2 md:mb-4">
@@ -68,7 +68,7 @@ export function Header() {
         <nav className="hidden lg:flex justify-start">
           <div className="flex items-center space-x-6 xl:space-x-8">
             {/* About Convention Dropdown */}
-            <div
+            {/* <div
               className="relative"
               onMouseEnter={() => setIsDropdownOpen(true)}
               onMouseLeave={() => setIsDropdownOpen(false)}
@@ -78,16 +78,13 @@ export function Header() {
                 <ChevronDown className="ml-1 h-4 w-4 xl:h-5 xl:w-5" />
               </button>
 
-              {/* Dropdown Menu */}
               <div
                 className={`absolute top-full left-0 mt-2 w-[280px] xl:w-[300px] bg-white border border-gray-200 rounded-lg shadow-lg z-[9999] overflow-hidden ${
                   isDropdownOpen ? "opacity-100 visible" : "opacity-0 invisible"
                 }`}
               >
-                {/* Pink Border */}
                 <div className={`h-[3px] bg-pink-500 ${isDropdownOpen ? "w-1/2" : "w-0"}`}></div>
 
-                {/* Menu Items */}
                 <ul className="py-2">
                   <li>
                     <Link
@@ -115,9 +112,11 @@ export function Header() {
                   </li>
                 </ul>
               </div>
-            </div>
-
+            </div> */}
             {/* Other Menu Items */}
+            <Link href="/about" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
+              About
+            </Link>
             <Link href="/agenda" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
               Agenda
             </Link>
@@ -125,7 +124,7 @@ export function Header() {
               Speakers
             </Link>
             <Link href="/venue" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
-              Venue
+              Venue & Logistics
             </Link>
             <Link href="/sponsors" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
               Sponsors
@@ -137,7 +136,11 @@ export function Header() {
         </nav>
 
         {/* Mobile Navigation Menu */}
-        <div className={`lg:hidden overflow-hidden ${isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
+        <div
+          className={`lg:hidden transition-all duration-300 ease-in-out ${
+            isMobileMenuOpen ? "max-h-[70vh] opacity-100 overflow-y-auto" : "max-h-0 opacity-0 overflow-hidden"
+          }`}
+        >
           <nav className="py-4 border-t border-gray-200 mt-2">
             <div className="flex flex-col space-y-3">
               {/* Mobile Register Button */}
@@ -146,7 +149,7 @@ export function Header() {
               </Link>
 
               {/* About Convention - Mobile Expandable */}
-              <div className="border-b border-gray-100 pb-3">
+              {/* <div className="border-b border-gray-100 pb-3">
                 <div className="text-gray-700 font-medium text-lg mb-2">About Convention</div>
                 <div className="pl-4 space-y-2">
                   <Link
@@ -171,9 +174,16 @@ export function Header() {
                     Venue & Logistics
                   </Link>
                 </div>
-              </div>
+              </div> */}
 
               {/* Other Mobile Menu Items */}
+              <Link
+                href="/about"
+                onClick={closeMobileMenu}
+                className="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100"
+              >
+                About
+              </Link>
               <Link
                 href="/agenda"
                 onClick={closeMobileMenu}
@@ -208,13 +218,6 @@ export function Header() {
                 className="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100"
               >
                 Contact
-              </Link>
-              <Link
-                href="/admin/login"
-                onClick={closeMobileMenu}
-                className="text-gray-700 hover:text-purple-600 font-medium text-lg py-2"
-              >
-                Admin
               </Link>
             </div>
           </nav>

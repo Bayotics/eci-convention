@@ -148,7 +148,7 @@ export default function ContactPage() {
         </div>
       )}
 
-      <main className="pt-[190px] sm:pt-[130px] md:pt-[140px] lg:pt-[150px]">
+      <main className="pt-[190px] sm:pt-[130px] md:pt-[140px] lg:pt-[150px] contact-container-main">
         {/* Hero Section */}
         <section
           style={{
