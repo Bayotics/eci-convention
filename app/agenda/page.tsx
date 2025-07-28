@@ -505,7 +505,6 @@ export default function AgendaPage() {
 
         // Sessions
         dayData.sessions.forEach((session, sessionIndex) => {
-          // Check if we need space for session (approximately 50-80 points depending on content)
           const estimatedHeight = 60 + (session.description.length / 100) * 10
           checkNewPage(estimatedHeight)
 
