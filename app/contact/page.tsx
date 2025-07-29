@@ -300,10 +300,10 @@ export default function ContactPage() {
                           <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
                           <p className="text-gray-600 text-sm mb-2">General inquiries</p>
                           <a
-                            href="mailto:info@eciconvention.org"
+                            href="mailto:waletayo2000@yahoo.com"
                             className="text-blue-600 hover:text-blue-700 font-medium"
                           >
-                            info@eciconvention.org
+                            waletayo2000@yahoo.com
                           </a>
                         </div>
                       </div>

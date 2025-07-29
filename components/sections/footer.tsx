@@ -71,8 +71,8 @@ export function Footer() {
           <div>
             <h3 className="font-bold mb-4">Contact Info</h3>
             <div className="text-gray-400 space-y-2">
-              <p>Newark, NJ</p>
-              <p>info@eciconvention.org</p>
+              <p>Convention Chairman</p>
+              <p>waletayo2000@yahoo.com</p>
               <p>+1 (555) 123-4567</p>
             </div>
           </div>

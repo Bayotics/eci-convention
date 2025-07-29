@@ -155,7 +155,7 @@ export const RegistrationConfirmationEmail: React.FC<RegistrationConfirmationEma
           If you have any questions or need assistance, please don't hesitate to contact us:
         </p>
         <p style={{ color: "#1f2937", margin: "0 0 5px 0" }}>
-          <strong>Email:</strong> info@eciconvention.org
+          <strong>Email:</strong> waletayo2000@yahoo.com
         </p>
         <p style={{ color: "#1f2937", margin: "0 0 5px 0" }}>
           <strong>Phone:</strong> +1 (555) 123-4567
