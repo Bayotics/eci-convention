@@ -23,23 +23,23 @@ export function Header() {
         {/* Logo and Language Row */}
         <div className="flex items-center justify-between mb-2 md:mb-4">
           <div className="flex items-center space-x-2 md:space-x-4">
-            <div className="w-20 sm:w-28 md:w-36 flex items-center justify-center flex-shrink-0">
+            <Link href={'/'} className="w-20 sm:w-28 md:w-36 flex items-center justify-center flex-shrink-0">
               <img
                 src="/images/eci-logo.png"
                 alt="Eko Club International 25th Anniversary Logo"
                 className="w-full h-full object-contain"
               />
-            </div>
-            <div className="min-w-0 flex-1">
-              <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-black bg-gradient-to-r from-blue-600 via-lime-500 to-pink-500 bg-clip-text text-transparent leading-tight">
+            </Link>
+            <Link href={'/'} className="min-w-0 flex-1">
+              <div className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-black bg-gradient-to-r from-blue-600 via-lime-500 to-pink-500 bg-clip-text text-transparent leading-tight">
                 <span className="hidden sm:inline">Eko Club International @ 25</span>
                 <span className="sm:hidden">ECI @ 25</span>
-              </h1>
+              </div>
               <h1 className="text-sm sm:text-lg md:text-xl lg:text-2xl font-black bg-gradient-to-r from-blue-600 via-lime-500 to-pink-500 bg-clip-text text-transparent leading-tight">
                 <span className="hidden sm:inline">25th International Convention</span>
                 <span className="sm:hidden">25th Convention</span>
               </h1>
-            </div>
+            </Link>
           </div>
 
           <div className="flex items-center space-x-2">
@@ -130,7 +130,7 @@ export function Header() {
               Sponsors
             </Link>
             <Link href="/contact" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
-              Contact
+              Contact Us
             </Link>
           </div>
         </nav>
@@ -217,7 +217,7 @@ export function Header() {
                 onClick={closeMobileMenu}
                 className="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100"
               >
-                Contact
+                Contact Us
               </Link>
             </div>
           </nav>
