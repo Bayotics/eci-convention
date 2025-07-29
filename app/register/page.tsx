@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { TopBar } from "@/components/sections/top-bar"
-import { Header } from "@/components/sections/header"
+import { RegisterHeader } from "@/components/sections/register-header"
 import { Footer } from "@/components/sections/footer"
 import { Users, UserPlus, Edit, Home, CreditCard, Calendar, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -35,8 +35,7 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <TopBar isScrolled={isScrolled} />
-      <Header isScrolled={isScrolled} />
+      <RegisterHeader isScrolled={isScrolled} />
 
       {/* Hero Section */}
       <section

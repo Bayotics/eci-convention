@@ -4,39 +4,12 @@ import type React from "react"
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { TopBar } from "@/components/sections/top-bar"
-import { Header } from "@/components/sections/header"
+import { RegisterHeader } from "@/components/sections/register-header"
 import { Footer } from "@/components/sections/footer"
 import { Calendar, AlertCircle, Loader2, Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
 
-const chapterOptions = [
-  "Atlanta",
-  "Austin",
-  "California",
-  "Dallas",
-  "DC Metro",
-  "Delaware Valley",
-  "Detroit",
-  "Eko Lagosians of Canada",
-  "Florida",
-  "Houston",
-  "Eko club Houston Women",
-  "London",
-  "Louisiana",
-  "Miami",
-  "Minnesota",
-  "Eko Lagosians of Minnesota",
-  "New Jersey",
-  "New York",
-  "Ohio",
-  "Pennsylvania",
-  "Philadelphia",
-  "Rhode Island",
-  "San Antonio",
-  "Lagosians of Chicago",
-]
 
 export default function EconomicSessionPage() {
   const router = useRouter()
@@ -48,7 +21,7 @@ export default function EconomicSessionPage() {
     firstName: "",
     lastName: "",
     email: "",
-    chapterName: "",
+    chapterName: "Non Member",
     gender: "",
     shirtSize: "",
     dietaryRestrictions: "",
@@ -122,11 +95,10 @@ export default function EconomicSessionPage() {
   if (success) {
     return (
       <div className="min-h-screen bg-white">
-        <TopBar isScrolled={false} />
-        <Header isScrolled={false} />
+        <RegisterHeader isScrolled={false} />
 
         <section className="py-20 bg-gradient-to-br from-green-500 to-teal-500 text-white min-h-screen flex items-center">
-          <div className="container mx-auto px-4 text-center">
+          <div className="container mx-auto px-4 mt-36 text-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -168,11 +140,10 @@ export default function EconomicSessionPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <TopBar isScrolled={false} />
-      <Header isScrolled={false} />
+      <RegisterHeader isScrolled={false} />
 
       <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 mt-36">
           <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 60 }}
@@ -266,23 +237,15 @@ export default function EconomicSessionPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Chapter Name <span className="text-red-500">*</span>
-                    </label>
-                    <select
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Chapter Name</label>
+                    <input
+                      type="text"
                       name="chapterName"
                       value={formData.chapterName}
-                      onChange={handleInputChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      required
-                    >
-                      <option value="">Select your chapter</option>
-                      {chapterOptions.map((chapter) => (
-                        <option key={chapter} value={chapter}>
-                          {chapter}
-                        </option>
-                      ))}
-                    </select>
+                      className="w-full p-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-600 cursor-not-allowed"
+                      disabled
+                      readOnly
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">

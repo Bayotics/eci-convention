@@ -6,7 +6,7 @@ import { useState, useEffect, Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import { TopBar } from "@/components/sections/top-bar"
-import { Header } from "@/components/sections/header"
+import { RegisterHeader } from "@/components/sections/register-header"
 import { Footer } from "@/components/sections/footer"
 import { Dialog } from "@/components/ui/dialog"
 import { Edit, Check, AlertCircle, Loader2, Mail, User, MapPin } from "lucide-react"
@@ -166,10 +166,9 @@ function PreviewPageContent() {
   if (!registration) {
     return (
       <div className="min-h-screen bg-white">
-        <TopBar isScrolled={false} />
-        <Header isScrolled={false} />
+        <RegisterHeader isScrolled={false} />
         <section className="py-20 bg-gray-50 min-h-screen flex items-center">
-          <div className="container mx-auto px-4 text-center">
+          <div className="container mx-auto px-4 text-center mt-36">
             <div className="bg-red-50 border border-red-200 rounded-lg p-8 max-w-md mx-auto">
               <AlertCircle className="h-12 w-12 text-red-600 mx-auto mb-4" />
               <h2 className="text-2xl font-bold text-red-800 mb-4">Registration Not Found</h2>
@@ -187,11 +186,10 @@ function PreviewPageContent() {
 
   return (
     <div className="min-h-screen bg-white">
-      <TopBar isScrolled={false} />
-      <Header isScrolled={false} />
+      <RegisterHeader isScrolled={false} />
 
       <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 mt-36">
           <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 60 }}

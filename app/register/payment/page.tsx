@@ -3,8 +3,7 @@
 import { useState, Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { motion } from "framer-motion"
-import { TopBar } from "@/components/sections/top-bar"
-import { Header } from "@/components/sections/header"
+import { RegisterHeader } from "@/components/sections/register-header"
 import { Footer } from "@/components/sections/footer"
 import { Users, Clock, Check, AlertCircle } from "lucide-react"
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js"
@@ -150,11 +149,10 @@ function PaymentPageContent() {
       }}
     >
       <div className="min-h-screen bg-white">
-        <TopBar isScrolled={false} />
-        <Header isScrolled={false} />
+        <RegisterHeader isScrolled={false} />
 
         <section className="py-20 bg-gray-50 min-h-screen">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 mt-36">
             <div className="max-w-4xl mx-auto">
               <motion.div
                 initial={{ opacity: 0, y: 60 }}

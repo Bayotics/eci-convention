@@ -1,11 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
 import { ChevronDown, Menu, X } from "lucide-react"
 import Link from "next/link"
 
-export function Header() {
+export function RegisterHeader() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -18,7 +17,7 @@ export function Header() {
   }
 
   return (
-    <header className="bg-white py-2 md:pt-4 px-4 md:px-8 fixed top-[44px] z-40 w-full shadow-lg sm:pt-12 main-header-app">
+    <header className="bg-white py-2 md:pt-4 px-4 md:px-8 fixed top-0 z-40 w-full shadow-lg sm:pt-4 main-header-app">
       <div className="container mx-auto px-2 md:px-4 pt-3">
         {/* Logo and Language Row */}
         <div className="flex items-center justify-between mb-2 md:mb-4">
@@ -43,16 +42,6 @@ export function Header() {
           </div>
 
           <div className="flex items-center space-x-2">
-            {/* Desktop Register Button */}
-            <Link href="/register" className="hidden sm:block">
-              <Button
-                variant="outline"
-                className="bg-pink-500 hover:bg-pink-600 text-white text-sm md:text-lg lg:text-xl px-3 py-2 md:px-8 md:py-2 font-bold"
-              >
-                Register Now
-              </Button>
-            </Link>
-
             {/* Mobile Hamburger Menu */}
             <button
               onClick={toggleMobileMenu}
@@ -66,27 +55,27 @@ export function Header() {
 
         {/* Desktop Navigation Menu Row */}
         <nav className="hidden lg:flex justify-start">
-          <div className="flex items-center space-x-6 xl:space-x-8">
-            {/* Other Menu Items */}
-            <Link href="/about" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
-              About
-            </Link>
-            <Link href="/agenda" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
-              Agenda
-            </Link>
-            <Link href="/speakers" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
-              Speakers
-            </Link>
-            <Link href="/venue" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
-              Venue & Logistics
-            </Link>
-            <Link href="/sponsors" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
-              Sponsors
-            </Link>
-            <Link href="/contact" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
-              Contact Us
-            </Link>
-          </div>
+           <div className="flex items-center space-x-6 xl:space-x-8">
+              {/* Other Menu Items */}
+              <Link href="/about" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
+                About
+              </Link>
+              <Link href="/agenda" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
+                Agenda
+              </Link>
+              <Link href="/speakers" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
+                Speakers
+              </Link>
+              <Link href="/venue" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
+                Venue & Logistics
+              </Link>
+              <Link href="/sponsors" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
+                Sponsors
+              </Link>
+              <Link href="/contact" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
+                Contact Us
+              </Link>
+            </div>
         </nav>
 
         {/* Mobile Navigation Menu */}
@@ -97,10 +86,6 @@ export function Header() {
         >
           <nav className="py-4 border-t border-gray-200 mt-2">
             <div className="flex flex-col space-y-3">
-              {/* Mobile Register Button */}
-              <Link href="/register" onClick={closeMobileMenu} className="sm:hidden">
-                <Button className="w-full bg-pink-500 hover:bg-pink-600 text-white text-lg py-3">Register Now</Button>
-              </Link>
               <Link
                 href="/about"
                 onClick={closeMobileMenu}

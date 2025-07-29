@@ -5,38 +5,11 @@ import type React from "react"
 import { useState, useEffect, Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { motion } from "framer-motion"
-import { TopBar } from "@/components/sections/top-bar"
-import { Header } from "@/components/sections/header"
+import { RegisterHeader } from "@/components/sections/register-header"
 import { Footer } from "@/components/sections/footer"
 import { Check, AlertCircle, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-const chapterOptions = [
-  "Atlanta",
-  "Austin",
-  "California",
-  "Dallas",
-  "DC Metro",
-  "Delaware Valley",
-  "Detroit",
-  "Eko Lagosians of Canada",
-  "Florida",
-  "Houston",
-  "Eko club Houston Women",
-  "London",
-  "Louisiana",
-  "Miami",
-  "Minnesota",
-  "Eko Lagosians of Minnesota",
-  "New Jersey",
-  "New York",
-  "Ohio",
-  "Pennsylvania",
-  "Philadelphia",
-  "Rhode Island",
-  "San Antonio",
-  "Lagosians of Chicago",
-]
 
 function GuestFormContent() {
   const searchParams = useSearchParams()
@@ -52,7 +25,7 @@ function GuestFormContent() {
     firstName: "",
     lastName: "",
     email: email,
-    chapterName: "",
+    chapterName: "Non Member",
     gender: "",
     shirtSize: "",
     attendanceDays: [] as string[],
@@ -147,8 +120,7 @@ function GuestFormContent() {
 
   return (
     <div className="min-h-screen bg-white">
-      <TopBar isScrolled={false} />
-      <Header isScrolled={false} />
+      <RegisterHeader isScrolled={false} />
 
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -245,23 +217,15 @@ function GuestFormContent() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Chapter Name <span className="text-red-500">*</span>
-                    </label>
-                    <select
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Chapter Name</label>
+                    <input
+                      type="text"
                       name="chapterName"
                       value={formData.chapterName}
-                      onChange={handleInputChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                      required
-                    >
-                      <option value="">Select your chapter</option>
-                      {chapterOptions.map((chapter) => (
-                        <option key={chapter} value={chapter}>
-                          {chapter}
-                        </option>
-                      ))}
-                    </select>
+                      className="w-full p-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-600 cursor-not-allowed"
+                      disabled
+                      readOnly
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
