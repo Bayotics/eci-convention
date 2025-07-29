@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Home } from "lucide-react"
 import Link from "next/link"
 
 export function Header() {
@@ -95,6 +95,13 @@ export function Header() {
         {/* Desktop Navigation Menu Row */}
         <nav className="hidden lg:flex justify-start">
           <div className="flex items-center space-x-6 xl:space-x-8">
+            {/* Home Icon */}
+            <Link
+              href="/"
+              className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg flex items-center"
+            >
+              <Home className="h-5 w-5" />
+            </Link>
             {/* Other Menu Items */}
             <Link href="/about" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
               About
@@ -128,6 +135,15 @@ export function Header() {
               {/* Mobile Register Button */}
               <Link href="/register" onClick={closeMobileMenu} className="sm:hidden">
                 <Button className="w-full bg-pink-500 hover:bg-pink-600 text-white text-lg py-3">Register Now</Button>
+              </Link>
+              {/* Home Icon */}
+              <Link
+                href="/"
+                onClick={closeMobileMenu}
+                className="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100 flex items-center"
+              >
+                <Home className="h-5 w-5 mr-2" />
+                Home
               </Link>
               <Link
                 href="/about"

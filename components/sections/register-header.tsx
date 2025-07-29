@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Home } from "lucide-react"
 import Link from "next/link"
 
 export function RegisterHeader() {
@@ -84,6 +84,13 @@ export function RegisterHeader() {
         {/* Desktop Navigation Menu Row */}
         <nav className="hidden lg:flex justify-start">
           <div className="flex items-center space-x-6 xl:space-x-8">
+            {/* Home Icon */}
+            <Link
+              href="/"
+              className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg flex items-center"
+            >
+              <Home className="h-5 w-5" />
+            </Link>
             {/* Other Menu Items */}
             <Link href="/about" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
               About
@@ -114,6 +121,15 @@ export function RegisterHeader() {
         >
           <nav className="py-4 border-t border-gray-200 mt-2">
             <div className="flex flex-col space-y-3">
+              {/* Home Icon */}
+              <Link
+                href="/"
+                onClick={closeMobileMenu}
+                className="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100 flex items-center"
+              >
+                <Home className="h-5 w-5 mr-2" />
+                Home
+              </Link>
               <Link
                 href="/about"
                 onClick={closeMobileMenu}
