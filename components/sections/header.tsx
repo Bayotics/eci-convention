@@ -1,13 +1,24 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { ChevronDown, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import Link from "next/link"
 
 export function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY
+      setIsScrolled(scrollTop > 0)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
@@ -18,24 +29,41 @@ export function Header() {
   }
 
   return (
-    <header className="bg-white py-2 md:pt-4 px-4 md:px-8 fixed top-[44px] z-40 w-full shadow-lg sm:pt-12 main-header-app">
+    <header
+      className={`bg-white py-2 px-4 md:px-8 fixed top-[44px] z-40 w-full shadow-lg main-header-app transition-all duration-300 ease-in-out ${
+        isScrolled ? "pt-2" : "md:pt-4 sm:pt-12"
+      }`}
+    >
       <div className="container mx-auto px-2 md:px-4 pt-3">
         {/* Logo and Language Row */}
         <div className="flex items-center justify-between mb-2 md:mb-4">
           <div className="flex items-center space-x-2 md:space-x-4">
-            <Link href={'/'} className="w-20 sm:w-28 md:w-36 flex items-center justify-center flex-shrink-0">
+            <Link
+              href={"/"}
+              className={`flex items-center justify-center flex-shrink-0 transition-all duration-300 ease-in-out ${
+                isScrolled ? "w-24" : "w-20 sm:w-28 md:w-36"
+              }`}
+            >
               <img
                 src="/images/eci-logo.png"
                 alt="Eko Club International 25th Anniversary Logo"
                 className="w-full h-full object-contain"
               />
             </Link>
-            <Link href={'/'} className="min-w-0 flex-1">
-              <div className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-black bg-gradient-to-r from-blue-600 via-lime-500 to-pink-500 bg-clip-text text-transparent leading-tight">
+            <Link href={"/"} className="min-w-0 flex-1">
+              <div
+                className={`font-black bg-gradient-to-r from-blue-600 via-lime-500 to-pink-500 bg-clip-text text-transparent leading-tight transition-all duration-300 ease-in-out ${
+                  isScrolled ? "text-[1.8rem]" : "text-lg sm:text-2xl md:text-3xl lg:text-4xl"
+                }`}
+              >
                 <span className="hidden sm:inline">Eko Club International @ 25</span>
                 <span className="sm:hidden">ECI @ 25</span>
               </div>
-              <h1 className="text-sm sm:text-lg md:text-xl lg:text-2xl font-black bg-gradient-to-r from-blue-600 via-lime-500 to-pink-500 bg-clip-text text-transparent leading-tight">
+              <h1
+                className={`font-black bg-gradient-to-r from-blue-600 via-lime-500 to-pink-500 bg-clip-text text-transparent leading-tight transition-all duration-300 ease-in-out ${
+                  isScrolled ? "text-[1.3rem]" : "text-sm sm:text-lg md:text-xl lg:text-2xl"
+                }`}
+              >
                 <span className="hidden sm:inline">25th International Convention</span>
                 <span className="sm:hidden">25th Convention</span>
               </h1>
