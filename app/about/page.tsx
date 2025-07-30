@@ -89,7 +89,7 @@ const ibileDivisions = {
     icon: Building,
     color: "orange",
     brief:
-      "Seat of government and a hub of commerce and tech; home to the international airport.",
+      "The capital of Lagos State and a major commercial and residential hub. Ikeja's history is intertwined with the development of Lagos as a modern city, serving as the administrative center of the state.",
     image: "/images/ikeja.jpg",
     title: "The Cradle of Modernity",
     content: `Before skyscrapers, Lagos was shaped by its waterways. Ikeja, now the vibrant capital, reminds us of the journey from early settlements to a center of progress, yet always respecting its past.`,
@@ -99,7 +99,7 @@ const ibileDivisions = {
     icon: Palmtree,
     color: "blue",
     brief:
-      "Historic coastal town and former slave port; centre of Egun/Ogu culture.",
+      "A coastal town with rich history as a major trading post and significant site in the transatlantic slave trade. Badagry holds immense cultural and historical importance with remnants of slave routes and historical buildings.",
     image: "/images/badagry.jpeg",
     title: "Echoes of Resilience",
     content: `Badagry stands as a poignant reminder of profound history. Its ancient traditions, symbolized by the revered Egungun masquerades, speak of resilience, endurance, and cultural depth that transcends centuries.`,
@@ -109,7 +109,7 @@ const ibileDivisions = {
     icon: Crown,
     color: "green",
     brief:
-      "Gateway to farmland and industries; blends suburban living with Yoruba traditions.",
+      "A rapidly developing area with a dynamic mix of residential, industrial, and commercial zones. Ikorodu is one of the fastest-growing divisions in Lagos State, representing modern urban development.",
     image: "/images/ikorodu.jpg",
     title: "Guardians of Heritage",
     content: `Ikorodu, with its strong sense of community and heritage, represents the enduring strength of the Lagosian spirit. Its landmarks celebrate the heroes and values that continue to define the people.`,
@@ -119,7 +119,7 @@ const ibileDivisions = {
     icon: Mountain,
     color: "purple",
     brief:
-      "Historic core known as Eko; Nigeria’s financial heart with markets, a royal palace and colonial architecture.",
+      "Historically known as Eko, Lagos Island is one of the oldest parts of Lagos where the first settlements were established. It has been a significant commercial and political center for centuries, with its name originating from the Benin Kingdom.",
     image: "/images/lagos-island.png",
     title: "The Melting Pot",
     content: `Lagos Island, the historic heart, tells tales of powerful kings and vibrant markets. It's where diverse cultures converged, creating the unique 'Lagosian' identity – a blend of tradition and dynamic growth.`,
@@ -129,7 +129,7 @@ const ibileDivisions = {
     icon: Fish,
     color: "teal",
     brief:
-      "Coastal fishing community and agricultural area; famous for its seafood markets and mangroves.",
+      "A coastal town with strong fishing and agricultural traditions. Epe is known for its historical connections to the Epe kingdom and its vital role in the region's economy through maritime and agricultural activities.",
     image: "/images/epe.jpg",
     title: "Custodians of the Coast",
     content: `Epe, a serene coastal town, highlights the deep connection Lagosians have with their natural environment. The fishing industry and its rich culture are testament to generations rooted in the land and sea.`,
@@ -554,6 +554,7 @@ export default function AboutPage() {
               })}
             </motion.div>
 
+            {/* Updated IBILE Legacy Section */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -561,16 +562,71 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="text-center mt-8 sm:mt-12"
             >
-              <div className="bg-white/10 backdrop-blur-sm text-white p-6 sm:p-8 rounded-lg">
-                <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-white">The IBILE Legacy</h3>
-                <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed">
-                  IBILE represents the five administrative divisions of Lagos State - <strong>I</strong>keja,{" "}
-                  <strong>B</strong>adagry, <strong>I</strong>korodu, <strong>L</strong>agos Island, and{" "}
-                  <strong>E</strong>pe. These divisions form the administrative and cultural backbone of Lagos State,
-                  each contributing unique historical significance, economic importance, and cultural heritage that
-                  continue to shape the identity of Lagos and its people worldwide. Our convention celebrates this rich
-                  legacy while building bridges to the future.
-                </p>
+              <div className="bg-white/10 backdrop-blur-sm text-white p-6 sm:p-8 lg:p-10 rounded-lg">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8 text-yellow-300">
+                  Origins of Lagos
+                </h3>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 text-left">
+                  <div className="space-y-4 sm:space-y-6">
+                    <div>
+                      <h4 className="text-lg sm:text-xl font-semibold text-yellow-200 mb-2 sm:mb-3">Foundation</h4>
+                      <p className="text-sm sm:text-base text-white/90 leading-relaxed">
+                        Founded in the 16th century by the Awori people as Eko, a small but important commercial
+                        kingdom.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="text-lg sm:text-xl font-semibold text-yellow-200 mb-2 sm:mb-3">Names</h4>
+                      <p className="text-sm sm:text-base text-white/90 leading-relaxed">
+                        The Awori called it Oko, then Eko under Benin rule; the Portuguese named it 'Lagos' meaning
+                        'lakes'.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="text-lg sm:text-xl font-semibold text-yellow-200 mb-2 sm:mb-3">Awori Legend</h4>
+                      <p className="text-sm sm:text-base text-white/90 leading-relaxed">
+                        Olofin followed a drifting mud plate to settle; his son Aromire planted pepper on Lagos Island,
+                        leading to Iga Idunganran – the 'pepper farm palace'.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="text-lg sm:text-xl font-semibold text-yellow-200 mb-2 sm:mb-3">British Era</h4>
+                      <p className="text-sm sm:text-base text-white/90 leading-relaxed">
+                        British intervention in 1851 ended internal conflicts; Lagos became a British protectorate in
+                        1861.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 sm:space-y-6">
+                    <h4 className="text-xl sm:text-2xl font-bold text-yellow-300 mb-4 sm:mb-6">
+                      Formation of Lagos State & IBILE
+                    </h4>
+
+                    <div>
+                      <p className="text-sm sm:text-base text-white/90 leading-relaxed mb-3">
+                        On 27 May 1967 Nigeria was restructured into 12 states; Lagos State was created by Decree No.
+                        14.
+                      </p>
+                      <p className="text-sm sm:text-base text-white/90 leading-relaxed mb-3">
+                        The state became operational on 11 April 1968.
+                      </p>
+                      <p className="text-sm sm:text-base text-white/90 leading-relaxed mb-3">
+                        On 1 April 1968 Lagos was divided into five divisions – <strong>I</strong>korodu,{" "}
+                        <strong>B</strong>adagry, <strong>I</strong>keja, <strong>L</strong>agos Island &{" "}
+                        <strong>E</strong>pe – forming the acronym '<strong>IBILE</strong>'.
+                      </p>
+                      <p className="text-sm sm:text-base text-white/90 leading-relaxed">
+                        These divisions reflect the state's varied geography, heritage and administrative
+                        responsibilities.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>
