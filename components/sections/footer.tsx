@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
+          <Link href={'/'}>
             <div className="flex items-center space-x-3 mb-4">
               <div className="w-12 h-12 flex items-center justify-center">
                 <img
@@ -19,8 +19,7 @@ export function Footer() {
               <span className="text-xl font-bold">Eko Club International</span>
             </div>
             <p className="text-gray-400">Bridging Generations, Building Communities</p>
-          </div>
-
+          </Link>
           <div>
             <h3 className="font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-gray-400">
@@ -79,7 +78,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2025 Eko Club International. All rights reserved. | Privacy Policy | Terms of Service</p>
+          <p>&copy; 2025 Eko Club International. All rights reserved</p>
         </div>
       </div>
     </footer>

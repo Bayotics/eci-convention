@@ -374,6 +374,9 @@ export default function AgendaPage() {
     {} as typeof agendaData,
   )
 
+  // Check if user is actively searching or filtering
+  const isSearchingOrFiltering = searchTerm.trim() !== "" || selectedFilter !== "all"
+
   const generatePDF = async () => {
     setIsGeneratingPDF(true)
 
@@ -601,13 +604,13 @@ export default function AgendaPage() {
       <section
         className={`relative text-white py-14`}
         style={{
-            backgroundImage: "url('/images/about-us-section.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
+          backgroundImage: "url('/images/about-us-section.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
       >
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/80 via-blue-600/70 to-teal-500/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-600/80 via-blue-600/70 to-teal-500/80"></div>
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="container mx-auto px-8 relative z-10 pt-48">
           <motion.div
@@ -687,21 +690,26 @@ export default function AgendaPage() {
       {/* Daily Agenda Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-teal-600 bg-clip-text text-transparent">
-              5-Day Convention Schedule
-            </h2>
-            <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Explore our comprehensive agenda featuring inspiring sessions, cultural celebrations, and networking
-              opportunities.
-            </p>
-          </motion.div>
+          {/* Conditionally render title and subtitle */}
+          <AnimatePresence>
+            {!isSearchingOrFiltering && (
+              <motion.div
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -60 }}
+                transition={{ duration: 0.6 }}
+                className="text-center mb-16"
+              >
+                <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-teal-600 bg-clip-text text-transparent">
+                  5-Day Convention Schedule
+                </h2>
+                <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                  Explore our comprehensive agenda featuring inspiring sessions, cultural celebrations, and networking
+                  opportunities.
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <div className="space-y-6">
             {Object.entries(filteredAgenda).map(([date, dayData], index) => (
@@ -823,13 +831,15 @@ export default function AgendaPage() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="py-20 text-white"
-      style={{
-            backgroundImage: "url('/images/confetti-doodles.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}>
+      <section
+        className="py-20 text-white"
+        style={{
+          backgroundImage: "url('/images/confetti-doodles.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 60 }}

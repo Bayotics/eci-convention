@@ -1076,7 +1076,6 @@ export default function AboutPage() {
             </motion.div>
           )}
         </AnimatePresence>
-
         <Footer />
       </div>
     </div>
