@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, Mail, BadgeIcon as IdCard, AlertCircle, Loader2 } from "lucide-react"
+import { X, Mail, BadgeIcon as IdCard, AlertCircle, Loader2, Phone, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
 
@@ -13,11 +13,38 @@ interface MemberRegistrationModalProps {
   onClose: () => void
 }
 
+const countryCodes = [
+  { code: "+1", country: "US", flag: "🇺🇸" },
+  { code: "+44", country: "UK", flag: "🇬🇧" },
+  { code: "+234", country: "NG", flag: "🇳🇬" },
+  { code: "+1", country: "CA", flag: "🇨🇦" },
+  { code: "+33", country: "FR", flag: "🇫🇷" },
+  { code: "+49", country: "DE", flag: "🇩🇪" },
+  { code: "+91", country: "IN", flag: "🇮🇳" },
+  { code: "+86", country: "CN", flag: "🇨🇳" },
+  { code: "+81", country: "JP", flag: "🇯🇵" },
+  { code: "+61", country: "AU", flag: "🇦🇺" },
+  { code: "+27", country: "ZA", flag: "🇿🇦" },
+  { code: "+55", country: "BR", flag: "🇧🇷" },
+  { code: "+52", country: "MX", flag: "🇲🇽" },
+  { code: "+7", country: "RU", flag: "🇷🇺" },
+  { code: "+82", country: "KR", flag: "🇰🇷" },
+  { code: "+39", country: "IT", flag: "🇮🇹" },
+  { code: "+34", country: "ES", flag: "🇪🇸" },
+  { code: "+31", country: "NL", flag: "🇳🇱" },
+  { code: "+46", country: "SE", flag: "🇸🇪" },
+  { code: "+47", country: "NO", flag: "🇳🇴" },
+]
+
 export function MemberRegistrationModal({ isOpen, onClose }: MemberRegistrationModalProps) {
   const [email, setEmail] = useState("")
+  const [phoneNumber, setPhoneNumber] = useState("")
+  const [countryCode, setCountryCode] = useState("+234")
   const [membershipId, setMembershipId] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
+  const [usePhoneNumber, setUsePhoneNumber] = useState(false)
+  const [showCountryDropdown, setShowCountryDropdown] = useState(false)
   const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -26,12 +53,43 @@ export function MemberRegistrationModal({ isOpen, onClose }: MemberRegistrationM
     setError("")
 
     try {
+      let requestData
+
+      if (usePhoneNumber) {
+        const fullPhoneNumber = `${countryCode}${phoneNumber}`
+
+        // First check if phone number exists in database
+        const phoneCheckResponse = await fetch("/api/registration/check-phone", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ phoneNumber: fullPhoneNumber }),
+        })
+
+        const phoneCheckData = await phoneCheckResponse.json()
+
+        if (!phoneCheckResponse.ok) {
+          setError(phoneCheckData.error || "Phone number not found in our records")
+          return
+        }
+
+        // If phone number exists, use the retrieved email
+        requestData = {
+          email: phoneCheckData.email,
+          membershipId,
+          phoneNumber: fullPhoneNumber,
+        }
+      } else {
+        requestData = { email, membershipId }
+      }
+
       const response = await fetch("/api/registration/check-member", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, membershipId }),
+        body: JSON.stringify(requestData),
       })
 
       const data = await response.json()
@@ -55,10 +113,29 @@ export function MemberRegistrationModal({ isOpen, onClose }: MemberRegistrationM
 
   const handleClose = () => {
     setEmail("")
+    setPhoneNumber("")
+    setCountryCode("+234")
     setMembershipId("")
     setError("")
+    setUsePhoneNumber(false)
+    setShowCountryDropdown(false)
     onClose()
   }
+
+  const toggleInputType = () => {
+    setUsePhoneNumber(!usePhoneNumber)
+    setError("")
+    setEmail("")
+    setPhoneNumber("")
+    setShowCountryDropdown(false)
+  }
+
+  const handleCountrySelect = (code: string) => {
+    setCountryCode(code)
+    setShowCountryDropdown(false)
+  }
+
+  const selectedCountry = countryCodes.find((c) => c.code === countryCode)
 
   return (
     <AnimatePresence>
@@ -85,24 +162,88 @@ export function MemberRegistrationModal({ isOpen, onClose }: MemberRegistrationM
               </button>
             </div>
 
+            {/* Toggle Button */}
+            <div className="mb-4">
+              <button
+                type="button"
+                onClick={toggleInputType}
+                className="text-purple-600 hover:text-purple-700 text-sm font-medium underline transition-colors"
+              >
+                {usePhoneNumber ? "Register with email instead" : "Register with Phone number Instead"}
+              </button>
+            </div>
+
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address <span className="text-red-500">*</span>
-                </label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    placeholder="Enter your email address"
-                    required
-                  />
+              {usePhoneNumber ? (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Phone Number <span className="text-red-500">*</span>
+                  </label>
+                  <div className="flex">
+                    {/* Country Code Dropdown */}
+                    <div className="relative">
+                      <button
+                        type="button"
+                        onClick={() => setShowCountryDropdown(!showCountryDropdown)}
+                        className="flex items-center px-3 py-3 border border-r-0 border-gray-300 rounded-l-lg bg-gray-50 hover:bg-gray-100 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
+                      >
+                        <span className="mr-1">{selectedCountry?.flag}</span>
+                        <span className="text-sm font-medium">{countryCode}</span>
+                        <ChevronDown className="h-4 w-4 ml-1 text-gray-400" />
+                      </button>
+
+                      {/* Dropdown Menu */}
+                      {showCountryDropdown && (
+                        <div className="absolute top-full left-0 mt-1 w-64 bg-white border border-gray-300 rounded-lg shadow-lg z-50 max-h-60 overflow-y-auto">
+                          {countryCodes.map((country, index) => (
+                            <button
+                              key={`${country.code}-${country.country}-${index}`}
+                              type="button"
+                              onClick={() => handleCountrySelect(country.code)}
+                              className="w-full flex items-center px-3 py-2 text-left hover:bg-gray-100 transition-colors"
+                            >
+                              <span className="mr-2">{country.flag}</span>
+                              <span className="text-sm font-medium mr-2">{country.code}</span>
+                              <span className="text-sm text-gray-600">{country.country}</span>
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Phone Number Input */}
+                    <div className="relative flex-1">
+                      <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                      <input
+                        type="tel"
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value.replace(/[^0-9]/g, ""))}
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-r-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        placeholder="Enter phone number"
+                        required
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Email Address <span className="text-red-500">*</span>
+                  </label>
+                  <div className="relative">
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      placeholder="Enter your email address"
+                      required
+                    />
+                  </div>
+                </div>
+              )}
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -158,8 +299,8 @@ export function MemberRegistrationModal({ isOpen, onClose }: MemberRegistrationM
 
             <div className="mt-6 p-4 bg-purple-50 rounded-lg">
               <p className="text-sm text-purple-700">
-                <strong>Note:</strong> We'll check your membership status and payment history to direct you to the
-                appropriate registration flow.
+                <strong>Note:</strong> We'll check your {usePhoneNumber ? "phone number" : "email"} and membership
+                status to direct you to the appropriate registration flow.
               </p>
             </div>
           </motion.div>
