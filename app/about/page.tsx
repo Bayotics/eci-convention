@@ -1,11 +1,13 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import type React from "react"
+
+import { useState, useEffect, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { TopBar } from "@/components/sections/top-bar"
 import { Header } from "@/components/sections/header"
 import { Footer } from "@/components/sections/footer"
-import { ChevronLeft, ChevronRight, ChevronDown, ExternalLink } from "lucide-react"
+import { ChevronLeft, ChevronRight, ExternalLink, Play } from "lucide-react"
 import {
   Users,
   Globe,
@@ -82,7 +84,7 @@ const getChaptersByRegion = (region: string) => {
   }
 }
 
-// IBILE Division Data - Updated with new content
+// IBILE Division Data - Updated with new content and external URLs
 const ibileDivisions = {
   ikeja: {
     name: "Ikeja",
@@ -93,6 +95,7 @@ const ibileDivisions = {
     image: "/images/ikeja.jpg",
     title: "The Cradle of Modernity",
     content: `Before skyscrapers, Lagos was shaped by its waterways. Ikeja, now the vibrant capital, reminds us of the journey from early settlements to a center of progress, yet always respecting its past.`,
+    externalUrl: "https://ikeja.lg.gov.ng/history-of-mushin-local-governement/",
   },
   badagry: {
     name: "Badagry",
@@ -103,6 +106,7 @@ const ibileDivisions = {
     image: "/images/badagry.jpeg",
     title: "Echoes of Resilience",
     content: `Badagry stands as a poignant reminder of profound history. Its ancient traditions, symbolized by the revered Egungun masquerades, speak of resilience, endurance, and cultural depth that transcends centuries.`,
+    externalUrl: "https://badagry.lg.gov.ng/customs-and-culture/",
   },
   ikorodu: {
     name: "Ikorodu",
@@ -113,6 +117,7 @@ const ibileDivisions = {
     image: "/images/ikorodu.jpg",
     title: "Guardians of Heritage",
     content: `Ikorodu, with its strong sense of community and heritage, represents the enduring strength of the Lagosian spirit. Its landmarks celebrate the heroes and values that continue to define the people.`,
+    externalUrl: "https://ikoroduoga.net/history/geography",
   },
   lagosIsland: {
     name: "Lagos Island",
@@ -123,6 +128,7 @@ const ibileDivisions = {
     image: "/images/lagos-island.png",
     title: "The Melting Pot",
     content: `Lagos Island, the historic heart, tells tales of powerful kings and vibrant markets. It's where diverse cultures converged, creating the unique 'Lagosian' identity – a blend of tradition and dynamic growth.`,
+    externalUrl: "https://lagosislandlg.lg.gov.ng/history/",
   },
   epe: {
     name: "Epe",
@@ -133,8 +139,18 @@ const ibileDivisions = {
     image: "/images/epe.jpg",
     title: "Custodians of the Coast",
     content: `Epe, a serene coastal town, highlights the deep connection Lagosians have with their natural environment. The fishing industry and its rich culture are testament to generations rooted in the land and sea.`,
+    externalUrl: "https://epelga.lg.gov.ng/about-epe/",
   },
 }
+
+// VIDEO URLS MAPPING - COMPLETELY SEPARATE FROM CAROUSEL
+const VIDEO_URLS = {
+  "ikeja-heritage": "https://www.youtube.com/watch?v=-962rOv3UfI",
+  "badagry-heritage": "https://www.youtube.com/watch?v=mG1ep9_8MMA",
+  "ikorodu-heritage": "https://www.youtube.com/watch?v=fYFbFmg3HAM",
+  "lagos-island-heritage": "https://www.youtube.com/watch?v=jrrOuiK5UHc",
+  "epe-heritage": "https://www.youtube.com/watch?v=u0FkwMpBgZs",
+} as const
 
 export default function AboutPage() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -143,28 +159,51 @@ export default function AboutPage() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [hoveredCard, setHoveredCard] = useState<string | null>(null)
   const [clickedCard, setClickedCard] = useState<string | null>(null)
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null)
 
-  // Carousel images data
+  // Carousel images data - SIMPLIFIED WITHOUT VIDEO URLS
   const carouselImages = [
     {
+      id: "ibile-overview",
       src: "/images/ibile.jpg",
       alt: "IBILE - The Five Divisions of Lagos State",
+      name: null,
+      hasVideo: false,
     },
     {
-      src: "/images/legacy-caro.jpg",
-      alt: "ECI Community Service - Group Photo",
+      id: "ikeja-heritage",
+      src: "/images/ikeja-heritage.jpg",
+      alt: "Ikeja Heritage - Traditional Monuments",
+      name: "Ikeja",
+      hasVideo: true,
     },
     {
-      src: "/images/legacy-caro-2.jpeg",
-      alt: "Traditional Yoruba Culture in New York",
+      id: "badagry-heritage",
+      src: "/images/badagry-heritage.jpg",
+      alt: "Badagry Heritage - Traditional Boat Festival",
+      name: "Badagry",
+      hasVideo: true,
     },
     {
-      src: "/images/legacy-caro-3.jpg",
-      alt: "Cultural Dance Performance",
+      id: "ikorodu-heritage",
+      src: "/images/ikorodu-heritage.jpg",
+      alt: "Ikorodu Heritage - Traditional Drummers",
+      name: "Ikorodu",
+      hasVideo: true,
     },
     {
-      src: "/images/legacy-caro-4.jpg",
-      alt: "Health Outreach Program - Draw the Line Against Malaria",
+      id: "lagos-island-heritage",
+      src: "/images/lagos-island-heritage.jpg",
+      alt: "Lagos Island Heritage - Eyo Masqueraders",
+      name: "Lagos Island",
+      hasVideo: true,
+    },
+    {
+      id: "epe-heritage",
+      src: "/images/epe-heritage.jpg",
+      alt: "Epe Heritage - Traditional Festival",
+      name: "Epe",
+      hasVideo: true,
     },
   ]
 
@@ -204,15 +243,20 @@ export default function AboutPage() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+  useEffect(() => {
+    if (selectedVideo) return // Pause autoplay when video modal is open
+    const interval = setInterval(nextSlide, 10000)
+    return () => clearInterval(interval)
+  }, [selectedVideo])
 
   const openModal = (divisionKey: string) => {
     setSelectedDivision(divisionKey)
-    document.body.style.overflow = "hidden" // Prevent background scrolling
+    document.body.style.overflow = "hidden"
   }
 
   const closeModal = () => {
     setSelectedDivision(null)
-    document.body.style.overflow = "unset" // Restore scrolling
+    document.body.style.overflow = "unset"
   }
 
   const openChaptersModal = (region: string) => {
@@ -227,10 +271,41 @@ export default function AboutPage() {
 
   const handleChapterClick = (url: string) => {
     if (url && url !== "#") {
-      // Add protocol if missing
       const fullUrl = url.startsWith("http") ? url : `https://${url}`
       window.open(fullUrl, "_blank", "noopener,noreferrer")
     }
+  }
+
+  const handleExternalLinkClick = (url: string, event: React.MouseEvent) => {
+    event.stopPropagation()
+    window.open(url, "_blank", "noopener,noreferrer")
+  }
+
+  // NEW VIDEO HANDLING FUNCTIONS
+  const openVideoModal = useCallback((slideId: string) => {
+    const videoUrl = VIDEO_URLS[slideId as keyof typeof VIDEO_URLS]
+    if (videoUrl) {
+      console.log(`Opening video for ${slideId}: ${videoUrl}`)
+      setSelectedVideo(videoUrl)
+      document.body.style.overflow = "hidden"
+    }
+  }, [])
+
+  const closeVideoModal = useCallback(() => {
+    setSelectedVideo(null)
+    document.body.style.overflow = "unset"
+  }, [])
+
+  const getYouTubeEmbedUrl = (url: string) => {
+    let videoId = ""
+    if (url.includes("watch?v=")) {
+      videoId = url.split("watch?v=")[1].split("&")[0]
+    } else if (url.includes("youtu.be/")) {
+      videoId = url.split("youtu.be/")[1].split("?")[0]
+    } else if (url.includes("/embed/")) {
+      videoId = url.split("/embed/")[1].split("?")[0]
+    }
+    return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`
   }
 
   const nextSlide = () => {
@@ -243,9 +318,9 @@ export default function AboutPage() {
 
   const toggleCard = (cardId: string) => {
     if (clickedCard === cardId) {
-      setClickedCard(null) // Close if already clicked open
+      setClickedCard(null)
     } else {
-      setClickedCard(cardId) // Open via click
+      setClickedCard(cardId)
     }
   }
 
@@ -256,12 +331,6 @@ export default function AboutPage() {
   const handleMouseLeave = (cardId: string) => {
     setHoveredCard(null)
   }
-
-  // Auto-play carousel
-  useEffect(() => {
-    const interval = setInterval(nextSlide, 4000)
-    return () => clearInterval(interval)
-  }, [])
 
   const currentDivision = selectedDivision ? ibileDivisions[selectedDivision as keyof typeof ibileDivisions] : null
 
@@ -330,7 +399,7 @@ export default function AboutPage() {
               className="text-center mb-8 sm:mb-12"
             >
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold pb-4 sm:pb-6 bg-gradient-to-r from-purple-600 to-teal-600 bg-clip-text text-transparent">
-                Our Legacy & Mission
+                Our Heritage
               </h2>
             </motion.div>
 
@@ -345,16 +414,47 @@ export default function AboutPage() {
               <div className="relative overflow-hidden rounded-lg shadow-2xl aspect-[16/10] sm:aspect-[16/9] md:aspect-[16/8]">
                 {carouselImages.map((image, index) => (
                   <motion.div
-                    key={index}
+                    key={image.id}
                     className={`absolute inset-0 transition-opacity duration-500 ${
-                      index === currentSlide ? "opacity-100" : "opacity-0"
+                      index === currentSlide ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
                     }`}
                   >
                     <img src={image.src || "/placeholder.svg"} alt={image.alt} className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+
+                    {/* Only render play button for the visible slide */}
+                    {image.hasVideo && index === currentSlide && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            console.log(`Clicked play for slide: ${image.id}`)
+                            openVideoModal(image.id)
+                          }}
+                          className="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-4 sm:p-6 md:p-8 rounded-full transition-all duration-300 hover:scale-110 group"
+                          aria-label={`Play ${image.name} heritage video`}
+                        >
+                          <Play className="h-8 w-8 sm:h-12 sm:w-12 md:h-16 md:w-16 fill-current group-hover:scale-110 transition-transform duration-300" />
+                        </button>
+                      </div>
+                    )}
+                    {/* Division Name */}
+                    {image.name && (
+                      <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8">
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: index === currentSlide ? 1 : 0, y: index === currentSlide ? 0 : 20 }}
+                          transition={{ duration: 0.5, delay: 0.2 }}
+                          className="text-center"
+                        >
+                          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white drop-shadow-lg">
+                            {image.name}
+                          </h3>
+                        </motion.div>
+                      </div>
+                    )}
                   </motion.div>
                 ))}
-
                 {/* Navigation Arrows */}
                 <button
                   onClick={prevSlide}
@@ -386,102 +486,47 @@ export default function AboutPage() {
                 </div>
               </div>
             </motion.div>
-
-            {/* Mission, Vision, Values Grid */}
-            <motion.div
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
-            >
-              {missionData.map((item) => {
-                const IconComponent = item.icon
-                const isHovered = hoveredCard === item.id
-                const isClicked = clickedCard === item.id
-                const isExpanded = isHovered || isClicked
-                const colorClasses = {
-                  purple: "bg-purple-100 text-purple-600 border-purple-200",
-                  teal: "bg-teal-100 text-teal-600 border-teal-200",
-                  orange: "bg-orange-100 text-orange-600 border-orange-200",
-                }
-
-                return (
-                  <motion.div
-                    key={item.id}
-                    variants={fadeInUp}
-                    className={`bg-white border-2 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer ${
-                      isExpanded
-                        ? colorClasses[item.color as keyof typeof colorClasses]
-                        : "border-gray-200 hover:border-gray-300"
-                    }`}
-                    onMouseEnter={() => handleMouseEnter(item.id)}
-                    onMouseLeave={() => handleMouseLeave(item.id)}
-                  >
-                    <div className="p-4 sm:p-6 md:p-8">
-                      <div className="flex items-center space-x-3 sm:space-x-4 mb-3 sm:mb-4">
-                        <button
-                          onClick={() => toggleCard(item.id)}
-                          className={`p-2 sm:p-3 rounded-full flex-shrink-0 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-                            isExpanded
-                              ? "bg-white focus:ring-gray-400"
-                              : `${colorClasses[item.color as keyof typeof colorClasses]} focus:ring-${item.color}-400`
-                          }`}
-                          aria-label={`Toggle ${item.title} details`}
-                        >
-                          <IconComponent className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />
-                        </button>
-                        <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800">{item.title}</h3>
-                      </div>
-
-                      <motion.div
-                        initial={false}
-                        animate={{
-                          height: isExpanded ? "auto" : 0,
-                          opacity: isExpanded ? 1 : 0,
-                        }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="overflow-hidden"
-                      >
-                        <p className="text-sm sm:text-base text-gray-600 leading-relaxed pt-2 sm:pt-3">
-                          {item.content}
-                        </p>
-                      </motion.div>
-
-                      <div className="mt-3 sm:mt-4 flex justify-center">
-                        <button
-                          onClick={() => toggleCard(item.id)}
-                          className="focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 rounded-full p-1"
-                          aria-label={`${isExpanded ? "Collapse" : "Expand"} ${item.title} details`}
-                        >
-                          <motion.div
-                            animate={{
-                              y: isExpanded ? 0 : [0, -4, 0],
-                              rotate: isExpanded ? 180 : 0,
-                            }}
-                            transition={{
-                              y: {
-                                duration: 1.5,
-                                repeat: isExpanded ? 0 : Number.POSITIVE_INFINITY,
-                                ease: "easeInOut",
-                              },
-                              rotate: {
-                                duration: 0.3,
-                                ease: "easeInOut",
-                              },
-                            }}
-                          >
-                            <ChevronDown className="h-5 w-5 sm:h-6 sm:w-6 text-gray-400 hover:text-gray-600 transition-colors" />
-                          </motion.div>
-                        </button>
-                      </div>
-                    </div>
-                  </motion.div>
-                )
-              })}
-            </motion.div>
           </div>
         </section>
+
+        {/* Video Modal */}
+        <AnimatePresence>
+          {selectedVideo && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-2 sm:p-4"
+              onClick={closeVideoModal}
+            >
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                className="bg-black rounded-lg max-w-4xl w-full aspect-video relative"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Close Button */}
+                <button
+                  onClick={closeVideoModal}
+                  className="absolute -top-12 right-0 bg-white/20 hover:bg-white/30 p-2 rounded-full transition-colors z-10"
+                >
+                  <X className="h-6 w-6 text-white" />
+                </button>
+
+                {/* YouTube Embed */}
+                <iframe
+                  key={selectedVideo}
+                  src={getYouTubeEmbedUrl(selectedVideo)}
+                  title="Heritage Video"
+                  className="w-full h-full rounded-lg"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Lagos State History Section */}
         <section
@@ -493,7 +538,6 @@ export default function AboutPage() {
             backgroundRepeat: "no-repeat",
           }}
         >
-          {/* Optional overlay for better text readability */}
           <div className="absolute inset-0 bg-black/20"></div>
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -541,7 +585,19 @@ export default function AboutPage() {
                     >
                       <IconComponent className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8" />
                     </div>
-                    <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-800">{division.name}</h3>
+
+                    <div className="flex items-center justify-between mb-3 sm:mb-4">
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-800">{division.name}</h3>
+                      <button
+                        onClick={(e) => handleExternalLinkClick(division.externalUrl, e)}
+                        className="p-1.5 sm:p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors duration-200 group"
+                        title={`Visit ${division.name} official website`}
+                        aria-label={`Visit ${division.name} official website`}
+                      >
+                        <ExternalLink className="h-4 w-4 sm:h-5 sm:w-5 text-gray-600 group-hover:text-purple-600 transition-colors duration-200" />
+                      </button>
+                    </div>
+
                     <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 sm:mb-6">{division.brief}</p>
                     <Button
                       onClick={() => openModal(key)}
@@ -554,7 +610,6 @@ export default function AboutPage() {
               })}
             </motion.div>
 
-            {/* Updated IBILE Legacy Section */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -563,9 +618,17 @@ export default function AboutPage() {
               className="text-center mt-8 sm:mt-12"
             >
               <div className="bg-white/10 backdrop-blur-sm text-white p-6 sm:p-8 lg:p-10 rounded-lg">
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8 text-yellow-300">
-                  Origins of Lagos
-                </h3>
+                <div className="flex items-center justify-center gap-3 mb-6 sm:mb-8">
+                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-yellow-300">Origins of Lagos</h3>
+                  <button
+                    onClick={(e) => handleExternalLinkClick("https://en.wikipedia.org/wiki/History_of_Lagos", e)}
+                    className="p-2 sm:p-2.5 rounded-full bg-white/20 hover:bg-white/30 transition-colors duration-200 group"
+                    title="Visit Lagos State official website"
+                    aria-label="Visit Lagos State official website"
+                  >
+                    <ExternalLink className="h-5 w-5 sm:h-6 sm:w-6 text-yellow-300 group-hover:text-white transition-colors duration-200" />
+                  </button>
+                </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 text-left">
                   <div className="space-y-4 sm:space-y-6">
@@ -632,7 +695,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Modal for Division Details - Updated with new layout */}
+        {/* Modal for Division Details */}
         <AnimatePresence>
           {selectedDivision && currentDivision && (
             <motion.div
@@ -649,7 +712,6 @@ export default function AboutPage() {
                 className="bg-white rounded-lg max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-hidden flex flex-col"
                 onClick={(e) => e.stopPropagation()}
               >
-                {/* Modal Header with Close Button */}
                 <div className="relative flex-shrink-0">
                   <button
                     onClick={closeModal}
@@ -659,9 +721,7 @@ export default function AboutPage() {
                   </button>
                 </div>
 
-                {/* Scrollable Content */}
                 <div className="flex-1 overflow-y-auto">
-                  {/* Image Section - 65% of popup height */}
                   <div className="relative" style={{ height: "65vh" }}>
                     <img
                       src={currentDivision.image || "/placeholder.svg"}
@@ -670,7 +730,6 @@ export default function AboutPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
 
-                    {/* Text Overlay on Image */}
                     <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 lg:p-8">
                       <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -687,7 +746,6 @@ export default function AboutPage() {
                     </div>
                   </div>
 
-                  {/* Text Content Section - Below Image */}
                   <div className="p-4 sm:p-6 lg:p-8">
                     <div className="prose prose-sm sm:prose-base lg:prose-lg max-w-none">
                       <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
@@ -697,7 +755,6 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                {/* Modal Footer */}
                 <div className="border-t border-gray-200 p-4 sm:p-6 flex-shrink-0">
                   <Button
                     onClick={closeModal}
@@ -984,6 +1041,26 @@ export default function AboutPage() {
                 </p>
               </div>
             </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center mt-8 sm:mt-12"
+            >
+              <Button
+                onClick={() =>
+                  window.open(
+                    "https://eko-club-international.vercel.app/about/our-story",
+                    "_blank",
+                    "noopener,noreferrer",
+                  )
+                }
+                className="bg-yellow-300 hover:bg-yellow-400 text-gray-900 font-semibold px-8 py-3 text-lg transition-all duration-300 hover:scale-105"
+              >
+                Learn More About Us
+              </Button>
+            </motion.div>
           </div>
         </section>
 
@@ -1004,7 +1081,6 @@ export default function AboutPage() {
                 className="bg-white rounded-lg max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-hidden"
                 onClick={(e) => e.stopPropagation()}
               >
-                {/* Modal Header */}
                 <div className="bg-gradient-to-r from-purple-600 to-teal-600 p-4 sm:p-6">
                   <div className="flex items-center justify-between">
                     <div>
@@ -1022,7 +1098,6 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                {/* Modal Content */}
                 <div className="p-4 sm:p-6 max-h-[calc(95vh-12rem)] sm:max-h-[calc(90vh-16rem)] overflow-y-auto">
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                     {getChaptersByRegion(selectedRegion).map((chapter) => (
@@ -1063,7 +1138,6 @@ export default function AboutPage() {
                   )}
                 </div>
 
-                {/* Modal Footer */}
                 <div className="border-t border-gray-200 p-4 sm:p-6">
                   <Button
                     onClick={closeChaptersModal}

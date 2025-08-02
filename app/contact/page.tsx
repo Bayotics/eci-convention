@@ -305,6 +305,13 @@ export default function ContactPage() {
                           >
                             waletayo2000@yahoo.com
                           </a>
+                          <br/>
+                          <a
+                            href="mailto:debozki@gmail.com"
+                            className="text-blue-600 hover:text-blue-700 font-medium mt-2"
+                          >
+                            debozki@gmail.com
+                          </a>
                         </div>
                       </div>
                     </CardContent>
@@ -321,6 +328,10 @@ export default function ContactPage() {
                           <p className="text-gray-600 text-sm mb-2">Mon-Fri, 9AM-6PM EST</p>
                           <a href="tel:+15551234567" className="text-green-600 hover:text-green-700 font-medium">
                             +1 (555) 123-4567
+                          </a>
+                          <br/>
+                          <a href="tel:+15551234567" className="text-green-600 hover:text-green-700 font-medium mt-2">
+                            +1 (610) 203-0370
                           </a>
                         </div>
                       </div>

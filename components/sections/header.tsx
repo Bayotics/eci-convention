@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Home } from "lucide-react"
 import Link from "next/link"
+import { CountdownTimer } from "@/components/ui/countdown-timer"
 
 export function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -72,14 +73,19 @@ export function Header() {
 
           <div className="flex items-center space-x-2">
             {/* Desktop Register Button */}
-            <Link href="/register" className="hidden sm:block">
-              <Button
-                variant="outline"
-                className="bg-pink-500 hover:bg-pink-600 text-white text-sm md:text-lg lg:text-xl px-3 py-2 md:px-8 md:py-2 font-bold"
-              >
-                Register Now
-              </Button>
-            </Link>
+            <div className="flex items-center space-x-2">
+              <div className="hidden sm:block">
+                <CountdownTimer />
+              </div>
+              <Link href="/register">
+                <Button
+                  variant="outline"
+                  className="bg-pink-500 hover:bg-pink-600 text-white text-sm md:text-lg lg:text-xl px-3 py-2 md:px-8 md:py-2 font-bold"
+                >
+                  Register Now
+                </Button>
+              </Link>
+            </div>
 
             {/* Mobile Hamburger Menu */}
             <button
@@ -104,7 +110,7 @@ export function Header() {
             </Link>
             {/* Other Menu Items */}
             <Link href="/about" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
-              About
+              Who We Are
             </Link>
             <Link href="/agenda" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
               Agenda
@@ -150,7 +156,7 @@ export function Header() {
                 onClick={closeMobileMenu}
                 className="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100"
               >
-                About
+                Who We are
               </Link>
               <Link
                 href="/agenda"
