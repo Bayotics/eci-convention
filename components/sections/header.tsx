@@ -5,11 +5,13 @@ import { Button } from "@/components/ui/button"
 import { Menu, X, Home } from "lucide-react"
 import Link from "next/link"
 import { CountdownTimer } from "@/components/ui/countdown-timer"
+import { motion, AnimatePresence } from "framer-motion"
 
 export function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isContactDropdownOpen, setIsContactDropdownOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +29,7 @@ export function Header() {
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false)
+    setIsContactDropdownOpen(false)
   }
 
   return (
@@ -124,9 +127,46 @@ export function Header() {
             <Link href="/sponsors" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
               Sponsors
             </Link>
-            <Link href="/contact" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
-              Contact Us
-            </Link>
+            {/* Contact Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsContactDropdownOpen(true)}
+              onMouseLeave={() => setIsContactDropdownOpen(false)}
+            >
+              <button className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg flex items-center">
+                Contact
+                <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              <AnimatePresence>
+                {isContactDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 z-50"
+                  >
+                    <div className="py-2">
+                      <Link
+                        href="/contact"
+                        className="block px-4 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-600 font-medium"
+                      >
+                        Contact Us
+                      </Link>
+                      <Link
+                        href="/faq"
+                        className="block px-4 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-600 font-medium"
+                      >
+                        FAQs
+                      </Link>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </nav>
 
@@ -186,13 +226,52 @@ export function Header() {
               >
                 Sponsors
               </Link>
-              <Link
-                href="/contact"
-                onClick={closeMobileMenu}
-                className="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100"
-              >
-                Contact Us
-              </Link>
+              {/* Contact Dropdown for Mobile */}
+              <div className="border-b border-gray-100">
+                <button
+                  onClick={() => setIsContactDropdownOpen(!isContactDropdownOpen)}
+                  className="w-full text-left text-gray-700 hover:text-purple-600 font-medium text-lg py-2 flex items-center justify-between"
+                >
+                  Contact
+                  <motion.svg
+                    animate={{ rotate: isContactDropdownOpen ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </motion.svg>
+                </button>
+
+                <AnimatePresence>
+                  {isContactDropdownOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="overflow-hidden bg-gray-50 rounded-md ml-4 mb-2"
+                    >
+                      <Link
+                        href="/contact"
+                        onClick={closeMobileMenu}
+                        className="block px-4 py-2 text-gray-600 hover:text-purple-600 font-medium"
+                      >
+                        Contact Us
+                      </Link>
+                      <Link
+                        href="/faq"
+                        onClick={closeMobileMenu}
+                        className="block px-4 py-2 text-gray-600 hover:text-purple-600 font-medium"
+                      >
+                        FAQs
+                      </Link>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
           </nav>
         </div>

@@ -12,11 +12,11 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { TopBar } from "@/components/sections/top-bar"
 import { Header } from "@/components/sections/header"
 import { Footer } from "@/components/sections/footer"
+import Link from "next/link"
 import {
   Mail,
   Phone,
   MapPin,
-  Clock,
   Send,
   MessageCircle,
   Users,
@@ -28,6 +28,7 @@ import {
   Instagram,
   X,
   Youtube,
+  ArrowRight,
 } from "lucide-react"
 
 export default function ContactPage() {
@@ -305,7 +306,7 @@ export default function ContactPage() {
                           >
                             waletayo2000@yahoo.com
                           </a>
-                          <br/>
+                          <br />
                           <a
                             href="mailto:debozki@gmail.com"
                             className="text-blue-600 hover:text-blue-700 font-medium mt-2"
@@ -329,7 +330,7 @@ export default function ContactPage() {
                           <a href="tel:+15551234567" className="text-green-600 hover:text-green-700 font-medium">
                             +1 (555) 123-4567
                           </a>
-                          <br/>
+                          <br />
                           <a href="tel:+15551234567" className="text-green-600 hover:text-green-700 font-medium mt-2">
                             +1 (610) 203-0370
                           </a>
@@ -408,7 +409,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
               <Card>
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-gray-900 mb-3 flex items-center">
@@ -461,6 +462,19 @@ export default function ContactPage() {
                 </CardContent>
               </Card>
             </div>
+
+            {/* More FAQs Button */}
+            <div className="text-center">
+              <Button
+                asChild
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 text-lg font-semibold"
+              >
+                <Link href="/faq">
+                  More FAQs
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </section>
 
@@ -476,21 +490,27 @@ export default function ContactPage() {
               <a
                 href="https://web.facebook.com/profile.php?id=100064708539337"
                 className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full transition-colors"
-                aria-label="Facebook" target="_blank"
+                aria-label="Facebook"
+                target="_blank"
+                rel="noreferrer"
               >
                 <Facebook className="h-6 w-6" />
               </a>
               <a
                 href="https://www.instagram.com/ekoclubinternational/"
                 className="bg-pink-600 hover:bg-pink-700 text-white p-3 rounded-full transition-colors"
-                aria-label="Instagram" target="_blank"
+                aria-label="Instagram"
+                target="_blank"
+                rel="noreferrer"
               >
                 <Instagram className="h-6 w-6" />
               </a>
               <a
                 href="https://www.youtube.com/@EkoClubGroup"
                 className="bg-blue-700 hover:bg-blue-800 text-white p-3 rounded-full transition-colors"
-                aria-label="LinkedIn" target="_blank"
+                aria-label="LinkedIn"
+                target="_blank"
+                rel="noreferrer"
               >
                 <Youtube className="h-6 w-6" />
               </a>
