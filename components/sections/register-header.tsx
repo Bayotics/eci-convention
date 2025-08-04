@@ -110,6 +110,9 @@ export function RegisterHeader() {
             <Link href="/sponsors" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
               Sponsors
             </Link>
+            <Link href="/past-events" className="text-gray-700 hover:text-purple-600 font-bold text-lg xl:text-lg">
+              Past Events
+            </Link>
             {/* Contact Dropdown */}
             <div
               className="relative"
@@ -204,6 +207,13 @@ export function RegisterHeader() {
                 className="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100"
               >
                 Sponsors
+              </Link>
+              <Link
+                href="/past-events"
+                onClick={closeMobileMenu}
+                className="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100"
+              >
+                Past Events
               </Link>
               {/* Contact Dropdown for Mobile */}
               <div className="border-b border-gray-100">
