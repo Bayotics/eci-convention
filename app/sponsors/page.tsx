@@ -5,8 +5,26 @@ import { motion } from "framer-motion"
 import { TopBar } from "@/components/sections/top-bar"
 import { Header } from "@/components/sections/header"
 import { Footer } from "@/components/sections/footer"
-import { Mail, Phone, MapPin, ExternalLink, Star, Crown, Award, Heart, Users, Building, Globe, Eye } from "lucide-react"
+import { SponsorCard } from "@/components/sections/sponsor-card"
+import { SponsorModal } from "@/components/sections/sponsor-modal"
+import { Mail, Phone, MapPin, Users, Building, Globe, Heart, Crown, Award, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
+
+interface Sponsor {
+  _id: string
+  name: string
+  description: string
+  pic: string
+  sponsorshipType: "regular" | "corporate"
+  contribution: {
+    type: "monetary" | "in-kind" | "both"
+    monetaryAmount?: number
+    inKindDescription?: string
+  }
+  websiteLink: string
+  createdAt: string
+  updatedAt: string
+}
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -22,217 +40,12 @@ const staggerContainer = {
   },
 }
 
-// Sponsor data organized by tier
-const sponsorData = {
-  platinum: {
-    title: "Platinum Sponsors",
-    subtitle: "$50,000+",
-    icon: Crown,
-    color: "from-gray-300 to-gray-500",
-    textColor: "text-gray-700",
-    bgColor: "bg-gray-50",
-    sponsors: [
-      {
-        id: "sponsor-1",
-        name: "Lagos State Government",
-        logo: "/placeholder.svg?height=120&width=300",
-        website: "https://lagosstate.gov.ng",
-        description: "Supporting community development and cultural preservation initiatives.",
-        contribution: "Venue sponsorship and logistical support",
-      },
-      {
-        id: "sponsor-2",
-        name: "First Bank of Nigeria",
-        logo: "/placeholder.svg?height=120&width=300",
-        website: "https://firstbanknigeria.com",
-        description: "Nigeria's premier financial institution supporting diaspora communities.",
-        contribution: "Financial services and banking solutions",
-      },
-    ],
-  },
-  gold: {
-    title: "Gold Sponsors",
-    subtitle: "$25,000 - $49,999",
-    icon: Award,
-    color: "from-yellow-300 to-yellow-600",
-    textColor: "text-yellow-700",
-    bgColor: "bg-yellow-50",
-    sponsors: [
-      {
-        id: "sponsor-3",
-        name: "Nigerian National Petroleum Corporation",
-        logo: "/placeholder.svg?height=100&width=250",
-        website: "https://nnpc.gov.ng",
-        description: "Leading energy company supporting Nigerian communities worldwide.",
-        contribution: "Energy sector insights and networking opportunities",
-      },
-      {
-        id: "sponsor-4",
-        name: "Dangote Group",
-        logo: "/placeholder.svg?height=100&width=250",
-        website: "https://dangote.com",
-        description: "Africa's largest industrial conglomerate promoting economic development.",
-        contribution: "Business development and entrepreneurship programs",
-      },
-      {
-        id: "sponsor-5",
-        name: "United Bank for Africa",
-        logo: "/placeholder.svg?height=100&width=250",
-        website: "https://ubagroup.com",
-        description: "Pan-African financial services group connecting Africa to the world.",
-        contribution: "Financial literacy workshops and banking services",
-      },
-    ],
-  },
-  silver: {
-    title: "Silver Sponsors",
-    subtitle: "$10,000 - $24,999",
-    icon: Star,
-    color: "from-gray-400 to-gray-600",
-    textColor: "text-gray-600",
-    bgColor: "bg-gray-50",
-    sponsors: [
-      {
-        id: "sponsor-6",
-        name: "MTN Nigeria",
-        logo: "/placeholder.svg?height=80&width=200",
-        website: "https://mtnonline.com",
-        description: "Leading telecommunications company connecting communities.",
-        contribution: "Communication technology and connectivity solutions",
-      },
-      {
-        id: "sponsor-7",
-        name: "Guaranty Trust Bank",
-        logo: "/placeholder.svg?height=80&width=200",
-        website: "https://gtbank.com",
-        description: "Innovative banking solutions for modern Nigeria.",
-        contribution: "Digital banking workshops and financial services",
-      },
-      {
-        id: "sponsor-8",
-        name: "Nigerian Breweries",
-        logo: "/placeholder.svg?height=80&width=200",
-        website: "https://nbplc.com",
-        description: "Celebrating Nigerian culture through quality beverages.",
-        contribution: "Beverage services and cultural celebration support",
-      },
-      {
-        id: "sponsor-9",
-        name: "Shoprite Nigeria",
-        logo: "/placeholder.svg?height=80&width=200",
-        website: "https://shoprite.co.za",
-        description: "Retail excellence supporting community events.",
-        contribution: "Retail partnerships and community support",
-      },
-    ],
-  },
-  bronze: {
-    title: "Bronze Sponsors",
-    subtitle: "$5,000 - $9,999",
-    icon: Heart,
-    color: "from-orange-400 to-orange-600",
-    textColor: "text-orange-600",
-    bgColor: "bg-orange-50",
-    sponsors: [
-      {
-        id: "sponsor-10",
-        name: "Arik Air",
-        logo: "/placeholder.svg?height=60&width=180",
-        website: "https://arikair.com",
-        description: "Nigeria's leading airline connecting people and places.",
-        contribution: "Travel discounts for convention attendees",
-      },
-      {
-        id: "sponsor-11",
-        name: "Indomie Nigeria",
-        logo: "/placeholder.svg?height=60&width=180",
-        website: "https://indomie.com.ng",
-        description: "Bringing families together through quality food products.",
-        contribution: "Catering support and food services",
-      },
-      {
-        id: "sponsor-12",
-        name: "Glo Mobile",
-        logo: "/placeholder.svg?height=60&width=180",
-        website: "https://gloworld.com",
-        description: "Telecommunications services for all Nigerians.",
-        contribution: "Mobile communication services and data packages",
-      },
-      {
-        id: "sponsor-13",
-        name: "Zenith Bank",
-        logo: "/placeholder.svg?height=60&width=180",
-        website: "https://zenithbank.com",
-        description: "Banking excellence and financial inclusion.",
-        contribution: "Banking services and financial advisory",
-      },
-      {
-        id: "sponsor-14",
-        name: "Coca-Cola Nigeria",
-        logo: "/placeholder.svg?height=60&width=180",
-        website: "https://coca-cola.com.ng",
-        description: "Refreshing moments and community support.",
-        contribution: "Beverage sponsorship and refreshment services",
-      },
-      {
-        id: "sponsor-15",
-        name: "Access Bank",
-        logo: "/placeholder.svg?height=60&width=180",
-        website: "https://accessbankplc.com",
-        description: "Banking made simple and accessible for all.",
-        contribution: "Financial services and digital banking solutions",
-      },
-    ],
-  },
-  community: {
-    title: "Community Partners",
-    subtitle: "In-Kind & Service Sponsors",
-    icon: Users,
-    color: "from-teal-400 to-teal-600",
-    textColor: "text-teal-600",
-    bgColor: "bg-teal-50",
-    sponsors: [
-      {
-        id: "sponsor-16",
-        name: "Newark Tourism Board",
-        logo: "/placeholder.svg?height=60&width=180",
-        website: "https://newark.com",
-        description: "Promoting Newark as a premier destination for events and tourism.",
-        contribution: "Local tourism support and city partnerships",
-      },
-      {
-        id: "sponsor-17",
-        name: "Nigerian Consulate New York",
-        logo: "/placeholder.svg?height=60&width=180",
-        website: "https://nigerianconsulateny.org",
-        description: "Diplomatic support for Nigerian diaspora communities.",
-        contribution: "Diplomatic services and community liaison",
-      },
-      {
-        id: "sponsor-18",
-        name: "African Cultural Center",
-        logo: "/placeholder.svg?height=60&width=180",
-        website: "https://africanculturalcenter.org",
-        description: "Preserving and promoting African culture in America.",
-        contribution: "Cultural programming and artistic performances",
-      },
-      {
-        id: "sponsor-19",
-        name: "New Jersey Chamber of Commerce",
-        logo: "/placeholder.svg?height=60&width=180",
-        website: "https://njchamber.com",
-        description: "Supporting business development and economic growth.",
-        contribution: "Business networking and economic development support",
-      },
-    ],
-  },
-}
-
 const sponsorshipPackages = [
   {
     level: "Platinum",
     amount: "$50,000+",
     color: "from-gray-300 to-gray-500",
+    icon: Crown,
     benefits: [
       "Premier logo placement on all materials",
       "Keynote speaking opportunity",
@@ -247,6 +60,7 @@ const sponsorshipPackages = [
     level: "Gold",
     amount: "$25,000 - $49,999",
     color: "from-yellow-300 to-yellow-600",
+    icon: Award,
     benefits: [
       "Prominent logo placement",
       "Panel discussion participation",
@@ -260,6 +74,7 @@ const sponsorshipPackages = [
     level: "Silver",
     amount: "$10,000 - $24,999",
     color: "from-gray-400 to-gray-600",
+    icon: Star,
     benefits: [
       "Logo placement on materials",
       "Quarter-page program advertisement",
@@ -272,12 +87,18 @@ const sponsorshipPackages = [
     level: "Bronze",
     amount: "$5,000 - $9,999",
     color: "from-orange-400 to-orange-600",
+    icon: Heart,
     benefits: ["Logo in program booklet", "2 complimentary registrations", "Website listing", "Social media mentions"],
   },
 ]
 
 export default function SponsorsPage() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [sponsors, setSponsors] = useState<Sponsor[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const [selectedSponsor, setSelectedSponsor] = useState<Sponsor | null>(null)
+  const [filterType, setFilterType] = useState<"all" | "regular" | "corporate">("all")
 
   useEffect(() => {
     const handleScroll = () => {
@@ -288,17 +109,54 @@ export default function SponsorsPage() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  useEffect(() => {
+    fetchSponsors()
+  }, [])
+
+  const fetchSponsors = async () => {
+    try {
+      setLoading(true)
+      const response = await fetch("/api/sponsors")
+      const data = await response.json()
+
+      if (data.success) {
+        setSponsors(data.data)
+      } else {
+        setError(data.error || "Failed to fetch sponsors")
+      }
+    } catch (err) {
+      setError("Failed to fetch sponsors")
+      console.error("Error fetching sponsors:", err)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const filteredSponsors = sponsors.filter((sponsor) => {
+    if (filterType === "all") return true
+    return sponsor.sponsorshipType === filterType
+  })
+
+  const regularSponsors = filteredSponsors.filter((s) => s.sponsorshipType === "regular")
+  const corporateSponsors = filteredSponsors.filter((s) => s.sponsorshipType === "corporate")
+
   return (
     <div className="min-h-screen bg-white">
-      <TopBar isScrolled={isScrolled} />
-      <Header isScrolled={isScrolled} />
+      <TopBar />
+      <Header />
 
       {/* Hero/Banner Section */}
       <section
-        className={`relative bg-gradient-to-br from-purple-600 via-blue-600 to-teal-500 text-white py-32 ${isScrolled ? "pt-44" : ""}`}
+        className={`relative bg-gradient-to-br from-purple-600 via-blue-600 to-teal-500 text-white py-32 mt-20`}
+        style={{
+          backgroundImage: "url('/images/confetti-doodles.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
       >
         <div className="absolute inset-0 bg-black/20"></div>
-        <div className="container mx-auto px-4 relative z-10 pt-48">
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
@@ -334,81 +192,104 @@ export default function SponsorsPage() {
         </div>
       </section>
 
-      {/* Sponsors by Tier */}
-      {Object.entries(sponsorData).map(([tier, tierData], tierIndex) => {
-        const IconComponent = tierData.icon
-        return (
-          <section key={tier} className={`py-20 ${tierIndex % 2 === 0 ? "bg-white" : "bg-gray-50"}`}>
-            <div className="container mx-auto px-4">
-              <motion.div
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="text-center mb-16"
+      {/* Filter Section */}
+      <section className="py-12 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button
+                onClick={() => setFilterType("all")}
+                variant={filterType === "all" ? "default" : "outline"}
+                className={`px-6 py-2 ${
+                  filterType === "all"
+                    ? "bg-gradient-to-r from-purple-600 to-teal-600 text-white"
+                    : "border-gray-300 text-gray-600 hover:bg-gray-100"
+                }`}
               >
-                <div className="flex items-center justify-center mb-6">
-                  <div className={`p-4 rounded-full bg-gradient-to-r ${tierData.color} mr-4`}>
-                    <IconComponent className="h-8 w-8 text-white" />
-                  </div>
-                  <div>
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-800">{tierData.title}</h2>
-                    <p className={`text-lg ${tierData.textColor} font-medium`}>{tierData.subtitle}</p>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                variants={staggerContainer}
-                initial="initial"
-                whileInView="animate"
-                viewport={{ once: true }}
-                className={`grid grid-cols-1 ${
-                  tier === "platinum"
-                    ? "md:grid-cols-2"
-                    : tier === "gold"
-                      ? "md:grid-cols-2 lg:grid-cols-3"
-                      : "md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-                } gap-8`}
+                All Sponsors ({sponsors.length})
+              </Button>
+              <Button
+                onClick={() => setFilterType("regular")}
+                variant={filterType === "regular" ? "default" : "outline"}
+                className={`px-6 py-2 ${
+                  filterType === "regular"
+                    ? "bg-gradient-to-r from-purple-600 to-teal-600 text-white"
+                    : "border-gray-300 text-gray-600 hover:bg-gray-100"
+                }`}
               >
-                {tierData.sponsors.map((sponsor, index) => (
-                  <motion.div
-                    key={sponsor.id}
-                    variants={fadeInUp}
-                    className={`${tierData.bgColor} p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105`}
-                  >
-                    <div className="text-center">
-                      <div className="bg-white p-6 rounded-lg mb-6 shadow-sm">
-                        <img
-                          src={sponsor.logo || "/placeholder.svg"}
-                          alt={`${sponsor.name} logo`}
-                          className="w-full h-auto max-h-20 object-contain mx-auto"
-                        />
-                      </div>
-                      <h3 className="text-xl font-bold text-gray-800 mb-3">{sponsor.name}</h3>
-                      <p className="text-gray-600 text-sm leading-relaxed mb-4">{sponsor.description}</p>
-                      <div className={`${tierData.bgColor} p-3 rounded-lg mb-4`}>
-                        <p className={`text-xs ${tierData.textColor} font-medium`}>
-                          <strong>Contribution:</strong> {sponsor.contribution}
-                        </p>
-                      </div>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className={`border-gray-300 text-gray-600 hover:bg-gray-100 bg-transparent`}
-                        onClick={() => window.open(sponsor.website, "_blank")}
-                      >
-                        <ExternalLink className="h-4 w-4 mr-2" />
-                        Visit Website
-                      </Button>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
+                Regular ({regularSponsors.length})
+              </Button>
+              <Button
+                onClick={() => setFilterType("corporate")}
+                variant={filterType === "corporate" ? "default" : "outline"}
+                className={`px-6 py-2 ${
+                  filterType === "corporate"
+                    ? "bg-gradient-to-r from-purple-600 to-teal-600 text-white"
+                    : "border-gray-300 text-gray-600 hover:bg-gray-100"
+                }`}
+              >
+                Corporate ({corporateSponsors.length})
+              </Button>
             </div>
-          </section>
-        )
-      })}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Sponsors Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          {loading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+              {[...Array(8)].map((_, index) => (
+                <div key={index} className="bg-gray-100 p-6 rounded-lg animate-pulse">
+                  <div className="bg-gray-200 h-32 rounded-lg mb-4"></div>
+                  <div className="bg-gray-200 h-6 rounded mb-2"></div>
+                  <div className="bg-gray-200 h-4 rounded mb-2"></div>
+                  <div className="bg-gray-200 h-4 rounded w-3/4"></div>
+                </div>
+              ))}
+            </div>
+          ) : error ? (
+            <div className="text-center py-20">
+              <div className="bg-red-50 border border-red-200 rounded-lg p-8 max-w-md mx-auto">
+                <h3 className="text-lg font-semibold text-red-800 mb-2">Error Loading Sponsors</h3>
+                <p className="text-red-600 mb-4">{error}</p>
+                <Button onClick={fetchSponsors} className="bg-red-600 hover:bg-red-700 text-white">
+                  Try Again
+                </Button>
+              </div>
+            </div>
+          ) : filteredSponsors.length === 0 ? (
+            <div className="text-center py-20">
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 max-w-md mx-auto">
+                <Users className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">No Sponsors Found</h3>
+                <p className="text-gray-600">
+                  {filterType === "all" ? "No sponsors have been added yet." : `No ${filterType} sponsors found.`}
+                </p>
+              </div>
+            </div>
+          ) : (
+            <motion.div
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+            >
+              {filteredSponsors.map((sponsor) => (
+                <SponsorCard key={sponsor._id} sponsor={sponsor} onReadMore={() => setSelectedSponsor(sponsor)} />
+              ))}
+            </motion.div>
+          )}
+        </div>
+      </section>
 
       {/* Sponsorship Opportunities */}
       <section className="py-20 bg-gradient-to-br from-purple-50 to-teal-50">
@@ -436,27 +317,35 @@ export default function SponsorsPage() {
             viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           >
-            {sponsorshipPackages.map((pkg, index) => (
-              <motion.div
-                key={pkg.level}
-                variants={fadeInUp}
-                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
-              >
-                <div className={`h-4 bg-gradient-to-r ${pkg.color}`}></div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">{pkg.level}</h3>
-                  <p className="text-3xl font-bold text-purple-600 mb-6">{pkg.amount}</p>
-                  <ul className="space-y-3">
-                    {pkg.benefits.map((benefit, bIndex) => (
-                      <li key={bIndex} className="flex items-start space-x-2">
-                        <div className="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-gray-600 text-sm">{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            ))}
+            {sponsorshipPackages.map((pkg, index) => {
+              const IconComponent = pkg.icon
+              return (
+                <motion.div
+                  key={pkg.level}
+                  variants={fadeInUp}
+                  className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+                >
+                  <div className={`h-4 bg-gradient-to-r ${pkg.color}`}></div>
+                  <div className="p-6">
+                    <div className="flex items-center mb-4">
+                      <div className={`p-2 rounded-full bg-gradient-to-r ${pkg.color} mr-3`}>
+                        <IconComponent className="h-5 w-5 text-white" />
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-800">{pkg.level}</h3>
+                    </div>
+                    <p className="text-2xl font-bold text-purple-600 mb-6">{pkg.amount}</p>
+                    <ul className="space-y-3">
+                      {pkg.benefits.map((benefit, bIndex) => (
+                        <li key={bIndex} className="flex items-start space-x-2">
+                          <div className="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                          <span className="text-gray-600 text-sm">{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.div>
+              )
+            })}
           </motion.div>
         </div>
       </section>
@@ -513,15 +402,6 @@ export default function SponsorsPage() {
                       <h4 className="font-bold text-white mb-2">Community Impact</h4>
                       <p className="text-purple-100">
                         Support meaningful initiatives that bridge generations and build stronger communities.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-4">
-                    <Eye className="h-6 w-6 text-yellow-300 mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-bold text-white mb-2">Brand Visibility</h4>
-                      <p className="text-purple-100">
-                        Extensive marketing exposure through digital platforms, print materials, and event signage.
                       </p>
                     </div>
                   </div>
@@ -616,6 +496,11 @@ export default function SponsorsPage() {
       </section>
 
       <Footer />
+
+      {/* Sponsor Modal */}
+      {selectedSponsor && (
+        <SponsorModal sponsor={selectedSponsor} isOpen={!!selectedSponsor} onClose={() => setSelectedSponsor(null)} />
+      )}
     </div>
   )
 }
