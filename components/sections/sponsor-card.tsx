@@ -7,15 +7,15 @@ import { Button } from "@/components/ui/button"
 interface Sponsor {
   _id: string
   name: string
-  description: string
-  pic: string
+  description?: string
+  pic?: string
   sponsorshipType: "regular" | "corporate"
-  contribution: {
+  contribution?: {
     type: "monetary" | "in-kind" | "both"
     monetaryAmount?: number
     inKindDescription?: string
   }
-  websiteLink: string
+  websiteLink?: string
   createdAt: string
   updatedAt: string
 }
@@ -38,6 +38,8 @@ export function SponsorCard({ sponsor, onReadMore }: SponsorCardProps) {
   }
 
   const getContributionIcon = () => {
+    if (!sponsor.contribution) return <Gift className="h-4 w-4" />
+
     switch (sponsor.contribution.type) {
       case "monetary":
         return <DollarSign className="h-4 w-4" />
@@ -51,6 +53,8 @@ export function SponsorCard({ sponsor, onReadMore }: SponsorCardProps) {
   }
 
   const getContributionText = () => {
+    if (!sponsor.contribution) return "Support"
+
     const { type, monetaryAmount, inKindDescription } = sponsor.contribution
 
     switch (type) {

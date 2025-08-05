@@ -13,15 +13,15 @@ import { Button } from "@/components/ui/button"
 interface Sponsor {
   _id: string
   name: string
-  description: string
-  pic: string
+  description?: string
+  pic?: string
   sponsorshipType: "regular" | "corporate"
-  contribution: {
+  contribution?: {
     type: "monetary" | "in-kind" | "both"
     monetaryAmount?: number
     inKindDescription?: string
   }
-  websiteLink: string
+  websiteLink?: string
   createdAt: string
   updatedAt: string
 }

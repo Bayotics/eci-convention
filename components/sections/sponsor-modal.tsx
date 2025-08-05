@@ -7,15 +7,15 @@ import { Button } from "@/components/ui/button"
 interface Sponsor {
   _id: string
   name: string
-  description: string
-  pic: string
+  description?: string
+  pic?: string
   sponsorshipType: "regular" | "corporate"
-  contribution: {
+  contribution?: {
     type: "monetary" | "in-kind" | "both"
     monetaryAmount?: number
     inKindDescription?: string
   }
-  websiteLink: string
+  websiteLink?: string
   createdAt: string
   updatedAt: string
 }
@@ -28,6 +28,8 @@ interface SponsorModalProps {
 
 export function SponsorModal({ sponsor, isOpen, onClose }: SponsorModalProps) {
   const getContributionIcon = () => {
+    if (!sponsor.contribution) return <Gift className="h-5 w-5" />
+
     switch (sponsor.contribution.type) {
       case "monetary":
         return <DollarSign className="h-5 w-5" />
@@ -122,39 +124,41 @@ export function SponsorModal({ sponsor, isOpen, onClose }: SponsorModalProps) {
                   <h2 className="text-3xl font-bold text-gray-800 mb-6">{sponsor.name}</h2>
 
                   {/* Contribution Details */}
-                  <div className="bg-gradient-to-r from-purple-50 to-teal-50 rounded-lg p-6 mb-6">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                      {getContributionIcon()}
-                      <span className="ml-2">Contribution Details</span>
-                    </h3>
+                  {sponsor.contribution && (
+                    <div className="bg-gradient-to-r from-purple-50 to-teal-50 rounded-lg p-6 mb-6">
+                      <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        {getContributionIcon()}
+                        <span className="ml-2">Contribution Details</span>
+                      </h3>
 
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <span className="text-gray-600">Type:</span>
-                        <span className="font-medium capitalize text-purple-600">
-                          {sponsor.contribution.type.replace("-", " ")}
-                        </span>
-                      </div>
-
-                      {sponsor.contribution.monetaryAmount && (
+                      <div className="space-y-3">
                         <div className="flex items-center justify-between">
-                          <span className="text-gray-600">Amount:</span>
-                          <span className="font-bold text-green-600 text-lg">
-                            ${sponsor.contribution.monetaryAmount.toLocaleString()}
+                          <span className="text-gray-600">Type:</span>
+                          <span className="font-medium capitalize text-purple-600">
+                            {sponsor.contribution.type.replace("-", " ")}
                           </span>
                         </div>
-                      )}
 
-                      {sponsor.contribution.inKindDescription && (
-                        <div>
-                          <span className="text-gray-600 block mb-2">In-Kind Support:</span>
-                          <p className="text-gray-800 bg-white p-3 rounded border-l-4 border-teal-400">
-                            {sponsor.contribution.inKindDescription}
-                          </p>
-                        </div>
-                      )}
+                        {sponsor.contribution.monetaryAmount && (
+                          <div className="flex items-center justify-between">
+                            <span className="text-gray-600">Amount:</span>
+                            <span className="font-bold text-green-600 text-lg">
+                              ${sponsor.contribution.monetaryAmount.toLocaleString()}
+                            </span>
+                          </div>
+                        )}
+
+                        {sponsor.contribution.inKindDescription && (
+                          <div>
+                            <span className="text-gray-600 block mb-2">In-Kind Support:</span>
+                            <p className="text-gray-800 bg-white p-3 rounded border-l-4 border-teal-400">
+                              {sponsor.contribution.inKindDescription}
+                            </p>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  )}
 
                   {/* Description */}
                   {sponsor.description && (
