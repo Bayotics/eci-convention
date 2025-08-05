@@ -2,20 +2,21 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { motion } from "framer-motion"
 import { RegisterHeader } from "@/components/sections/register-header"
 import { Footer } from "@/components/sections/footer"
 import { Calendar, AlertCircle, Loader2, Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
-
+import ReCAPTCHA from "react-google-recaptcha"
 
 export default function EconomicSessionPage() {
   const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState("")
   const [success, setSuccess] = useState(false)
+  const recaptchaRef = useRef<ReCAPTCHA>(null)
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -38,6 +39,14 @@ export default function EconomicSessionPage() {
     setError("")
 
     try {
+      // Get reCAPTCHA token
+      const recaptchaToken = recaptchaRef.current?.getValue()
+      if (!recaptchaToken) {
+        setError("Please complete the reCAPTCHA verification")
+        setIsSubmitting(false)
+        return
+      }
+
       // Check if user already registered
       const checkResponse = await fetch("/api/registration/check-existing", {
         method: "POST",
@@ -72,6 +81,7 @@ export default function EconomicSessionPage() {
           membershipStatus: "non-member",
           registrationType: "economic-session-only",
           paymentId: "",
+          recaptchaToken,
         }),
       })
 
@@ -84,9 +94,13 @@ export default function EconomicSessionPage() {
         }, 15000)
       } else {
         setError(result.error || "Registration failed")
+        // Reset reCAPTCHA on error
+        recaptchaRef.current?.reset()
       }
     } catch (error) {
       setError("Network error. Please try again.")
+      // Reset reCAPTCHA on error
+      recaptchaRef.current?.reset()
     } finally {
       setIsSubmitting(false)
     }
@@ -310,6 +324,15 @@ export default function EconomicSessionPage() {
                     rows={4}
                     className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                     placeholder="Please list any dietary restrictions, allergies, or special meal requirements..."
+                  />
+                </div>
+
+                {/* reCAPTCHA */}
+                <div className="flex justify-center">
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                    theme="light"
                   />
                 </div>
 

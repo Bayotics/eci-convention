@@ -2,14 +2,15 @@
 
 import type React from "react"
 
-import { useState, useEffect, Suspense } from "react"
+import { useState, useEffect, Suspense, useRef } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { motion } from "framer-motion"
-import { TopBar } from "@/components/sections/top-bar"
 import { RegisterHeader } from "@/components/sections/register-header"
 import { Footer } from "@/components/sections/footer"
 import { Check, AlertCircle, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import ReCAPTCHA from "react-google-recaptcha"
+
 
 const chapterOptions = [
   "Atlanta",
@@ -45,6 +46,7 @@ function MemberFormContent() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState("")
   const [paymentInfo, setPaymentInfo] = useState<any>(null)
+  const recaptchaRef = useRef<ReCAPTCHA>(null)
 
   const email = searchParams.get("email") || ""
 
@@ -98,6 +100,14 @@ function MemberFormContent() {
     setError("")
 
     try {
+      // Get reCAPTCHA token
+      const recaptchaToken = recaptchaRef.current?.getValue()
+      if (!recaptchaToken) {
+        setError("Please complete the reCAPTCHA verification")
+        setIsSubmitting(false)
+        return
+      }
+
       const response = await fetch("/api/registration/save-registration", {
         method: "POST",
         headers: {
@@ -108,6 +118,7 @@ function MemberFormContent() {
           membershipStatus: "member",
           registrationType: "full-convention",
           paymentId: paymentInfo?.paymentId,
+          recaptchaToken,
         }),
       })
 
@@ -117,9 +128,13 @@ function MemberFormContent() {
         router.push(`/register/preview?email=${encodeURIComponent(email)}`)
       } else {
         setError(result.error || "Registration failed")
+        // Reset reCAPTCHA on error
+        recaptchaRef.current?.reset()
       }
     } catch (error) {
       setError("Network error. Please try again.")
+      // Reset reCAPTCHA on error
+      recaptchaRef.current?.reset()
     } finally {
       setIsSubmitting(false)
     }
@@ -341,6 +356,15 @@ function MemberFormContent() {
                     rows={4}
                     className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                     placeholder="Please list any dietary restrictions, allergies, or special meal requirements..."
+                  />
+                </div>
+
+                {/* reCAPTCHA */}
+                <div className="flex justify-center">
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                    theme="light"
                   />
                 </div>
 

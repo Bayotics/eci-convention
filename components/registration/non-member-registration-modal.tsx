@@ -21,7 +21,7 @@ export function NonMemberRegistrationModal({ isOpen, onClose }: NonMemberRegistr
         router.push("/register/payment?type=guest")
         break
       case "join-member":
-        window.open("https://ekoclub.org/membership", "_blank")
+        window.open("https://eko-club-international.vercel.app/login", "_blank")
         break
     }
     onClose()

@@ -1,78 +1,106 @@
+"use server"
+
 import { type NextRequest, NextResponse } from "next/server"
 import { connectDB } from "@/lib/mongodb"
 import Registration from "@/models/registration"
-import { sendRegistrationConfirmation, sendAdminNotification } from "@/lib/email"
+import { sendRegistrationConfirmation } from "@/lib/email"
+
+// Verify reCAPTCHA token
+async function verifyRecaptcha(token: string): Promise<boolean> {
+  try {
+    const response = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
+    })
+
+    const data = await response.json()
+    return data.success
+  } catch (error) {
+    console.error("reCAPTCHA verification error:", error)
+    return false
+  }
+}
 
 export async function POST(request: NextRequest) {
   try {
+    const body = await request.json()
+    const { recaptchaToken, ...registrationData } = body
+
+    // Verify reCAPTCHA token
+    if (!recaptchaToken) {
+      return NextResponse.json({ success: false, error: "reCAPTCHA verification is required" }, { status: 400 })
+    }
+
+    const isRecaptchaValid = await verifyRecaptcha(recaptchaToken)
+    if (!isRecaptchaValid) {
+      return NextResponse.json(
+        { success: false, error: "reCAPTCHA verification failed. Please try again." },
+        { status: 400 },
+      )
+    }
+
     await connectDB()
 
-    const registrationData = await request.json()
-
-    // Generate unique registration ID
-    const registrationId = `ECI25-${Date.now()}-${Math.random().toString(36).substr(2, 9).toUpperCase()}`
-
     // Check if user already registered
-    const existingRegistration = await Registration.findOne({
-      email: registrationData.email.toLowerCase(),
-      registrationStatus: { $in: ["confirmed", "pending"] },
-    })
+    const existingRegistration = await Registration.findOne({ email: registrationData.email })
 
     if (existingRegistration) {
-      // Special case: If existing registration is "economic-session-only" and new registration is paid guest
+      // Special case: Allow upgrade from economic-session-only to paid registration
       if (
         existingRegistration.registrationType === "economic-session-only" &&
         registrationData.membershipStatus === "non-member" &&
         registrationData.registrationType === "full-convention"
       ) {
-        // Delete the existing free economic session registration
-        await Registration.findByIdAndDelete(existingRegistration._id)
-        console.log(`Deleted existing economic-session registration for ${registrationData.email}`)
+        console.log("Deleting existing economic session registration for upgrade:", registrationData.email)
+        await Registration.deleteOne({ email: registrationData.email })
       } else {
-        // For all other cases, prevent duplicate registration
-        return NextResponse.json({ error: "You have already registered for this event" }, { status: 400 })
+        return NextResponse.json(
+          { success: false, error: "You have already registered for this event" },
+          { status: 400 },
+        )
       }
     }
 
-    // Create new registration (either first time or upgrading from economic-session)
+    // Generate unique registration ID
+    const registrationId = `ECI25-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+
+    // Create new registration
     const registration = new Registration({
       ...registrationData,
-      email: registrationData.email.toLowerCase(),
       registrationId,
-      registrationStatus: "confirmed",
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      registrationDate: new Date(),
     })
 
     await registration.save()
 
-    // Send confirmation emails
-    const emailData = {
-      firstName: registrationData.firstName,
-      lastName: registrationData.lastName,
-      email: registrationData.email,
-      chapterName: registrationData.chapterName,
-      registrationCategory: registrationData.registrationCategory,
-      attendanceDays: registrationData.attendanceDays,
-      ticketPrice: 0, // Will be fetched from payment if needed
-      paymentId: registrationData.paymentId || "",
-      registrationId,
+    // Send confirmation email
+    try {
+      await sendRegistrationConfirmation({
+        ...registrationData,
+        registrationId,
+        attendanceDays: registrationData.attendanceDays || [],
+        registrationType: registrationData.registrationType || "full-convention",
+      })
+    } catch (emailError) {
+      console.error("Failed to send confirmation email:", emailError)
+      // Don't fail the registration if email fails
     }
 
-    const emailResult = await sendRegistrationConfirmation(emailData)
-    const adminResult = await sendAdminNotification(emailData)
+    const successMessage =
+      existingRegistration?.registrationType === "economic-session-only"
+        ? "Successfully upgraded from economic session to full convention registration!"
+        : "Registration completed successfully!"
 
     return NextResponse.json({
       success: true,
+      message: successMessage,
       registrationId,
-      emailSent: emailResult.success,
-      message:
-        existingRegistration?.registrationType === "economic-session-only"
-          ? "Registration upgraded successfully from economic session to full convention"
-          : "Registration completed successfully",
     })
   } catch (error) {
-    console.error("Save registration error:", error)
-    return NextResponse.json({ error: "Failed to save registration" }, { status: 500 })
+    console.error("Registration error:", error)
+    return NextResponse.json({ success: false, error: "Registration failed. Please try again." }, { status: 500 })
   }
 }
