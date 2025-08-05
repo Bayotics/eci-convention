@@ -10,6 +10,7 @@ interface RegistrationConfirmationEmailProps {
   ticketPrice: number
   paymentId: string
   registrationId: string
+  registrationType: string
 }
 
 export const RegistrationConfirmationEmail: React.FC<RegistrationConfirmationEmailProps> = ({
@@ -22,6 +23,7 @@ export const RegistrationConfirmationEmail: React.FC<RegistrationConfirmationEma
   ticketPrice,
   paymentId,
   registrationId,
+  registrationType,
 }) => {
   const dayLabels = {
     day1: "Thursday, Sept 18 - Economic Development & Youth",
@@ -36,6 +38,19 @@ export const RegistrationConfirmationEmail: React.FC<RegistrationConfirmationEma
       <div
         style={{ textAlign: "center", marginBottom: "30px", borderBottom: "3px solid #7c3aed", paddingBottom: "20px" }}
       >
+        {/* ECI Logo */}
+        <div style={{ marginBottom: "20px" }}>
+          <img
+            src="https://www.eciconvention.org/images/eci-logo.png"
+            alt="ECI Logo"
+            style={{
+              width: "120px",
+              height: "auto",
+              display: "block",
+              margin: "0 auto",
+            }}
+          />
+        </div>
         <h1 style={{ color: "#7c3aed", fontSize: "28px", margin: "0 0 10px 0" }}>ECI@25</h1>
         <p style={{ color: "#6b7280", fontSize: "16px", margin: "0" }}>25th International Convention</p>
         <p style={{ color: "#059669", fontSize: "18px", fontWeight: "bold", margin: "10px 0 0 0" }}>
@@ -92,24 +107,12 @@ export const RegistrationConfirmationEmail: React.FC<RegistrationConfirmationEma
           </tr>
           <tr>
             <td style={{ padding: "8px 0", color: "#6b7280", fontWeight: "bold" }}>Payment ID:</td>
-            <td style={{ padding: "8px 0", color: "#1f2937", fontSize: "12px" }}>{paymentId}</td>
+            <td style={{ padding: "8px 0", color: "#1f2937", fontSize: "12px" }}>
+              {registrationType === "economic-session-only" ? "Free" : paymentId}
+            </td>
           </tr>
         </table>
       </div>
-
-      {/* Attendance Days */}
-      {/* <div style={{ backgroundColor: "#eff6ff", padding: "20px", borderRadius: "8px", marginBottom: "30px" }}>
-        <h3 style={{ color: "#1f2937", fontSize: "20px", marginBottom: "15px" }}>Your Convention Days</h3>
-        <ul style={{ margin: "0", paddingLeft: "20px" }}>
-          {attendanceDays
-          .filter((day) => dayLabels[day as keyof typeof dayLabels])
-          .map((day) => (
-            <li key={day} style={{ color: "#1f2937", marginBottom: "8px", fontSize: "16px" }}>
-              {dayLabels[day as keyof typeof dayLabels]}
-            </li>
-          ))}
-        </ul>
-      </div> */}
 
       {/* Event Information */}
       <div style={{ backgroundColor: "#f0fdf4", padding: "20px", borderRadius: "8px", marginBottom: "30px" }}>
@@ -146,6 +149,27 @@ export const RegistrationConfirmationEmail: React.FC<RegistrationConfirmationEma
             <strong>Updates:</strong> Follow us on social media for the latest convention news
           </li>
         </ul>
+      </div>
+
+      {/* Modify/Cancel Registration Button */}
+      <div style={{ textAlign: "center", marginBottom: "30px" }}>
+        <a
+          href={`https://www.eciconvention.org/register/preview?email=${encodeURIComponent(email)}`}
+          style={{
+            display: "inline-block",
+            backgroundColor: "#7c3aed",
+            color: "white",
+            padding: "12px 24px",
+            borderRadius: "8px",
+            textDecoration: "none",
+            fontWeight: "bold",
+            fontSize: "16px",
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          Modify or Cancel Registration
+        </a>
       </div>
 
       {/* Contact Information */}

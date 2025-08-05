@@ -12,6 +12,7 @@ interface RegistrationData {
   ticketPrice: number
   paymentId: string
   registrationId: string
+  registrationType: string
 }
 interface CancelData {
   firstName: string
@@ -89,6 +90,14 @@ function generateConfirmationEmailHTML(registrationData: RegistrationData): stri
       <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff;">
         <!-- Header -->
         <div style="text-align: center; margin-bottom: 30px; border-bottom: 3px solid #7c3aed; padding: 30px 20px 20px 20px; background: linear-gradient(135deg, #7c3aed 0%, #059669 100%); color: white;">
+          <!-- ECI Logo -->
+          <div style="margin-bottom: 20px;">
+            <img 
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Eko_club_logo-removebg-preview-SAUiEpYRjmONtSd1YKYL42qyW13AzD.png" 
+              alt="ECI Logo" 
+              style="width: 120px; height: auto; display: block; margin: 0 auto;" 
+            />
+          </div>
           <h1 style="color: white; font-size: 32px; margin: 0 0 10px 0; font-weight: bold;">ECI@25</h1>
           <p style="color: rgba(255,255,255,0.9); font-size: 18px; margin: 0 0 15px 0;">25th International Convention</p>
           <div style="background-color: rgba(255,255,255,0.2); padding: 12px 24px; border-radius: 25px; display: inline-block;">
@@ -134,12 +143,10 @@ function generateConfirmationEmailHTML(registrationData: RegistrationData): stri
               </tr>
               <tr>
                 <td style="padding: 10px 0; color: #6b7280; font-weight: bold;">Payment ID:</td>
-                <td style="padding: 10px 0; color: #1f2937; font-size: 12px; font-family: monospace;">${registrationData.paymentId}</td>
+                <td style="padding: 10px 0; color: #1f2937; font-size: 12px; font-family: monospace;">${registrationData.registrationType === "economic-session-only" ? "Free" : registrationData.paymentId}</td>
               </tr>
             </table>
           </div>
-
-          <!-- Attendance Days -->
 
           <!-- Event Information -->
           <div style="background-color: #f0fdf4; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid #22c55e;">
@@ -165,10 +172,6 @@ function generateConfirmationEmailHTML(registrationData: RegistrationData): stri
             <ul style="margin: 0; padding-left: 0; list-style: none;">
               <li style="color: #1f2937; margin-bottom: 12px; padding-left: 25px; position: relative;">
                 <span style="position: absolute; left: 0; color: #22c55e; font-weight: bold;">✅</span>
-                <strong>Convention Materials:</strong> Will be mailed to you 2 weeks before the event
-              </li>
-              <li style="color: #1f2937; margin-bottom: 12px; padding-left: 25px; position: relative;">
-                <span style="position: absolute; left: 0; color: #22c55e; font-weight: bold;">✅</span>
                 <strong>Hotel Booking:</strong> Use group code "ECI25" for special rates at the venue
               </li>
               <li style="color: #1f2937; margin-bottom: 12px; padding-left: 25px; position: relative;">
@@ -180,6 +183,20 @@ function generateConfirmationEmailHTML(registrationData: RegistrationData): stri
                 <strong>Updates:</strong> Follow us on social media for the latest convention news
               </li>
             </ul>
+          </div>
+
+          <!-- Modify/Cancel Registration Button -->
+          <div style="text-align: center; margin-bottom: 30px; padding: 20px; background-color: #f8fafc; border-radius: 12px; border: 2px dashed #cbd5e1;">
+            <h3 style="color: #1f2937; font-size: 18px; margin-bottom: 15px;">Need to make changes?</h3>
+            <a 
+              href="https://www.eci-convention.vercel.app/register/preview?email=${encodeURIComponent(registrationData.email)}"
+              style="display: inline-block; background: linear-gradient(135deg, #7c3aed 0%, #059669 100%); color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 16px; border: none; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
+            >
+              🔧 Modify or Cancel Registration
+            </a>
+            <p style="color: #6b7280; font-size: 14px; margin: 10px 0 0 0;">
+              You can update your registration details or cancel if needed
+            </p>
           </div>
 
           <!-- Contact Information -->

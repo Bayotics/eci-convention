@@ -81,7 +81,7 @@ export default function EconomicSessionPage() {
         setSuccess(true)
         setTimeout(() => {
           router.push("/register")
-        }, 3000)
+        }, 15000)
       } else {
         setError(result.error || "Registration failed")
       }

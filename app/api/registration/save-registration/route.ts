@@ -19,10 +19,22 @@ export async function POST(request: NextRequest) {
     })
 
     if (existingRegistration) {
-      return NextResponse.json({ error: "You have already registered for this event" }, { status: 400 })
+      // Special case: If existing registration is "economic-session-only" and new registration is paid guest
+      if (
+        existingRegistration.registrationType === "economic-session-only" &&
+        registrationData.membershipStatus === "non-member" &&
+        registrationData.registrationType === "full-convention"
+      ) {
+        // Delete the existing free economic session registration
+        await Registration.findByIdAndDelete(existingRegistration._id)
+        console.log(`Deleted existing economic-session registration for ${registrationData.email}`)
+      } else {
+        // For all other cases, prevent duplicate registration
+        return NextResponse.json({ error: "You have already registered for this event" }, { status: 400 })
+      }
     }
 
-    // Create new registration
+    // Create new registration (either first time or upgrading from economic-session)
     const registration = new Registration({
       ...registrationData,
       email: registrationData.email.toLowerCase(),
@@ -54,7 +66,10 @@ export async function POST(request: NextRequest) {
       success: true,
       registrationId,
       emailSent: emailResult.success,
-      message: "Registration completed successfully",
+      message:
+        existingRegistration?.registrationType === "economic-session-only"
+          ? "Registration upgraded successfully from economic session to full convention"
+          : "Registration completed successfully",
     })
   } catch (error) {
     console.error("Save registration error:", error)
