@@ -105,7 +105,7 @@ export function SponsorModal({ sponsor, isOpen, onClose }: SponsorModalProps) {
                   </button>
 
                   {/* Sponsorship Type Badge */}
-                  <div className="absolute top-4 left-4">
+                  {/* <div className="absolute top-4 left-4">
                     <span
                       className={`px-4 py-2 rounded-full text-sm font-semibold ${
                         sponsor.sponsorshipType === "corporate"
@@ -115,7 +115,7 @@ export function SponsorModal({ sponsor, isOpen, onClose }: SponsorModalProps) {
                     >
                       {sponsor.sponsorshipType === "corporate" ? "Corporate Sponsor" : "Regular Sponsor"}
                     </span>
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* Content */}
@@ -132,12 +132,12 @@ export function SponsorModal({ sponsor, isOpen, onClose }: SponsorModalProps) {
                       </h3>
 
                       <div className="space-y-3">
-                        <div className="flex items-center justify-between">
+                        {/* <div className="flex items-center justify-between">
                           <span className="text-gray-600">Type:</span>
                           <span className="font-medium capitalize text-purple-600">
                             {sponsor.contribution.type.replace("-", " ")}
                           </span>
-                        </div>
+                        </div> */}
 
                         {sponsor.contribution.monetaryAmount && (
                           <div className="flex items-center justify-between">
@@ -150,7 +150,7 @@ export function SponsorModal({ sponsor, isOpen, onClose }: SponsorModalProps) {
 
                         {sponsor.contribution.inKindDescription && (
                           <div>
-                            <span className="text-gray-600 block mb-2">In-Kind Support:</span>
+                            {/* <span className="text-gray-600 block mb-2">Contribution:</span> */}
                             <p className="text-gray-800 bg-white p-3 rounded border-l-4 border-teal-400">
                               {sponsor.contribution.inKindDescription}
                             </p>
@@ -170,13 +170,13 @@ export function SponsorModal({ sponsor, isOpen, onClose }: SponsorModalProps) {
 
                   {/* Additional Info */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <div className="flex items-center space-x-3 text-gray-600">
+                    {/* <div className="flex items-center space-x-3 text-gray-600">
                       <Calendar className="h-5 w-5" />
                       <div>
                         <p className="text-sm">Partnership Since</p>
                         <p className="font-medium">{formatDate(sponsor.createdAt)}</p>
                       </div>
-                    </div>
+                    </div> */}
 
                     {sponsor.websiteLink && (
                       <div className="flex items-center space-x-3 text-gray-600">

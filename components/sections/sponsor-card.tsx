@@ -94,12 +94,13 @@ export function SponsorCard({ sponsor, onReadMore }: SponsorCardProps) {
           {sponsor.sponsorshipType === "corporate" ? (
             <Building className="h-16 w-16 text-purple-400" />
           ) : (
-            <Users className="h-16 w-16 text-teal-400" />
+            // <Users className="h-16 w-16 text-teal-400" />
+            <div></div>
           )}
         </div>
 
         {/* Sponsorship Type Badge */}
-        <div className="absolute top-3 right-3">
+        {/* <div className="absolute top-3 right-3">
           <span
             className={`px-3 py-1 rounded-full text-xs font-semibold ${
               sponsor.sponsorshipType === "corporate" ? "bg-purple-100 text-purple-800" : "bg-teal-100 text-teal-800"
@@ -107,7 +108,7 @@ export function SponsorCard({ sponsor, onReadMore }: SponsorCardProps) {
           >
             {sponsor.sponsorshipType === "corporate" ? "Corporate" : "Regular"}
           </span>
-        </div>
+        </div> */}
       </div>
 
       {/* Card Content */}
@@ -115,12 +116,12 @@ export function SponsorCard({ sponsor, onReadMore }: SponsorCardProps) {
         <h3 className="text-xl font-bold text-gray-800 mb-3 line-clamp-2">{sponsor.name}</h3>
 
         {/* Contribution Info */}
-        <div className="flex items-center space-x-2 mb-3">
+        {/* <div className="flex items-center space-x-2 mb-3">
           <div className="flex items-center space-x-1 text-purple-600">
             {getContributionIcon()}
             <span className="text-sm font-medium">{getContributionText()}</span>
           </div>
-        </div>
+        </div> */}
 
         {/* Description */}
         {sponsor.description && (
