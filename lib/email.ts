@@ -51,7 +51,7 @@ function generateCancelConfirmationHTML(cancelData: CancelData): string {
         </table>
         <p>
           If you did not request this cancellation or have any questions, please contact us at
-          <a href="mailto:info@eciconvention.org">info@eciconvention.org</a>.
+          <a href="mailto:info@waletayo2000@yahoo.com">info@waletayo2000@yahoo.com</a>.
         </p>
         <p style="color: #6b7280; font-size: 13px; margin-top: 32px;">
           Thank you,<br />
@@ -99,7 +99,7 @@ function generateConfirmationEmailHTML(registrationData: RegistrationData): stri
             />
           </div>
           <h1 style="color: white; font-size: 32px; margin: 0 0 10px 0; font-weight: bold;">ECI@25</h1>
-          <p style="color: rgba(255,255,255,0.9); font-size: 18px; margin: 0 0 15px 0;">25th International Convention</p>
+          <p style="color: rgba(255,255,255,0.9); font-size: 18px; margin: 0 0 15px 0;">14th Biennial Convention</p>
           <div style="background-color: rgba(255,255,255,0.2); padding: 12px 24px; border-radius: 25px; display: inline-block;">
             <p style="color: white; font-size: 20px; font-weight: bold; margin: 0;">✅ Registration Confirmed!</p>
           </div>
@@ -110,7 +110,7 @@ function generateConfirmationEmailHTML(registrationData: RegistrationData): stri
           <div style="margin-bottom: 30px;">
             <h2 style="color: #1f2937; font-size: 28px; margin-bottom: 15px;">Welcome to ECI@25, ${registrationData.firstName}!</h2>
             <p style="color: #4b5563; font-size: 16px; line-height: 1.6; margin: 0;">
-              Thank you for registering for the 25th Eko Club International Convention in Newark, NJ. We're thrilled to have
+              Thank you for registering for the 14th Biennial Eko Club International Convention in Newark, NJ. We're thrilled to have
               you join us for this historic celebration from September 18-21, 2025.
             </p>
           </div>
@@ -189,7 +189,7 @@ function generateConfirmationEmailHTML(registrationData: RegistrationData): stri
           <div style="text-align: center; margin-bottom: 30px; padding: 20px; background-color: #f8fafc; border-radius: 12px; border: 2px dashed #cbd5e1;">
             <h3 style="color: #1f2937; font-size: 18px; margin-bottom: 15px;">Need to make changes?</h3>
             <a 
-              href="https://www.eci-convention.vercel.app/register/preview?email=${encodeURIComponent(registrationData.email)}"
+              href="https://www.ekoclubevents.org/register/preview?email=${encodeURIComponent(registrationData.email)}"
               style="display: inline-block; background: linear-gradient(135deg, #7c3aed 0%, #059669 100%); color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 16px; border: none; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
             >
               🔧 Modify or Cancel Registration
@@ -207,13 +207,13 @@ function generateConfirmationEmailHTML(registrationData: RegistrationData): stri
             </p>
             <div style="background-color: white; padding: 15px; border-radius: 8px;">
               <p style="color: #1f2937; margin: 0 0 8px 0;">
-                <strong>📧 Email:</strong> <a href="mailto:info@eciconvention.org" style="color: #7c3aed;">info@eciconvention.org</a>
+                <strong>📧 Email:</strong> <a href="mailto:waletayo2000@yahoo.com" style="color: #7c3aed;">info@ekoclubevents.org</a>
               </p>
               <p style="color: #1f2937; margin: 0 0 8px 0;">
                 <strong>📱 Phone:</strong> <a href="tel:+15551234567" style="color: #7c3aed;">+1 (555) 123-4567</a>
               </p>
               <p style="color: #1f2937; margin: 0;">
-                <strong>🌐 Website:</strong> <a href="https://www.eciconvention.org" style="color: #7c3aed;">www.eciconvention.org</a>
+                <strong>🌐 Website:</strong> <a href="https://www.ekoclubevents.org" style="color: #7c3aed;">www.ekoclubevents.org</a>
               </p>
             </div>
           </div>

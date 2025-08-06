@@ -91,7 +91,7 @@ export default function EconomicSessionPage() {
         setSuccess(true)
         setTimeout(() => {
           router.push("/register")
-        }, 15000)
+        }, 25000)
       } else {
         setError(result.error || "Registration failed")
         // Reset reCAPTCHA on error

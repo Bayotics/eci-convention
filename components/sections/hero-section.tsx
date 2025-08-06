@@ -64,7 +64,7 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-xl md:text-2xl italic text-white/90 mb-4"
           >
-            25th annual convention
+            14th Biennial convention
           </motion.p>
 
           {/* Separator border */}
@@ -93,7 +93,7 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-3xl"
           >
-            Newark, NJ welcomes Eko Club members from around the world for celebration, service and the 25th Eko Club
+            Newark, NJ welcomes Eko Club members from around the world for celebration, service and the 14th Biennial Eko Club
             International Convention. With its rich cultural diversity and unforgettable experiences at every turn,
             Newark is an exciting destination for our biggest event of the year. Come be part of it all!
           </motion.p>

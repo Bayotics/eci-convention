@@ -31,7 +31,7 @@ export function KeyHighlightsSection() {
             Get ready to <span className="text-purple-600">make your mark.</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            The international convention happens once a year, and in 2025, we'll celebrate together in Newark, NJ. Get
+            The international convention happens once in two years, and in 2025, we'll celebrate together in Newark, NJ. Get
             ready to be entertained, find inspiration and meet new friends. We'll see you in Newark, where we will
             create unforgettable memories together!
           </p>

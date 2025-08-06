@@ -247,8 +247,8 @@ function GuestPreviewContent() {
               </div>
               <p className="text-sm text-gray-600">
                 Need help? Contact us at{" "}
-                <a href="mailto:info@eciconvention.org" className="text-teal-600 hover:underline">
-                  info@eciconvention.org
+                <a href="mailto:info@waletayo2000@yahoo.com" className="text-teal-600 hover:underline">
+                  info@ekoclubevents.org
                 </a>
               </p>
             </motion.div>

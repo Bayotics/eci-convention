@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Disallow admin and API routes
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /register/preview
+Disallow: /register/payment
+
+# Allow specific important pages
+Allow: /
+Allow: /about
+Allow: /speakers
+Allow: /agenda
+Allow: /venue
+Allow: /sponsors
+Allow: /past-events
+Allow: /contact
+Allow: /faq
+Allow: /register
+
+# Sitemap location
+Sitemap: https://ekoclubevents.org/sitemap.xml

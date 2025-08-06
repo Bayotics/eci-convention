@@ -11,7 +11,7 @@ const faqData = [
     category: "General",
     question: "When and where will the convention take place?",
     answer:
-      "The 25th International Convention will take place from September 17-21, 2025, in Newark, New Jersey, at the DoubleTree Hotel.",
+      "The 14th Biennial Convention will take place from September 17-21, 2025, in Newark, New Jersey, at the DoubleTree Hotel.",
   },
   {
     id: 2,

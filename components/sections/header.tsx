@@ -68,8 +68,8 @@ export function Header() {
                   isScrolled ? "text-[1.3rem]" : "text-sm sm:text-lg md:text-xl lg:text-2xl"
                 }`}
               >
-                <span className="hidden sm:inline">25th International Convention</span>
-                <span className="sm:hidden">25th Convention</span>
+                <span className="hidden sm:inline">14th Biennial Convention</span>
+                <span className="sm:hidden">14th Convention</span>
               </h1>
             </Link>
           </div>

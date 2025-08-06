@@ -5,11 +5,9 @@ import type React from "react"
 import { useState, useEffect, Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { motion } from "framer-motion"
-import { TopBar } from "@/components/sections/top-bar"
 import { RegisterHeader } from "@/components/sections/register-header"
 import { Footer } from "@/components/sections/footer"
-import { Dialog } from "@/components/ui/dialog"
-import { Edit, Check, AlertCircle, Loader2, Mail, User, MapPin } from "lucide-react"
+import { Edit, Check, AlertCircle, Loader2, Mail, User, MapPin } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 
 const chapterOptions = [
@@ -119,38 +117,40 @@ function PreviewPageContent() {
       setIsSaving(false)
     }
   }
+
   const handleDeleteRegistration = async () => {
-  setIsDeleting(true)
-  setError("")
-  setSuccessMessage("")
-  try {
-    const response = await fetch("/api/registration/delete-registration", {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email }),
-    })
-    const result = await response.json()
-    if (result.success) {
-      setSuccessMessage("Registration cancelled successfully! Redirecting to homepage...")
-      setTimeout(() => {
-        router.push("/")
-      }, 2000) // 2 seconds delay
-    } else {
-      setError(result.error || "Failed to delete registration")
+    setIsDeleting(true)
+    setError("")
+    setSuccessMessage("")
+    try {
+      const response = await fetch("/api/registration/delete-registration", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      })
+      const result = await response.json()
+      if (result.success) {
+        setSuccessMessage("Registration cancelled successfully! Redirecting to homepage...")
+        setTimeout(() => {
+          router.push("/")
+        }, 2000) // 2 seconds delay
+      } else {
+        setError(result.error || "Failed to delete registration")
+      }
+    } catch (error) {
+      setError("An error occured. Please try again.")
+    } finally {
+      setIsDeleting(false)
     }
-  } catch (error) {
-    setError("An error occured. Please try again.")
-  } finally {
-    setIsDeleting(false)
-    // Don't close dialog immediately, let user see the message
-    // setShowCancelDialog(false)
   }
-}
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setEditData((prev: any) => ({ ...prev, [name]: value }))
   }
+
+  // Check if user is a non-member
+  const isNonMember = registration?.chapterName === "Non Member" || registration?.membershipStatus === "non-member"
 
   if (isLoading) {
     return (
@@ -166,7 +166,7 @@ function PreviewPageContent() {
   if (!registration) {
     return (
       <div className="min-h-screen bg-white">
-        <RegisterHeader isScrolled={false} />
+        <RegisterHeader/>
         <section className="py-20 bg-gray-50 min-h-screen flex items-center">
           <div className="container mx-auto px-4 text-center mt-36">
             <div className="bg-red-50 border border-red-200 rounded-lg p-8 max-w-md mx-auto">
@@ -186,8 +186,7 @@ function PreviewPageContent() {
 
   return (
     <div className="min-h-screen bg-white">
-      <RegisterHeader isScrolled={false} />
-
+      <RegisterHeader />
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 mt-36">
           <div className="max-w-4xl mx-auto">
@@ -298,18 +297,29 @@ function PreviewPageContent() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Chapter Name</label>
-                      <select
-                        name="chapterName"
-                        value={editData.chapterName}
-                        onChange={handleInputChange}
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                      >
-                        {chapterOptions.map((chapter) => (
-                          <option key={chapter} value={chapter}>
-                            {chapter}
-                          </option>
-                        ))}
-                      </select>
+                      {isNonMember ? (
+                        <input
+                          type="text"
+                          name="chapterName"
+                          value={editData.chapterName}
+                          className="w-full p-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-600 cursor-not-allowed"
+                          disabled
+                          readOnly
+                        />
+                      ) : (
+                        <select
+                          name="chapterName"
+                          value={editData.chapterName}
+                          onChange={handleInputChange}
+                          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        >
+                          {chapterOptions.map((chapter) => (
+                            <option key={chapter} value={chapter}>
+                              {chapter}
+                            </option>
+                          ))}
+                        </select>
+                      )}
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Gender</label>
@@ -501,47 +511,48 @@ function PreviewPageContent() {
                 </div>
                 <p className="text-sm text-gray-600">
                   Need help? Contact us at{" "}
-                  <a href="mailto:info@eciconvention.org" className="text-purple-600 hover:underline">
-                    info@eciconvention.org
+                  <a href="mailto:info@waletayo2000@yahoo.com" className="text-purple-600 hover:underline">
+                    info@ekoclubevents.org
                   </a>
                 </p>
               </motion.div>
             )}
-           {showCancelDialog && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
-              <div className="bg-white rounded-lg shadow-lg p-8 max-w-sm w-full">
-                <h2 className="text-xl font-bold mb-4 text-red-700">Cancel Registration?</h2>
-                {successMessage ? (
-                  <div className="mb-6 text-green-700 bg-green-50 border border-green-200 rounded p-4 text-center">
-                    {successMessage}
-                  </div>
-                ) : (
-                  <p className="mb-6 text-gray-700">
-                    Are you sure you want to cancel your registration? This action cannot be undone.
-                  </p>
-                )}
-                {!successMessage && (
-                  <div className="flex justify-end gap-4">
-                    <Button
-                      onClick={() => setShowCancelDialog(false)}
-                      variant="outline"
-                      className="bg-transparent"
-                      disabled={isDeleting}
-                    >
-                      Go Back
-                    </Button>
-                    <Button
-                      onClick={handleDeleteRegistration}
-                      className="bg-red-600 hover:bg-red-700 text-white"
-                      disabled={isDeleting}
-                    >
-                      {isDeleting ? "Cancelling..." : "Continue"}
-                    </Button>
-                  </div>
-                )}
+
+            {showCancelDialog && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+                <div className="bg-white rounded-lg shadow-lg p-8 max-w-sm w-full">
+                  <h2 className="text-xl font-bold mb-4 text-red-700">Cancel Registration?</h2>
+                  {successMessage ? (
+                    <div className="mb-6 text-green-700 bg-green-50 border border-green-200 rounded p-4 text-center">
+                      {successMessage}
+                    </div>
+                  ) : (
+                    <p className="mb-6 text-gray-700">
+                      Are you sure you want to cancel your registration? This action cannot be undone.
+                    </p>
+                  )}
+                  {!successMessage && (
+                    <div className="flex justify-end gap-4">
+                      <Button
+                        onClick={() => setShowCancelDialog(false)}
+                        variant="outline"
+                        className="bg-transparent"
+                        disabled={isDeleting}
+                      >
+                        Go Back
+                      </Button>
+                      <Button
+                        onClick={handleDeleteRegistration}
+                        className="bg-red-600 hover:bg-red-700 text-white"
+                        disabled={isDeleting}
+                      >
+                        {isDeleting ? "Cancelling..." : "Continue"}
+                      </Button>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          )}
+            )}
           </div>
         </div>
       </section>

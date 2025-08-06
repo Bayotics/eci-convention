@@ -19,7 +19,7 @@ export function AboutSection() {
             About ECI@25
           </h2>
           <p className="text-lg text-gray-700 leading-relaxed mb-8">
-            Join us for the 25th Eko Club International Convention, a milestone celebration that brings together
+            Join us for the 14th Biennial Eko Club International Convention, a milestone celebration that brings together
             generations of leaders, innovators, and community builders. This historic gathering in Newark, NJ, will
             showcase our journey of excellence while charting the course for the next 25 years of impact and service to
             our communities worldwide.

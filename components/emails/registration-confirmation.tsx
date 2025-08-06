@@ -41,7 +41,7 @@ export const RegistrationConfirmationEmail: React.FC<RegistrationConfirmationEma
         {/* ECI Logo */}
         <div style={{ marginBottom: "20px" }}>
           <img
-            src="https://www.eciconvention.org/images/eci-logo.png"
+            src="https://www.ekoclubevents.org/images/eci-logo.png"
             alt="ECI Logo"
             style={{
               width: "120px",
@@ -52,7 +52,7 @@ export const RegistrationConfirmationEmail: React.FC<RegistrationConfirmationEma
           />
         </div>
         <h1 style={{ color: "#7c3aed", fontSize: "28px", margin: "0 0 10px 0" }}>ECI@25</h1>
-        <p style={{ color: "#6b7280", fontSize: "16px", margin: "0" }}>25th International Convention</p>
+        <p style={{ color: "#6b7280", fontSize: "16px", margin: "0" }}>14th Biennial Convention</p>
         <p style={{ color: "#059669", fontSize: "18px", fontWeight: "bold", margin: "10px 0 0 0" }}>
           Registration Confirmed!
         </p>
@@ -62,7 +62,7 @@ export const RegistrationConfirmationEmail: React.FC<RegistrationConfirmationEma
       <div style={{ marginBottom: "30px" }}>
         <h2 style={{ color: "#1f2937", fontSize: "24px", marginBottom: "15px" }}>Welcome to ECI@25, {firstName}!</h2>
         <p style={{ color: "#4b5563", fontSize: "16px", lineHeight: "1.6" }}>
-          Thank you for registering for the 25th Eko Club International Convention in Newark, NJ. We're thrilled to have
+          Thank you for registering for the 14th Biennial Eko Club International Convention in Newark, NJ. We're thrilled to have
           you join us for this historic celebration from September 18-21, 2025.
         </p>
       </div>
@@ -154,7 +154,7 @@ export const RegistrationConfirmationEmail: React.FC<RegistrationConfirmationEma
       {/* Modify/Cancel Registration Button */}
       <div style={{ textAlign: "center", marginBottom: "30px" }}>
         <a
-          href={`https://www.eciconvention.org/register/preview?email=${encodeURIComponent(email)}`}
+          href={`https://www.ekoclubevents.org/register/preview?email=${encodeURIComponent(email)}`}
           style={{
             display: "inline-block",
             backgroundColor: "#7c3aed",
@@ -185,7 +185,7 @@ export const RegistrationConfirmationEmail: React.FC<RegistrationConfirmationEma
           <strong>Phone:</strong> +1 (555) 123-4567
         </p>
         <p style={{ color: "#1f2937", margin: "0" }}>
-          <strong>Website:</strong> www.eciconvention.org
+          <strong>Website:</strong> www.ekoclubevents.org
         </p>
       </div>
 

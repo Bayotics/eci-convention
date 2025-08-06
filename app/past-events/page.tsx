@@ -7,7 +7,7 @@ import { Footer } from "@/components/sections/footer"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Past Events | ECI 25th Convention",
+  title: "Past Events | ECI 14th Biennial Convention",
   description: "Explore memorable moments from previous Eko Club International conventions and events.",
 }
 

@@ -265,7 +265,7 @@ export function MemberRegistrationModal({ isOpen, onClose }: MemberRegistrationM
                 <div className="bg-red-50 border border-red-200 rounded-lg p-4">
                   <div className="flex items-start space-x-2">
                     <AlertCircle className="h-5 w-5 text-red-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-red-600 text-sm">{error}</span>
+                    <span className="text-red-600 text-sm">{error} {" "}<a className="text-black underline" href="https://eko-club-international.vercel.app/login" target="_blank">Click here to go to the Membership Page </a></span>
                   </div>
                 </div>
               )}

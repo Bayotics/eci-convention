@@ -6,7 +6,7 @@ import { FAQSection } from "@/components/sections/faq-section"
 
 export const metadata: Metadata = {
   title: "FAQ - ECI@25 Convention",
-  description: "Frequently Asked Questions about the 25th International Convention - Newark, NJ | Sept 18-21, 2025",
+  description: "Frequently Asked Questions about the 14th Biennial Convention - Newark, NJ | Sept 18-21, 2025",
 }
 
 export default function FAQPage() {
@@ -32,7 +32,7 @@ export default function FAQPage() {
             Frequently Asked Questions
           </h1>
           <p className="text-lg md:text-xl text-gray-200 max-w-2xl leading-relaxed">
-            Everything you need to know about the 25th International Convention
+            Everything you need to know about the 14th Biennial Convention
           </p>
         </div>
       </section>

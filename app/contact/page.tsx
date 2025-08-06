@@ -132,8 +132,8 @@ export default function ContactPage() {
                 <div className="font-semibold mb-1">Failed to send message ❌</div>
                 <div className="text-sm">
                   Please try again or contact us directly at{" "}
-                  <a href="mailto:info@eciconvention.org" className="underline font-medium">
-                    info@eciconvention.org
+                  <a href="mailto:waletayo2000@yahoo.com" className="underline font-medium">
+                    info@ekoclubevents.org
                   </a>
                 </div>
               </AlertDescription>
@@ -327,11 +327,11 @@ export default function ContactPage() {
                         <div>
                           <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
                           <p className="text-gray-600 text-sm mb-2">Mon-Fri, 9AM-6PM EST</p>
-                          <a href="tel:+15551234567" className="text-green-600 hover:text-green-700 font-medium">
-                            +1 (555) 123-4567
+                          <a href="tel:+17326783901" className="text-green-600 hover:text-green-700 font-medium">
+                            +1 (732) 678-3901
                           </a>
                           <br />
-                          <a href="tel:+15551234567" className="text-green-600 hover:text-green-700 font-medium mt-2">
+                          <a href="tel:+16102030370" className="text-green-600 hover:text-green-700 font-medium mt-2">
                             +1 (610) 203-0370
                           </a>
                         </div>
@@ -385,8 +385,8 @@ export default function ContactPage() {
                       <div>
                         <h3 className="font-semibold text-red-900 mb-1">Emergency Contact</h3>
                         <p className="text-red-700 text-sm mb-2">24/7 emergency line during convention</p>
-                        <a href="tel:+15559876543" className="text-red-600 hover:text-red-700 font-medium">
-                          +1 (555) 987-6543
+                        <a href="tel:+16102030370" className="text-red-600 hover:text-red-700 font-medium">
+                          +1 (732) 678-3901
                         </a>
                       </div>
                     </div>
@@ -453,11 +453,10 @@ export default function ContactPage() {
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-gray-900 mb-3 flex items-center">
                     <MessageCircle className="mr-2 h-5 w-5 text-orange-600" />
-                    Can I get a refund if I can't attend?
+                    Will there be networking opportunities?
                   </h3>
                   <p className="text-gray-600">
-                    Refund policies vary by registration type and timing. Please contact us directly for specific refund
-                    requests and conditions.
+                    Yes, multiple networking events include breakfasts, lunches, and dinners throughout the convention days.
                   </p>
                 </CardContent>
               </Card>

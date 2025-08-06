@@ -19,7 +19,7 @@ export function TopBar() {
         <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-4 text-center sm:text-left">
           <span className="text-lg sm:text-xl leading-tight font-bold">
             <span className="hidden sm:inline">
-              Eko Club International 25th Convention | Newark, NJ | Sept 18-21, 2025
+              Eko Club International 14th Convention | Newark, NJ | Sept 18-21, 2025
             </span>
             <span className="sm:hidden">ECI@25 | Newark, NJ | Sept 18-21, 2025</span>
           </span>

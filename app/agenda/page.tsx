@@ -457,7 +457,7 @@ export default function AgendaPage() {
         // Adjust the y-position for subsequent text to account for logo
         pdf.setFontSize(14)
         pdf.setFont("helvetica", "normal")
-        pdf.text("25th International Convention", pageWidth / 2, 95, { align: "center" })
+        pdf.text("14th Biennial Convention", pageWidth / 2, 95, { align: "center" })
         pdf.text("September 17-21, 2025", pageWidth / 2, 110, { align: "center" })
         pdf.text("Newark, New Jersey", pageWidth / 2, 125, { align: "center" })
 
@@ -471,7 +471,7 @@ export default function AgendaPage() {
         // Fallback to original positioning if logo fails
         pdf.setFontSize(14)
         pdf.setFont("helvetica", "normal")
-        pdf.text("25th International Convention", pageWidth / 2, 70, { align: "center" })
+        pdf.text("14th Biennial Convention", pageWidth / 2, 70, { align: "center" })
         pdf.text("September 17-21, 2025", pageWidth / 2, 85, { align: "center" })
         pdf.text("Newark, New Jersey", pageWidth / 2, 100, { align: "center" })
 

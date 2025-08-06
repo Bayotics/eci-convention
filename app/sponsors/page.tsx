@@ -416,16 +416,14 @@ export default function SponsorsPage() {
                   <Mail className="h-6 w-6 text-yellow-300 mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="font-bold text-white mb-1">Email</h4>
-                    <p className="text-purple-100">sponsors@eciconvention.org</p>
-                    <p className="text-purple-100">partnerships@eciconvention.org</p>
+                    <p className="text-purple-100">waletayo2000@yahoo.com</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
                   <Phone className="h-6 w-6 text-yellow-300 mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="font-bold text-white mb-1">Phone</h4>
-                    <p className="text-purple-100">+1 (555) 123-4567</p>
-                    <p className="text-purple-100">+1 (555) 987-6543</p>
+                    <p className="text-purple-100">+1 (610) 203-0370</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
@@ -449,7 +447,7 @@ export default function SponsorsPage() {
                   <strong>Mrs. Adunni Ogundimu</strong>
                 </p>
                 <p className="text-purple-100 mb-2">Director of Corporate Relations</p>
-                <p className="text-purple-100">adunni.ogundimu@eciconvention.org</p>
+                <p className="text-purple-100">adunni.ogundimu@ekoclubevents.org</p>
                 <p className="text-purple-100">+1 (555) 234-5678</p>
               </div>
 

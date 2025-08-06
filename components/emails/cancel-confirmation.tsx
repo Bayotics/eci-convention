@@ -36,7 +36,7 @@ export const CancelConfirmationEmail: React.FC<CancelConfirmationEmailProps> = (
       </tbody>
     </table>
     <p>
-      If you did not request this cancellation or have any questions, please contact us at <a href="mailto:info@eciconvention.org">info@eciconvention.org</a>.
+      If you did not request this cancellation or have any questions, please contact us at <a href="mailto:info@waletayo2000@yahoo.com.org">info@ekoclubevents.org</a>.
     </p>
     <p style={{ color: "#6b7280", fontSize: 13, marginTop: 32 }}>
       Thank you,<br />
