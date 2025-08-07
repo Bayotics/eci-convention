@@ -292,7 +292,7 @@ export default function SponsorsPage() {
       </section>
 
       {/* Sponsorship Opportunities */}
-      <section className="py-20 bg-gradient-to-br from-purple-50 to-teal-50">
+      {/* <section className="py-20 bg-gradient-to-br from-purple-50 to-teal-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
@@ -348,7 +348,7 @@ export default function SponsorsPage() {
             })}
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Contact Information for Sponsors */}
       <section className="py-20 bg-gradient-to-br from-purple-600 to-teal-600 text-white">
@@ -426,29 +426,17 @@ export default function SponsorsPage() {
                     <p className="text-purple-100">+1 (610) 203-0370</p>
                   </div>
                 </div>
-                <div className="flex items-start space-x-4">
-                  <MapPin className="h-6 w-6 text-yellow-300 mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-bold text-white mb-1">Address</h4>
-                    <p className="text-purple-100">
-                      ECI Sponsorship Department
-                      <br />
-                      123 Convention Plaza
-                      <br />
-                      Newark, NJ 07102
-                    </p>
-                  </div>
-                </div>
+                
               </div>
 
               <div className="mt-8 pt-6 border-t border-white/20">
                 <h4 className="font-bold text-white mb-4">Sponsorship Coordinator</h4>
                 <p className="text-purple-100 mb-2">
-                  <strong>Mrs. Adunni Ogundimu</strong>
+                  <strong>Hon. Wallace</strong>
                 </p>
-                <p className="text-purple-100 mb-2">Director of Corporate Relations</p>
-                <p className="text-purple-100">adunni.ogundimu@ekoclubevents.org</p>
-                <p className="text-purple-100">+1 (555) 234-5678</p>
+                <p className="text-purple-100 mb-2">ConventionChairman</p>
+                <p className="text-purple-100">waletayo2000@yahoo.com</p>
+                <p className="text-purple-100">+1 (610) 203-0370</p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 mt-8">

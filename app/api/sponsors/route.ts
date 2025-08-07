@@ -6,7 +6,7 @@ export async function GET() {
   try {
     await connectDB()
 
-    const sponsors = await Sponsor.find({}).sort({ createdAt: -1 }).lean()
+    const sponsors = await Sponsor.find({}).sort({ createdAt: 1 }).lean()
 
     // Transform the data for frontend consumption
     const transformedSponsors = sponsors.map((sponsor) => ({
