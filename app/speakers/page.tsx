@@ -61,7 +61,7 @@ Governor Sanwo-Olu's leadership during the COVID-19 pandemic was particularly no
     id: "alake",
     name: "Hon. Olatunbosun Alake",
     title: "Commissioner for Innovation, Science & Technology, Lagos State",
-    image: "/images/Tubosun-alake.jpg?height=400&width=400",
+    image: "/images/Tubosun-Alake.jpg?height=400&width=400",
     shortBio: "Technology visionary driving innovation and digital transformation across Lagos State.",
     fullBio: `Hon. Olatunbosun Alake serves as the Commissioner for Innovation, Science & Technology in Lagos State, where he has been instrumental in positioning Lagos as Nigeria's technology and innovation hub. With over two decades of experience in technology, business development, and public administration, Commissioner Alake brings a unique blend of technical expertise and strategic leadership to his role.
 
