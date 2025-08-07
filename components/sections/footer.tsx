@@ -80,6 +80,7 @@ export function Footer() {
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
           <p>&copy; 2025 Eko Club International. All rights reserved</p>
         </div>
+        <div className="mt-4 text-xs text-gray-500 text-center ">Design and development by <a target="_blank" href="https://abdullahi-shobaloju.vercel.app/"> Abdullahi Sho</a></div>
       </div>
     </footer>
   )
