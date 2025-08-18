@@ -94,14 +94,24 @@ const agendaData = {
         icon: Users,
       },
       {
-        id: "landmarks-tour",
+        id: "governors-chat",
         time: "6:30 PM - 8:00 PM",
         title: "Tour of Important Landmark in New York & New Jersey",
         description: "Guided tours of significant historical and cultural sites in Newark and surrounding areas.",
-        location: "Various Locations",
+        location: "Main Conference Hall",
         organizer: "ECI Tourism Committee",
         type: "tour",
         icon: MapPin,
+      },
+      {
+        id: "landmarks-tour",
+        time: "8:30 PM - 9:30 PM",
+        title: "Chat with Governor Babajide Sanwo-Olu",
+        description: " Fireside Chat – Governor Babajide Sanwo-Olu: 'Lagos: Africa’s Gateway for Diaspora Partnerships and Global Growth.",
+        location: "Various Locations",
+        organizer: "ECI Committee",
+        type: "meeting",
+        icon: Mic,
       },
     ],
   },
@@ -146,12 +156,28 @@ const agendaData = {
         time: "11:30 AM - 12:00 PM",
         title: "Economic Session",
         description:
-          "Organized by the Consular General office in Collaboration with Eko Club International. Exploring opportunities for economic growth and development in Nigeria and the diaspora.",
+          `Economic Session:
+          • Keynote – H.E. Bola Ahmed Tinubu, President of the Federal Republic of Nigeria:
+            'Nigeria and the New African Economy: A Diaspora-Driven Blueprint'
+          • Special Address – Dr. Tunji Alausa, Hon. Minister of Education, Federal Republic of Nigeria:
+            'Education as the Foundation for Africa’s Future'
+          • Panel – Speakers:
+            - Mr. Olayemi Cardoso, Governor, Central Bank of Nigeria
+            - Rt. Hon. Abbas Tajudeen, Ph.D., Speaker, Federal House of Representatives
+            - Prof. Muhammad Ali Pate, Coordinating Minister of Health & Social Welfare, Federal Republic of Nigeria
+            - Prof. Emmanuel Akin Abayomi, Hon. Commissioner for Health, Lagos State
+            - Rt. Hon. Mudashiru Obasa, Speaker, Lagos State House of Assembly
+            - Hon. Olatunbosun Alake, Hon. Commissioner for Innovation, Science & Technology, Lagos State
+            - AWS Kuiper Representative
+          • Dialogue – Kayode Opeifa, Managing Director, Nigerian Railway Corporation:
+            'Transportation as Catalyst for Growth'
+          • Closing Call to Action – Moderator: Adebimpe Daniells, Chair, Economic Session; Senior Solutions Architect, Amazon`,
         location: "Main Conference Hall",
-        organizer: "Consular General Office in Collaboration with ECI",
+        organizer: "ECI Economic Session Committee",
         type: "panel",
         icon: Building,
-        speakers: ["Hon. Olatunbosun Alake", "Economic Development Experts"],
+        speakers: [`H.E. Bola Ahmed Tinubu, Dr. Tunji Alausa, Hon. Minister of Education, Mr. Olayemi Cardoso, Governor, Central Bank of Nigeria, Rt. Hon. Abbas Tajudeen, Ph.D., Speaker, Federal House of Representatives,  Prof. Muhammad Ali Pate, Coordinating Minister of Health & Social Welfare,
+                    Federal Republic of Nigeria,  Prof. Emmanuel Akin Abayomi, Hon. Commissioner for Health, Lagos State,  Rt. Hon. Mudashiru Obasa, Speaker, Lagos State House of Assembly, AWS Kuiper Representative,  Kayode Opeifa, Managing Director, Nigerian Railway Corporation,  Hon. Olatunbosun Alake", " Adebimpe Daniells, Chair, Economic Session`],
       },
       {
         id: "jumaat-prayer",
@@ -177,17 +203,17 @@ const agendaData = {
         id: "town-hall",
         time: "3:00 PM - 4:00 PM",
         title: "Town Hall Meeting",
-        description: "Open forum for members to discuss important issues and share feedback.",
+        description: "Dr. Dele Alake, Hon. Minister of Solid Minerals Development Federal Republic of Nigeria: 'Solid Minerals as Nigeria’s Next Economic Frontier",
         location: "Main Conference Hall",
         organizer: "ECI Executive Committee",
         type: "meeting",
         icon: Mic,
-        speakers: ["Current Executive Committee", "Regional Representatives"],
+        speakers: ["Dr. Dele Alake, Hon. Minister of Solid Minerals Development"],
       },
       {
         id: "presidential-banquet",
         time: "7:00 PM - 1:00 AM",
-        title: "Presidential/Fundraising/Award Night Banquet (Black tie / Ankara Night)",
+        title: "Presidential/Fundraising/Award Night Banquet (Black tie / Ankara Night) - Tribute to H.E. Bola Ahmed Tinubu & Recognition of Ministers/Commissioners",
         description: "Elegant evening celebrating achievements and raising funds for ECI initiatives.",
         location: "Grand Ballroom",
         organizer: "ECI Executive Committee",
@@ -227,12 +253,15 @@ const agendaData = {
         id: "general-sessions",
         time: "09:00 AM - 11:30 PM",
         title: "General Sessions",
-        description: "Important presentations and discussions on ECI's future direction and initiatives.",
+        description: ` General Session 1 – Keynote: Hon. Bosun Tijani, Hon. Minister of Communications
+ & Digital Economy, Federal Republic of Nigeria: 'Building a Digital Nigeria: Diaspora
+ Partnerships for Global Competitiveness.  General Session 2 – Policy Roundtable:- Rt. Hon. Abbas Tajudeen, Ph.D., Speaker, Federal House of Representatives- Rt. Hon. Mudashiru Obasa, Speaker, Lagos State House of Assembly- Mr. Jamiu Tolani Alli-Balogun, Hon. Commissioner for Education, Lagos State`,
         location: "Main Conference Hall",
         organizer: "ECI Executive Committee",
         type: "session",
         icon: Mic,
-        speakers: ["Executive Members", "Committee Chairs"],
+        speakers: [`Hon. Bosun Tijani, Hon. Minister of Communications
+ & Digital Economy`, ` Rt. Hon. Mudashiru Obasa, Speaker, Lagos State House of Assembly`, ` Mr. Jamiu Tolani Alli-Balogun, Hon. Commissioner for Education, Lagos State`, `Committee Chairs`],
       },
       {
         id: "saturday-lunch",

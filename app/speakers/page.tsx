@@ -26,6 +26,38 @@ const staggerContainer = {
 // Speaker Data
 const keynoteSpeakers = [
   {
+    id: "tinubu",
+    name: "His Excellency, Bola Ahmed Tinubu",
+    title: "President, Federal Republic of Nigeria",
+    image: "/images/TINUBU-7.jpg?height=400&width=400",
+    shortBio:
+      "Visionary leader and President of the Federal Republic of Nigeria, driving national transformation and development.",
+    fullBio: `His Excellency, Bola Ahmed Tinubu is the President of the Federal Republic of Nigeria, having assumed office on May 29, 2023. A distinguished statesman, political leader, and former Governor of Lagos State, President Tinubu brings decades of transformative leadership experience to the highest office in Nigeria.
+
+Born on March 29, 1952, President Tinubu holds a Bachelor's degree in Business Administration from Chicago State University, United States. His educational background in business and finance has been instrumental in shaping his approach to governance and economic development throughout his political career.
+
+Before becoming President, Tinubu served as the Governor of Lagos State from 1999 to 2007, where he transformed Lagos into Nigeria's economic powerhouse. His administration laid the foundation for modern Lagos through innovative policies in revenue generation, infrastructure development, and public service delivery. Under his leadership, Lagos State's internally generated revenue increased dramatically, making it less dependent on federal allocations.
+
+As a political strategist and leader, President Tinubu has been instrumental in Nigeria's democratic development. He played crucial roles in the formation of the All Progressives Congress (APC) and has been a mentor to numerous political leaders across Nigeria. His political acumen and ability to build coalitions have earned him recognition as one of Nigeria's most influential political figures.
+
+President Tinubu's vision for Nigeria centers on economic transformation, job creation, security enhancement, and national unity. His administration focuses on addressing Nigeria's economic challenges through strategic reforms, infrastructure development, and policies that promote inclusive growth and development across all regions of the country.`,
+    achievements: [
+      "Transformed Lagos State into Nigeria's economic hub as Governor",
+      "Pioneered innovative revenue generation strategies in Lagos",
+      "Key architect of Nigeria's democratic consolidation",
+      "Instrumental in forming the All Progressives Congress (APC)",
+      "Mentored numerous successful political leaders",
+      "Champion of federalism and state autonomy",
+    ],
+    sessions: [
+      {
+        title: "Economic Session - Keynote",
+        time: "Friday, Sept 19 | 11:00 AM - 12:30 PM",
+        description: "Nigeria and the New African Economy: A Diaspora-Driven Blueprint",
+      },
+    ],
+  },
+  {
     id: "sanwo-olu",
     name: "His Excellency, Mr. Babajide Olusola Sanwo-Olu",
     title: "Executive Governor, Lagos State",
@@ -51,9 +83,222 @@ Governor Sanwo-Olu's leadership during the COVID-19 pandemic was particularly no
     ],
     sessions: [
       {
-        title: "Leadership in the 21st Century",
-        time: "Friday, Sept 19 | 10:00 AM - 11:00 AM",
-        description: "Keynote address on modern governance and leadership in a digital age",
+        title: "Fireside Chat ",
+        time: "Thursday, Sept 18 | 10:00 AM - 11:00 AM",
+        description: "Lagos: Africa's Gateway for Diaspora Partnerships and Global Growth",
+      },
+    ],
+  },
+  {
+    id: "alausa",
+    name: "Dr. Tunji Alausa",
+    title: "Hon. Minister of Education, Federal Republic of Nigeria",
+    image: "/images/Tunji-Alausa.jpg?height=400&width=400",
+    shortBio: "Distinguished educator and policy maker driving educational transformation across Nigeria.",
+    fullBio: `Dr. Tunji Alausa serves as the Honourable Minister of Education for the Federal Republic of Nigeria, bringing extensive experience in healthcare, education, and public administration to his role. A medical doctor by training and an accomplished administrator, Dr. Alausa has dedicated his career to improving Nigeria's human capital development through strategic policy implementation and institutional reforms.
+
+Dr. Alausa holds a medical degree and has pursued advanced studies in public health and administration. His multidisciplinary background has equipped him with unique insights into the intersection of health, education, and social development, making him particularly effective in addressing Nigeria's complex educational challenges.
+
+Before his appointment as Minister of Education, Dr. Alausa served in various capacities in Lagos State government, including as Commissioner for Health, where he implemented groundbreaking healthcare reforms and policies. His experience in healthcare administration has informed his approach to educational policy, particularly in areas of school health programs, nutrition, and student welfare.
+
+As Minister of Education, Dr. Alausa has focused on comprehensive educational reforms aimed at improving access, quality, and relevance of education at all levels. His administration has prioritized teacher training and development, curriculum modernization, infrastructure development, and the integration of technology in education delivery.
+
+Dr. Alausa is passionate about creating an educational system that prepares Nigerian students for the challenges of the 21st century. His vision includes strengthening technical and vocational education, promoting STEM education, and ensuring that Nigeria's educational system produces graduates who can compete globally while contributing to national development.
+
+His leadership style emphasizes collaboration with stakeholders, evidence-based policy making, and continuous improvement in educational outcomes. Under his guidance, the Ministry of Education has initiated several innovative programs aimed at addressing educational inequalities and improving learning outcomes across Nigeria.`,
+    achievements: [
+      "Implemented comprehensive healthcare reforms as Lagos State Commissioner",
+      "Pioneered innovative school health programs",
+      "Advanced teacher training and development initiatives",
+      "Promoted STEM education and technical skills development",
+      "Strengthened educational infrastructure development",
+      "Enhanced collaboration between federal and state educational systems",
+    ],
+    sessions: [
+      {
+        title: "Economic Session - Special Address",
+        time: "Friday, Sept 19 | 11:00 AM - 12:30 PM",
+        description: "Education as the Foundation for Africa's Future",
+      },
+    ],
+  },
+  {
+    id: "cardoso",
+    name: "Mr. Olayemi Cardoso",
+    title: "Governor, Central Bank of Nigeria",
+    image: "/images/cardoso.png?height=450&width=400",
+    shortBio: "Seasoned financial expert leading Nigeria's monetary policy and economic stabilization efforts.",
+    fullBio: `Mr. Olayemi Cardoso serves as the Governor of the Central Bank of Nigeria (CBN), bringing over three decades of distinguished experience in banking, finance, and economic policy to Nigeria's apex bank. A seasoned financial expert and former investment banker, Governor Cardoso has been instrumental in shaping Nigeria's monetary policy and financial sector development.
+
+Governor Cardoso holds a Bachelor's degree in Economics from the University of Lagos and a Master's degree in Business Administration from Harvard Business School. His educational background in economics and business administration, combined with extensive international experience, has equipped him with the expertise necessary to navigate Nigeria's complex economic challenges.
+
+Before his appointment as CBN Governor, Cardoso had a distinguished career in investment banking and financial services. He served as Managing Director of Citibank Nigeria Limited and held senior positions in various international financial institutions. His experience spans corporate banking, investment banking, treasury operations, and financial market development.
+
+As CBN Governor, Cardoso has focused on monetary policy stability, inflation management, exchange rate stability, and financial sector reforms. His administration has prioritized strengthening Nigeria's financial system, promoting financial inclusion, and supporting economic growth through strategic monetary policy interventions.
+
+Governor Cardoso's approach to central banking emphasizes transparency, data-driven decision making, and collaboration with fiscal authorities to achieve macroeconomic stability. He has been instrumental in implementing policies that support Nigeria's economic diversification efforts while maintaining price stability and financial system integrity.
+
+His vision for Nigeria's financial sector includes modernizing payment systems, strengthening regulatory frameworks, promoting digital financial services, and positioning Nigeria as a leading financial hub in Africa. Under his leadership, the CBN continues to play a crucial role in Nigeria's economic development and financial sector transformation.`,
+    achievements: [
+      "Led major financial institutions as Managing Director",
+      "Implemented strategic monetary policy reforms",
+      "Advanced financial inclusion initiatives across Nigeria",
+      "Strengthened Nigeria's payment system infrastructure",
+      "Promoted digital financial services adoption",
+      "Enhanced central bank transparency and communication",
+    ],
+    sessions: [
+      {
+        title: "Economic Session - Panel",
+        time: "Friday, Sept 19 | 11:00 AM - 12:30 PM",
+        description: "Central bank perspective on Nigeria's economic outlook and monetary policy",
+      },
+    ],
+  },
+  {
+    id: "tajudeen",
+    name: "Rt. Hon. Abbas Tajudeen, Ph.D.",
+    title: "Speaker, Federal House of Representatives",
+    image: "/images/Tajudeen-Abbas.jpg?height=400&width=400",
+    shortBio: "Distinguished legislator and academic leading Nigeria's legislative agenda and democratic governance.",
+    fullBio: `Rt. Hon. Abbas Tajudeen, Ph.D., serves as the Speaker of the Federal House of Representatives of Nigeria, bringing extensive legislative experience and academic expertise to the leadership of Nigeria's lower chamber of parliament. A distinguished legislator, academic, and public administrator, Speaker Abbas has been at the forefront of Nigeria's legislative development and democratic consolidation.
+
+Dr. Abbas holds a Ph.D. and has combined his academic background with practical legislative experience to become one of Nigeria's most respected parliamentary leaders. His educational achievements and scholarly approach to legislation have contributed significantly to the quality of legislative discourse and policy development in Nigeria.
+
+Before becoming Speaker, Dr. Abbas served multiple terms as a member of the House of Representatives, where he distinguished himself through his commitment to legislative excellence, constituency representation, and national development. His experience spans various legislative committees and leadership positions, giving him comprehensive understanding of Nigeria's legislative processes.
+
+As Speaker, Dr. Abbas has focused on strengthening Nigeria's democratic institutions, improving legislative processes, and enhancing the House's role in national governance. His leadership has emphasized transparency, accountability, and effective representation of Nigerian citizens' interests in the legislative process.
+
+Dr. Abbas's vision for the House of Representatives includes modernizing legislative procedures, strengthening oversight functions, improving constituency engagement, and positioning the legislature as a true partner in Nigeria's development agenda. His academic background has been particularly valuable in crafting evidence-based legislation and policy interventions.
+
+Under his leadership, the House has prioritized key national issues including economic development, security, education, healthcare, and infrastructure development. His collaborative approach has fostered better working relationships between the legislature and other arms of government, contributing to more effective governance.
+
+His commitment to democratic values, legislative excellence, and national development has earned him recognition as one of Nigeria's most effective legislative leaders. Dr. Abbas continues to champion reforms that strengthen Nigeria's democratic institutions and improve governance outcomes.`,
+    achievements: [
+      "Multiple terms as distinguished House of Representatives member",
+      "Advanced legislative modernization and transparency initiatives",
+      "Strengthened parliamentary oversight and accountability mechanisms",
+      "Enhanced constituency representation and engagement",
+      "Promoted evidence-based legislation and policy development",
+      "Fostered inter-governmental collaboration and cooperation",
+    ],
+    sessions: [
+      {
+        title: "Economic Session",
+        time: "Friday, Sept 19 | 11:00 AM - 12:30 PM",
+        description: "Parliamentary perspective on Nigeria's democratic development and legislative priorities",
+      },
+    ],
+  },
+  {
+    id: "pate",
+    name: "Prof. Muhammad Ali Pate",
+    title: "Coordinating Minister of Health & Social Welfare, Federal Republic of Nigeria",
+    image: "/images/Ali-Pate.jpg?height=400&width=400",
+    shortBio:
+      "Global health expert and policy leader driving healthcare transformation and social welfare reforms in Nigeria.",
+    fullBio: `Prof. Muhammad Ali Pate serves as the Coordinating Minister of Health and Social Welfare for the Federal Republic of Nigeria, bringing extensive global health expertise and policy leadership to Nigeria's healthcare transformation agenda. A distinguished physician, public health expert, and former World Bank executive, Professor Pate has dedicated his career to improving health outcomes and social welfare systems globally.
+
+Professor Pate holds medical and public health degrees and has pursued advanced studies in health policy and management at leading international institutions. His academic background, combined with extensive field experience in global health, has positioned him as one of the world's leading experts in health systems strengthening and development.
+
+Before his appointment as Coordinating Minister, Professor Pate served in senior positions at the World Bank, where he led global health initiatives and supported health system reforms in multiple countries. His international experience includes working with governments, development partners, and civil society organizations to design and implement large-scale health programs.
+
+Professor Pate previously served as Nigeria's Minister of State for Health, where he led significant reforms in Nigeria's health sector, including the development of the National Health Act and the establishment of the Basic Health Care Provision Fund. His earlier experience in Nigeria's health sector provides him with deep understanding of the country's health challenges and opportunities.
+
+As Coordinating Minister, Professor Pate has focused on comprehensive health system reforms, universal health coverage, primary healthcare strengthening, and social welfare program integration. His administration has prioritized addressing Nigeria's health workforce challenges, improving health infrastructure, and ensuring equitable access to quality healthcare services.
+
+Professor Pate's vision for Nigeria's health sector includes achieving universal health coverage, strengthening health security, improving maternal and child health outcomes, and building resilient health systems that can respond effectively to health emergencies. His approach emphasizes evidence-based policy making, stakeholder engagement, and sustainable financing mechanisms.
+
+His global perspective and local experience have been instrumental in positioning Nigeria's health sector for transformation while ensuring that reforms are contextually appropriate and sustainable. Under his leadership, Nigeria continues to make progress toward achieving its health and social welfare objectives.`,
+    achievements: [
+      "Led global health initiatives at the World Bank",
+      "Developed Nigeria's National Health Act and Basic Health Care Provision Fund",
+      "Advanced universal health coverage initiatives",
+      "Strengthened primary healthcare systems across Nigeria",
+      "Promoted health workforce development and capacity building",
+      "Enhanced health security and emergency preparedness",
+    ],
+    sessions: [
+      {
+        title: "Economic Session",
+        time: "Friday, Sept 19 | 11:00 AM - 12:30 PM",
+        description: "Ministerial address on Nigeria's health sector reforms and social welfare integration",
+      },
+    ],
+  },
+  {
+    id: "abayomi",
+    name: "Prof. Emmanuel Akin Abayomi",
+    title: "Hon. Commissioner for Health, Lagos State",
+    image: "/images/akin-abayomi.jpg?height=400&width=400",
+    shortBio:
+      "Distinguished physician and health administrator leading Lagos State's healthcare excellence and innovation initiatives.",
+    fullBio: `Prof. Emmanuel Akin Abayomi serves as the Honourable Commissioner for Health in Lagos State, bringing extensive medical expertise and healthcare administration experience to Lagos State's health sector transformation. A distinguished physician, academic, and healthcare leader, Professor Abayomi has been instrumental in positioning Lagos State as a leader in healthcare delivery and innovation in Nigeria.
+
+Professor Abayomi holds medical degrees and advanced qualifications in his medical specialty, with additional training in healthcare management and administration. His academic background and clinical experience have provided him with comprehensive understanding of both the technical and administrative aspects of healthcare delivery.
+
+Before his appointment as Commissioner, Professor Abayomi had a distinguished career in clinical practice, medical education, and healthcare administration. His experience spans both public and private healthcare sectors, giving him unique insights into the challenges and opportunities in Nigeria's healthcare system.
+
+As Commissioner for Health, Professor Abayomi has led Lagos State's response to various health challenges, including the COVID-19 pandemic, where Lagos State was recognized for its effective public health response and innovative approaches to pandemic management. His leadership during health emergencies has demonstrated the importance of preparedness, coordination, and evidence-based decision making.
+
+Professor Abayomi's administration has focused on strengthening Lagos State's health system through infrastructure development, human resource capacity building, health technology adoption, and improved service delivery. His initiatives have included expanding access to quality healthcare, strengthening primary healthcare systems, and promoting preventive health measures.
+
+His vision for Lagos State's health sector includes achieving universal health coverage, building world-class healthcare facilities, developing local health technology solutions, and positioning Lagos as a medical tourism destination. His approach emphasizes innovation, quality improvement, and patient-centered care delivery.
+
+Under his leadership, Lagos State has continued to set standards for healthcare delivery in Nigeria, implementing innovative programs and policies that serve as models for other states. Professor Abayomi's commitment to healthcare excellence and his collaborative approach have contributed significantly to Lagos State's health sector achievements.
+
+His expertise in both clinical medicine and health administration has been particularly valuable in developing policies and programs that address Lagos State's unique health challenges while building on its strengths as Nigeria's commercial capital.`,
+    achievements: [
+      "Led Lagos State's exemplary COVID-19 pandemic response",
+      "Advanced healthcare infrastructure development across Lagos",
+      "Strengthened primary healthcare delivery systems",
+      "Promoted health technology adoption and innovation",
+      "Enhanced medical education and healthcare workforce development",
+      "Improved health emergency preparedness and response capabilities",
+    ],
+    sessions: [
+      {
+        title: "Economic Session",
+        time: "Friday, Sept 19 | 11:00 AM - 12:30 PM",
+        description: "State perspective on healthcare delivery, innovation, and public health leadership",
+      },
+    ],
+  },
+  {
+    id: "obasa",
+    name: "Rt. Hon. Mudashiru Obasa",
+    title: "Speaker, Lagos State House of Assembly",
+    image: "/images/Mudashiru-Obasa.jpg?height=400&width=400",
+    shortBio:
+      "Experienced legislator and parliamentary leader driving legislative excellence and democratic governance in Lagos State.",
+    fullBio: `Rt. Hon. Mudashiru Obasa serves as the Speaker of the Lagos State House of Assembly, bringing extensive legislative experience and parliamentary leadership to Lagos State's legislative arm of government. A seasoned legislator and democratic leader, Speaker Obasa has been instrumental in strengthening Lagos State's legislative institutions and advancing the state's development agenda through effective legislation.
+
+Speaker Obasa has served multiple terms in the Lagos State House of Assembly, representing his constituency with distinction while contributing significantly to the state's legislative development. His extensive experience in parliamentary procedures, legislative drafting, and constituency representation has made him one of Nigeria's most respected state-level legislative leaders.
+
+Before becoming Speaker, Obasa served in various leadership positions within the Lagos State House of Assembly, including committee chairmanships and other parliamentary roles. His progressive rise through the legislative hierarchy demonstrates his commitment to legislative excellence and his colleagues' confidence in his leadership abilities.
+
+As Speaker, Obasa has focused on modernizing the Lagos State House of Assembly, improving legislative processes, and strengthening the Assembly's oversight functions. His leadership has emphasized transparency, accountability, and effective representation of Lagos State citizens' interests in the legislative process.
+
+Speaker Obasa's tenure has been marked by significant legislative achievements that have supported Lagos State's development agenda. Under his leadership, the Assembly has passed landmark legislation in areas including urban development, economic growth, education, healthcare, and infrastructure development.
+
+His vision for the Lagos State House of Assembly includes positioning it as a model legislative institution in Nigeria, strengthening its capacity for effective oversight, improving public engagement with the legislative process, and ensuring that legislation supports Lagos State's vision of becoming a 21st-century economy.
+
+Speaker Obasa's collaborative approach has fostered strong working relationships between the legislative and executive arms of Lagos State government, contributing to more effective governance and policy implementation. His leadership has also emphasized the importance of legislative independence while maintaining constructive engagement with other arms of government.
+
+His commitment to democratic values, legislative excellence, and Lagos State's development has earned him recognition as one of Nigeria's most effective state-level legislative leaders. Speaker Obasa continues to champion reforms that strengthen democratic institutions and improve governance outcomes at the state level.`,
+    achievements: [
+      "Multiple terms of distinguished service in Lagos State House of Assembly",
+      "Advanced legislative modernization and institutional strengthening",
+      "Passed landmark legislation supporting Lagos State development",
+      "Strengthened legislative oversight and accountability mechanisms",
+      "Enhanced public engagement with the legislative process",
+      "Fostered effective inter-governmental collaboration",
+    ],
+    sessions: [
+      {
+        title: "Economic Session",
+        time: "Friday, Sept 19 | 11:00 AM - 12:30 PM",
+        description: "State legislative perspective on governance, development, and democratic institutions",
       },
     ],
   },
@@ -84,14 +329,119 @@ His vision for Lagos includes creating a robust digital ecosystem that supports 
     ],
     sessions: [
       {
-        title: "Economic Advancement Through Technology",
-        time: "Saturday, Sept 20 | 2:00 PM - 3:30 PM",
+        title: "Economic Session",
+        time: "Friday, Sept 19 | 11:00 AM - 12:30 PM",
         description: "Exploring how technology and innovation drive economic growth and development",
       },
+    ],
+  },
+  {
+    id: "opeifa",
+    name: "Kayode Opeifa",
+    title: "Managing Director, Nigerian Railway Corporation",
+    image: "/images/kayode.jpg?height=400&width=400",
+    shortBio:
+      "Transportation expert and railway development leader driving Nigeria's rail infrastructure modernization.",
+    fullBio: `Kayode Opeifa serves as the Managing Director of the Nigerian Railway Corporation (NRC), bringing extensive experience in transportation management, infrastructure development, and public administration to Nigeria's railway modernization efforts. A seasoned transportation expert and administrator, Opeifa has been instrumental in advancing Nigeria's rail infrastructure development and improving railway services across the country.
+
+Opeifa holds advanced degrees in transportation and logistics management and has pursued specialized training in railway operations and infrastructure development. His educational background and professional experience have equipped him with comprehensive understanding of modern railway systems and their role in national economic development.
+
+Before his appointment as Managing Director of NRC, Opeifa served in various senior positions in Lagos State government, including as Commissioner for Transportation, where he led significant reforms in Lagos State's transportation sector. His experience in state-level transportation management has provided him with valuable insights into the integration of different transportation modes and the importance of coordinated transportation planning.
+
+As Managing Director of NRC, Opeifa has focused on modernizing Nigeria's railway infrastructure, improving service delivery, and expanding railway networks to connect major economic centers across the country. His administration has prioritized safety improvements, capacity building, and the adoption of modern railway technologies.
+
+Opeifa's vision for Nigeria's railway sector includes developing a comprehensive national railway network that supports economic growth, reduces transportation costs, and provides safe, reliable, and efficient passenger and freight services. His approach emphasizes public-private partnerships, technology adoption, and sustainable development practices.
+
+Under his leadership, NRC has made significant progress in railway infrastructure development, service improvement, and capacity expansion. His experience in both state and federal transportation management has been particularly valuable in coordinating railway development with other transportation modes and ensuring that railway projects align with broader national development objectives.
+
+His commitment to transportation excellence and his understanding of Nigeria's transportation challenges have positioned him as a key leader in the country's infrastructure development efforts. Opeifa continues to champion initiatives that strengthen Nigeria's transportation sector and support national economic growth.`,
+    achievements: [
+      "Led comprehensive transportation reforms in Lagos State",
+      "Advanced Nigeria's railway infrastructure modernization",
+      "Improved railway safety standards and service delivery",
+      "Expanded railway network connectivity across Nigeria",
+      "Promoted public-private partnerships in railway development",
+      "Enhanced railway workforce capacity and technical capabilities",
+    ],
+    sessions: [
       {
-        title: "Building Smart Cities in Africa",
-        time: "Sunday, Sept 21 | 11:00 AM - 12:00 PM",
-        description: "Panel discussion on urban technology solutions and digital transformation",
+        title: "Economic Session - Dialogue",
+        time: "Friday, Sept 19 | 11:00 AM - 12:30 PM",
+        description: " Nigerian Railway Corporation: Transportation as Catalyst for Growth",
+      },
+    ],
+  },
+  {
+    id: "dele-alake",
+    name: "Dr. Dele Alake",
+    title: "Hon. Minister of Solid Minerals Development, Federal Republic of Nigeria",
+    image: "/images/Dele-Alake.jpg?height=400&width=400",
+    shortBio: "Distinguished mining engineer and policy expert leading Nigeria's solid minerals sector transformation.",
+    fullBio: `Dr. Dele Alake serves as the Honourable Minister of Solid Minerals Development for the Federal Republic of Nigeria, bringing extensive experience in mining engineering, geological sciences, and natural resources management to Nigeria's solid minerals sector development. A distinguished mining engineer and policy expert, Dr. Alake has dedicated his career to unlocking Nigeria's vast mineral wealth and positioning the solid minerals sector as a key pillar of economic diversification.
+
+Dr. Alake holds advanced degrees in Mining Engineering and Geological Sciences from leading institutions, with additional qualifications in natural resources management and sustainable mining practices. His academic background and technical expertise have equipped him with comprehensive understanding of modern mining technologies, environmental sustainability, and the economic potential of Nigeria's mineral resources.
+
+Before his appointment as Minister, Dr. Alake had a distinguished career in the mining industry, working with both local and international mining companies in various technical and managerial capacities. His experience spans exploration geology, mine planning, operations management, and regulatory compliance, giving him practical insights into all aspects of the mining value chain.
+
+As Minister of Solid Minerals Development, Dr. Alake has focused on comprehensive sector reforms aimed at attracting investment, improving regulatory frameworks, and developing local capacity in the solid minerals sector. His administration has prioritized artisanal mining formalization, large-scale mining promotion, and the development of mineral processing capabilities within Nigeria.
+
+Dr. Alake's vision for Nigeria's solid minerals sector includes positioning it as a major contributor to GDP, creating millions of jobs, and establishing Nigeria as a leading mineral producer in Africa. His approach emphasizes sustainable mining practices, community engagement, technology adoption, and value addition through local processing and beneficiation.
+
+Under his leadership, the Ministry has initiated several strategic programs including the National Integrated Mineral Exploration Programme, the Artisanal and Small-Scale Mining Development Programme, and various initiatives to attract foreign direct investment into the sector. His commitment to transparency and good governance has helped improve Nigeria's ranking in global mining investment attractiveness indices.
+
+Dr. Alake is passionate about ensuring that Nigeria's mineral wealth benefits all citizens through job creation, revenue generation, and sustainable development. His leadership has emphasized the importance of environmental stewardship, community development, and the integration of solid minerals development with broader national economic objectives.`,
+    achievements: [
+      "Led comprehensive solid minerals sector reforms and policy development",
+      "Attracted significant foreign direct investment to Nigeria's mining sector",
+      "Implemented artisanal mining formalization programs across Nigeria",
+      "Developed strategic partnerships with international mining companies",
+      "Advanced sustainable mining practices and environmental compliance",
+      "Promoted local content development and mineral processing capabilities",
+    ],
+    sessions: [
+      {
+        title: "Town Hall Meeting: 'Solid Minerals as Nigeria's Next Economic Frontier'",
+        time: "Friday, Sept 19 | 3:00 PM - 4:00 PM",
+        description:
+          "Exploring the transformative potential of Nigeria's solid minerals sector for economic diversification and growth",
+      },
+    ],
+  },
+  {
+    id: "alli-balogun",
+    name: "Mr. Jamiu Tolani Alli-Balogun",
+    title: "Hon. Commissioner for Education, Lagos State",
+    image: "/images/jamiu.jpg?height=400&width=400",
+    shortBio:
+      "Educational administrator and policy expert driving educational excellence and innovation in Lagos State.",
+    fullBio: `Mr. Jamiu Tolani Alli-Balogun serves as the Honourable Commissioner for Education in Lagos State, bringing extensive experience in educational administration, policy development, and institutional management to Lagos State's education sector transformation. A distinguished educational administrator and policy expert, Commissioner Alli-Balogun has been instrumental in advancing educational excellence and innovation across Lagos State's educational institutions.
+
+Commissioner Alli-Balogun holds advanced degrees in Education and Educational Administration from reputable institutions, with additional qualifications in educational policy and management. His academic background and professional experience have equipped him with comprehensive understanding of modern educational systems, curriculum development, and the strategic management of large-scale educational institutions.
+
+Before his appointment as Commissioner, Alli-Balogun had a distinguished career in educational administration, serving in various leadership positions within Lagos State's education system. His experience spans classroom teaching, school administration, district management, and policy development, giving him practical insights into all levels of the educational system.
+
+As Commissioner for Education, Alli-Balogun has focused on comprehensive educational reforms aimed at improving learning outcomes, enhancing teacher quality, and modernizing educational infrastructure across Lagos State. His administration has prioritized digital literacy, STEM education, vocational training, and the integration of technology in teaching and learning processes.
+
+Commissioner Alli-Balogun's vision for Lagos State's education sector includes positioning it as a model for educational excellence in Nigeria, ensuring equitable access to quality education, and preparing students for the challenges of the 21st century economy. His approach emphasizes innovation, continuous improvement, stakeholder engagement, and evidence-based policy making.
+
+Under his leadership, the Ministry of Education has implemented several strategic initiatives including the EKO Digital School project, teacher professional development programs, infrastructure modernization projects, and partnerships with international educational organizations. His commitment to educational equity has led to targeted interventions in underserved communities and the expansion of educational opportunities for all Lagos residents.
+
+Commissioner Alli-Balogun is passionate about ensuring that every child in Lagos State has access to quality education that prepares them for success in life and contributes to the state's continued development. His leadership has emphasized the importance of collaboration between government, private sector, civil society, and international partners in achieving educational transformation.
+
+His expertise in educational policy and administration has been particularly valuable in navigating the complex challenges of managing one of Nigeria's largest state education systems while maintaining high standards and continuous improvement in educational outcomes.`,
+    achievements: [
+      "Led comprehensive educational reforms across Lagos State school system",
+      "Implemented innovative digital learning initiatives and technology integration",
+      "Advanced teacher professional development and capacity building programs",
+      "Modernized educational infrastructure and learning environments",
+      "Promoted STEM education and vocational training programs",
+      "Enhanced educational equity and access for underserved communities",
+    ],
+    sessions: [
+      {
+        title: "General Session 2 – Policy Roundtable",
+        time: "Saturday, Sept 20 | 10:30 AM - 11:30 AM",
+        description: "Educational policy perspectives on human capital development and institutional excellence",
       },
     ],
   },
@@ -259,7 +609,7 @@ export default function SpeakersPage() {
             viewport={{ once: true }}
             className="text-center mb-12 sm:mb-16"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold pb-4 sm:mb-6 bg-gradient-to-r from-purple-600 to-teal-600 bg-clip-text text-transparent">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-purple-600 to-teal-600 bg-clip-text text-transparent">
               Keynote Speakers
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">

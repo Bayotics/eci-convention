@@ -49,22 +49,56 @@ export function FeaturedSpeakers() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto"
         >
+          {/* President Bola Ahmed Tinubu */}
           <motion.div variants={fadeInUp} className="text-center">
-            <div className="w-56 h-56 mx-auto mb-4 rounded-full bg-gradient-to-br from-pink-400 to-purple-600 flex items-center justify-center overflow-hidden">
-              <img src="/images/tunbosun-alake.jpg" alt="Olatunbosun Alake" className="w-full h-full object-cover" />
+            <div className="w-48 h-48 sm:w-52 sm:h-52 lg:w-56 lg:h-56 mx-auto mb-4 rounded-full bg-gradient-to-br from-yellow-400 to-orange-600 flex items-center justify-center overflow-hidden shadow-lg">
+              <img
+                src="/images/TINUBU-7.jpg?height=224&width=224"
+                alt="H.E. Bola Ahmed Tinubu"
+                className="w-full h-full object-cover"
+              />
             </div>
-            <h3 className="text-xl font-bold mb-2">Olatunbosun Alake</h3>
-            <p className="text-purple-200">Distinguished Leader & Keynote Speaker</p>
+            <h3 className="text-lg sm:text-xl font-bold mb-2 px-2">H.E. Bola Ahmed Tinubu</h3>
+            <p className="text-purple-200 text-sm sm:text-base px-2">President, Federal Republic of Nigeria</p>
           </motion.div>
 
+          {/* Gov. Sanwo-Olu */}
           <motion.div variants={fadeInUp} className="text-center">
-            <div className="w-56 h-56 mx-auto mb-4 rounded-full bg-gradient-to-br from-teal-400 to-blue-600 flex items-center justify-center overflow-hidden">
+            <div className="w-48 h-48 sm:w-52 sm:h-52 lg:w-56 lg:h-56 mx-auto mb-4 rounded-full bg-gradient-to-br from-teal-400 to-blue-600 flex items-center justify-center overflow-hidden shadow-lg">
               <img src="/images/sanwoolu.jpg" alt="Gov. Sanwo-Olu" className="w-full h-full object-cover" />
             </div>
-            <h3 className="text-xl font-bold mb-2">Gov. Sanwo-Olu</h3>
-            <p className="text-purple-200">Special Guest Speaker</p>
+            <h3 className="text-lg sm:text-xl font-bold mb-2 px-2">Gov. Sanwo-Olu</h3>
+            <p className="text-purple-200 text-sm sm:text-base px-2">Executive Governor, Lagos State</p>
+          </motion.div>
+
+          {/* Olayemi Cardoso */}
+          <motion.div variants={fadeInUp} className="text-center">
+            <div className="w-48 h-48 sm:w-52 sm:h-52 lg:w-56 lg:h-56 mx-auto mb-4 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center overflow-hidden shadow-lg">
+              <img
+                src="/images/cardoso.png?height=224&width=224"
+                alt="Mr. Olayemi Cardoso"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <h3 className="text-lg sm:text-xl font-bold mb-2 px-2">Mr. Olayemi Cardoso</h3>
+            <p className="text-purple-200 text-sm sm:text-base px-2">Governor, Central Bank of Nigeria</p>
+          </motion.div>
+
+          {/* Dr. Tunji Alausa */}
+          <motion.div variants={fadeInUp} className="text-center">
+            <div className="w-48 h-48 sm:w-52 sm:h-52 lg:w-56 lg:h-56 mx-auto mb-4 rounded-full bg-gradient-to-br from-pink-400 to-purple-600 flex items-center justify-center overflow-hidden shadow-lg">
+              <img
+                src="/images/Tunji-Alausa.jpg?height=224&width=224"
+                alt="Dr. Tunji Alausa"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <h3 className="text-lg sm:text-xl font-bold mb-2 px-2">Dr. Tunji Alausa</h3>
+            <p className="text-purple-200 text-sm sm:text-base px-2">
+              Hon. Minister of Education, Federal Republic of Nigeria
+            </p>
           </motion.div>
         </motion.div>
 
@@ -79,9 +113,7 @@ export function FeaturedSpeakers() {
             variant="outline"
             className="border-white text-white hover:bg-white hover:text-purple-600 bg-transparent"
           >
-            <Link href={'/speakers'}>
-              Learn More
-            </Link>
+            <Link href={"/speakers"}>View All Speakers</Link>
           </Button>
         </motion.div>
       </div>
