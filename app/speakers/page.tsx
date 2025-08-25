@@ -191,6 +191,30 @@ His commitment to democratic values, legislative excellence, and national develo
     ],
   },
   {
+    id: "abike-dabiri-erewa",
+    name: "Hon. Abike Oluwatoyin Dabiri-Erewa, OON",
+    title: "Chairman/CEO, Nigerians in Diaspora Commission (NIDCOM)",
+    image: "/images/abike.png?height=400&width=400",
+    shortBio: "Champion of diaspora relations and global perception, leading NIDCOM to connect Nigerians worldwide.",
+    fullBio: `Hon. Abike Oluwatoyin Dabiri-Erewa, OON, is the Chairman/CEO of Nigerians in Diaspora Commission (NIDCOM). She is a renowned advocate for diaspora engagement, global perception, and the Lagos advantage. With a distinguished career in public service, broadcasting, and legislative leadership, Hon. Dabiri-Erewa has been instrumental in shaping policies that connect Nigerians abroad with opportunities at home.
+    Her leadership at NIDCOM has fostered stronger ties between Nigeria and its diaspora, promoting national development, investment, and positive global perception. She is recognized for her commitment to empowering Nigerians worldwide and advancing the country's interests on the international stage.
+    Hon. Dabiri-Erewa's vision centers on leveraging the power of the diaspora for economic growth, cultural exchange, and global influence. Her work continues to inspire collaboration, innovation, and pride among Nigerians everywhere.`,
+    achievements: [
+      "Pioneered diaspora engagement initiatives for Nigeria",
+      "Strengthened global perception of Nigeria through NIDCOM",
+      "Advocated for diaspora investment and national development",
+      "Promoted cultural exchange and international partnerships",
+      "Recognized for outstanding public service and leadership",
+    ],
+    sessions: [
+      {
+        title: "Economic Session",
+        time: "Friday, Sept 19 | 11:00 AM - 12:30 PM",
+        description: "Africa Rising: Diaspora Relations, Global Perception & the Lagos Advantage",
+      },
+    ],
+  },
+  {
     id: "pate",
     name: "Prof. Muhammad Ali Pate",
     title: "Coordinating Minister of Health & Social Welfare, Federal Republic of Nigeria",
