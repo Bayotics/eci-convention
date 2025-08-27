@@ -103,16 +103,6 @@ const agendaData = {
         type: "tour",
         icon: MapPin,
       },
-      {
-        id: "landmarks-tour",
-        time: "8:30 PM - 9:30 PM",
-        title: "Chat with Governor Babajide Sanwo-Olu",
-        description: " Fireside Chat – Governor Babajide Sanwo-Olu: 'Lagos: Africa’s Gateway for Diaspora Partnerships and Global Growth.",
-        location: "Various Locations",
-        organizer: "ECI Committee",
-        type: "meeting",
-        icon: Mic,
-      },
     ],
   },
   "2025-09-19": {
@@ -161,6 +151,8 @@ const agendaData = {
             'Nigeria and the New African Economy: A Diaspora-Driven Blueprint'
           • Special Address – Dr. Tunji Alausa, Hon. Minister of Education, Federal Republic of Nigeria:
             'Education as the Foundation for Africa’s Future'
+          • Special Address – H.E. Governor Babajide Olusola Sanwoolu: 'The Lagos
+            Advantage: Urban Innovation and Diaspora Investment'
           • Panel – Speakers:
             - Mr. Olayemi Cardoso, Governor, Central Bank of Nigeria
             - Rt. Hon. Abbas Tajudeen, Ph.D., Speaker, Federal House of Representatives
@@ -176,8 +168,8 @@ const agendaData = {
         organizer: "ECI Economic Session Committee",
         type: "panel",
         icon: Building,
-        speakers: [`H.E. Bola Ahmed Tinubu, Dr. Tunji Alausa, Hon. Minister of Education, Mr. Olayemi Cardoso, Governor, Central Bank of Nigeria, Rt. Hon. Abbas Tajudeen, Ph.D., Speaker, Federal House of Representatives,  Prof. Muhammad Ali Pate, Coordinating Minister of Health & Social Welfare,
-                    Federal Republic of Nigeria,  Prof. Emmanuel Akin Abayomi, Hon. Commissioner for Health, Lagos State,  Rt. Hon. Mudashiru Obasa, Speaker, Lagos State House of Assembly, AWS Kuiper Representative,  Kayode Opeifa, Managing Director, Nigerian Railway Corporation,  Hon. Olatunbosun Alake", " Adebimpe Daniells, Chair, Economic Session`],
+        speakers: [`H.E. Bola Ahmed Tinubu, Gov. Babajide Sanwoolu, Dr. Tunji Alausa, Mr. Olayemi Cardoso, Rt. Hon. Abbas Tajudeen, Ph.D., Prof. Muhammad Ali Pate,
+                    Prof. Emmanuel Akin Abayomi, Rt. Hon. Mudashiru Obasa, Kayode Opeifa, Hon. Olatunbosun Alake", " Adebimpe Daniells: Chair, Economic Session`],
       },
       {
         id: "jumaat-prayer",
