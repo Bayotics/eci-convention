@@ -52,7 +52,7 @@ President Tinubu's vision for Nigeria centers on economic transformation, job cr
     sessions: [
       {
         title: "Economic Session - Keynote",
-        time: "Friday, Sept 19 | 11:00 AM - 12:30 PM",
+        time: "Friday, Sept 19 | 11:00 AM - 12:45 PM",
         description: "Nigeria and the New African Economy: A Diaspora-Driven Blueprint",
       },
     ],
@@ -83,9 +83,9 @@ Governor Sanwo-Olu's leadership during the COVID-19 pandemic was particularly no
     ],
     sessions: [
       {
-        title: "Fireside Chat ",
-        time: "Thursday, Sept 18 | 10:00 AM - 11:00 AM",
-        description: "Lagos: Africa's Gateway for Diaspora Partnerships and Global Growth",
+        title: "Economic Session",
+        time: "Friday, Sept 19 | 11:00 AM - 12:45 PM",
+        description: "The Lagos Advantage: Urban Innovation and Diaspora Investment",
       },
     ],
   },
@@ -117,44 +117,44 @@ His leadership style emphasizes collaboration with stakeholders, evidence-based 
     sessions: [
       {
         title: "Economic Session - Special Address",
-        time: "Friday, Sept 19 | 11:00 AM - 12:30 PM",
+        time: "Friday, Sept 19 | 11:00 AM - 12:45 PM",
         description: "Education as the Foundation for Africa's Future",
       },
     ],
   },
-  {
-    id: "cardoso",
-    name: "Mr. Olayemi Cardoso",
-    title: "Governor, Central Bank of Nigeria",
-    image: "/images/cardoso.png?height=450&width=400",
-    shortBio: "Seasoned financial expert leading Nigeria's monetary policy and economic stabilization efforts.",
-    fullBio: `Mr. Olayemi Cardoso serves as the Governor of the Central Bank of Nigeria (CBN), bringing over three decades of distinguished experience in banking, finance, and economic policy to Nigeria's apex bank. A seasoned financial expert and former investment banker, Governor Cardoso has been instrumental in shaping Nigeria's monetary policy and financial sector development.
+//   {
+//     id: "cardoso",
+//     name: "Mr. Olayemi Cardoso",
+//     title: "Governor, Central Bank of Nigeria",
+//     image: "/images/cardoso.png?height=450&width=400",
+//     shortBio: "Seasoned financial expert leading Nigeria's monetary policy and economic stabilization efforts.",
+//     fullBio: `Mr. Olayemi Cardoso serves as the Governor of the Central Bank of Nigeria (CBN), bringing over three decades of distinguished experience in banking, finance, and economic policy to Nigeria's apex bank. A seasoned financial expert and former investment banker, Governor Cardoso has been instrumental in shaping Nigeria's monetary policy and financial sector development.
 
-Governor Cardoso holds a Bachelor's degree in Economics from the University of Lagos and a Master's degree in Business Administration from Harvard Business School. His educational background in economics and business administration, combined with extensive international experience, has equipped him with the expertise necessary to navigate Nigeria's complex economic challenges.
+// Governor Cardoso holds a Bachelor's degree in Economics from the University of Lagos and a Master's degree in Business Administration from Harvard Business School. His educational background in economics and business administration, combined with extensive international experience, has equipped him with the expertise necessary to navigate Nigeria's complex economic challenges.
 
-Before his appointment as CBN Governor, Cardoso had a distinguished career in investment banking and financial services. He served as Managing Director of Citibank Nigeria Limited and held senior positions in various international financial institutions. His experience spans corporate banking, investment banking, treasury operations, and financial market development.
+// Before his appointment as CBN Governor, Cardoso had a distinguished career in investment banking and financial services. He served as Managing Director of Citibank Nigeria Limited and held senior positions in various international financial institutions. His experience spans corporate banking, investment banking, treasury operations, and financial market development.
 
-As CBN Governor, Cardoso has focused on monetary policy stability, inflation management, exchange rate stability, and financial sector reforms. His administration has prioritized strengthening Nigeria's financial system, promoting financial inclusion, and supporting economic growth through strategic monetary policy interventions.
+// As CBN Governor, Cardoso has focused on monetary policy stability, inflation management, exchange rate stability, and financial sector reforms. His administration has prioritized strengthening Nigeria's financial system, promoting financial inclusion, and supporting economic growth through strategic monetary policy interventions.
 
-Governor Cardoso's approach to central banking emphasizes transparency, data-driven decision making, and collaboration with fiscal authorities to achieve macroeconomic stability. He has been instrumental in implementing policies that support Nigeria's economic diversification efforts while maintaining price stability and financial system integrity.
+// Governor Cardoso's approach to central banking emphasizes transparency, data-driven decision making, and collaboration with fiscal authorities to achieve macroeconomic stability. He has been instrumental in implementing policies that support Nigeria's economic diversification efforts while maintaining price stability and financial system integrity.
 
-His vision for Nigeria's financial sector includes modernizing payment systems, strengthening regulatory frameworks, promoting digital financial services, and positioning Nigeria as a leading financial hub in Africa. Under his leadership, the CBN continues to play a crucial role in Nigeria's economic development and financial sector transformation.`,
-    achievements: [
-      "Led major financial institutions as Managing Director",
-      "Implemented strategic monetary policy reforms",
-      "Advanced financial inclusion initiatives across Nigeria",
-      "Strengthened Nigeria's payment system infrastructure",
-      "Promoted digital financial services adoption",
-      "Enhanced central bank transparency and communication",
-    ],
-    sessions: [
-      {
-        title: "Economic Session - Panel",
-        time: "Friday, Sept 19 | 11:00 AM - 12:30 PM",
-        description: "Central bank perspective on Nigeria's economic outlook and monetary policy",
-      },
-    ],
-  },
+// His vision for Nigeria's financial sector includes modernizing payment systems, strengthening regulatory frameworks, promoting digital financial services, and positioning Nigeria as a leading financial hub in Africa. Under his leadership, the CBN continues to play a crucial role in Nigeria's economic development and financial sector transformation.`,
+//     achievements: [
+//       "Led major financial institutions as Managing Director",
+//       "Implemented strategic monetary policy reforms",
+//       "Advanced financial inclusion initiatives across Nigeria",
+//       "Strengthened Nigeria's payment system infrastructure",
+//       "Promoted digital financial services adoption",
+//       "Enhanced central bank transparency and communication",
+//     ],
+//     sessions: [
+//       {
+//         title: "Economic Session - Panel",
+//         time: "Friday, Sept 19 | 11:00 AM - 12:45 PM",
+//         description: "Central bank perspective on Nigeria's economic outlook and monetary policy",
+//       },
+//     ],
+//   },
   {
     id: "tajudeen",
     name: "Rt. Hon. Abbas Tajudeen, Ph.D.",
@@ -185,7 +185,7 @@ His commitment to democratic values, legislative excellence, and national develo
     sessions: [
       {
         title: "Economic Session",
-        time: "Friday, Sept 19 | 11:00 AM - 12:30 PM",
+        time: "Friday, Sept 19 | 11:00 AM - 12:45 PM",
         description: "Parliamentary perspective on Nigeria's democratic development and legislative priorities",
       },
     ],
@@ -209,7 +209,7 @@ His commitment to democratic values, legislative excellence, and national develo
     sessions: [
       {
         title: "Economic Session",
-        time: "Friday, Sept 19 | 11:00 AM - 12:30 PM",
+        time: "Friday, Sept 19 | 11:00 AM - 12:45 PM",
         description: "Africa Rising: Diaspora Relations, Global Perception & the Lagos Advantage",
       },
     ],
@@ -245,7 +245,7 @@ His global perspective and local experience have been instrumental in positionin
     sessions: [
       {
         title: "Economic Session",
-        time: "Friday, Sept 19 | 11:00 AM - 12:30 PM",
+        time: "Friday, Sept 19 | 11:00 AM - 12:45 PM",
         description: "Ministerial address on Nigeria's health sector reforms and social welfare integration",
       },
     ],
@@ -283,7 +283,7 @@ His expertise in both clinical medicine and health administration has been parti
     sessions: [
       {
         title: "Economic Session",
-        time: "Friday, Sept 19 | 11:00 AM - 12:30 PM",
+        time: "Friday, Sept 19 | 11:00 AM - 12:45 PM",
         description: "State perspective on healthcare delivery, innovation, and public health leadership",
       },
     ],
@@ -321,7 +321,7 @@ His commitment to democratic values, legislative excellence, and Lagos State's d
     sessions: [
       {
         title: "Economic Session",
-        time: "Friday, Sept 19 | 11:00 AM - 12:30 PM",
+        time: "Friday, Sept 19 | 11:00 AM - 12:45 PM",
         description: "State legislative perspective on governance, development, and democratic institutions",
       },
     ],
@@ -354,7 +354,7 @@ His vision for Lagos includes creating a robust digital ecosystem that supports 
     sessions: [
       {
         title: "Economic Session",
-        time: "Friday, Sept 19 | 11:00 AM - 12:30 PM",
+        time: "Friday, Sept 19 | 11:00 AM - 12:45 PM",
         description: "Exploring how technology and innovation drive economic growth and development",
       },
     ],
@@ -390,7 +390,7 @@ His commitment to transportation excellence and his understanding of Nigeria's t
     sessions: [
       {
         title: "Economic Session - Dialogue",
-        time: "Friday, Sept 19 | 11:00 AM - 12:30 PM",
+        time: "Friday, Sept 19 | 11:00 AM - 12:45 PM",
         description: " Nigerian Railway Corporation: Transportation as Catalyst for Growth",
       },
     ],

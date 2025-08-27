@@ -73,17 +73,17 @@ export function FeaturedSpeakers() {
             <p className="text-purple-200 text-sm sm:text-base px-2">Executive Governor, Lagos State</p>
           </motion.div>
 
-          {/* Olayemi Cardoso */}
+          {/* Abike Dabiri */}
           <motion.div variants={fadeInUp} className="text-center">
             <div className="w-48 h-48 sm:w-52 sm:h-52 lg:w-56 lg:h-56 mx-auto mb-4 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center overflow-hidden shadow-lg">
               <img
-                src="/images/cardoso.png?height=224&width=224"
-                alt="Mr. Olayemi Cardoso"
+                src="/images/abike.png?height=224&width=224"
+                alt="Hon. Abike Dabiri-Erewa, OON"
                 className="w-full h-full object-cover"
               />
             </div>
-            <h3 className="text-lg sm:text-xl font-bold mb-2 px-2">Mr. Olayemi Cardoso</h3>
-            <p className="text-purple-200 text-sm sm:text-base px-2">Governor, Central Bank of Nigeria</p>
+            <h3 className="text-lg sm:text-xl font-bold mb-2 px-2">Hon. Abike Dabiri-Erewa, OON</h3>
+            <p className="text-purple-200 text-sm sm:text-base px-2">Chairman/CEO, Nigerians in Diaspora Commission (NIDCOM)</p>
           </motion.div>
 
           {/* Dr. Tunji Alausa */}
