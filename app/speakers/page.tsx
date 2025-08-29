@@ -122,39 +122,6 @@ His leadership style emphasizes collaboration with stakeholders, evidence-based 
       },
     ],
   },
-//   {
-//     id: "cardoso",
-//     name: "Mr. Olayemi Cardoso",
-//     title: "Governor, Central Bank of Nigeria",
-//     image: "/images/cardoso.png?height=450&width=400",
-//     shortBio: "Seasoned financial expert leading Nigeria's monetary policy and economic stabilization efforts.",
-//     fullBio: `Mr. Olayemi Cardoso serves as the Governor of the Central Bank of Nigeria (CBN), bringing over three decades of distinguished experience in banking, finance, and economic policy to Nigeria's apex bank. A seasoned financial expert and former investment banker, Governor Cardoso has been instrumental in shaping Nigeria's monetary policy and financial sector development.
-
-// Governor Cardoso holds a Bachelor's degree in Economics from the University of Lagos and a Master's degree in Business Administration from Harvard Business School. His educational background in economics and business administration, combined with extensive international experience, has equipped him with the expertise necessary to navigate Nigeria's complex economic challenges.
-
-// Before his appointment as CBN Governor, Cardoso had a distinguished career in investment banking and financial services. He served as Managing Director of Citibank Nigeria Limited and held senior positions in various international financial institutions. His experience spans corporate banking, investment banking, treasury operations, and financial market development.
-
-// As CBN Governor, Cardoso has focused on monetary policy stability, inflation management, exchange rate stability, and financial sector reforms. His administration has prioritized strengthening Nigeria's financial system, promoting financial inclusion, and supporting economic growth through strategic monetary policy interventions.
-
-// Governor Cardoso's approach to central banking emphasizes transparency, data-driven decision making, and collaboration with fiscal authorities to achieve macroeconomic stability. He has been instrumental in implementing policies that support Nigeria's economic diversification efforts while maintaining price stability and financial system integrity.
-
-// His vision for Nigeria's financial sector includes modernizing payment systems, strengthening regulatory frameworks, promoting digital financial services, and positioning Nigeria as a leading financial hub in Africa. Under his leadership, the CBN continues to play a crucial role in Nigeria's economic development and financial sector transformation.`,
-//     achievements: [
-//       "Led major financial institutions as Managing Director",
-//       "Implemented strategic monetary policy reforms",
-//       "Advanced financial inclusion initiatives across Nigeria",
-//       "Strengthened Nigeria's payment system infrastructure",
-//       "Promoted digital financial services adoption",
-//       "Enhanced central bank transparency and communication",
-//     ],
-//     sessions: [
-//       {
-//         title: "Economic Session - Panel",
-//         time: "Friday, Sept 19 | 11:00 AM - 12:45 PM",
-//         description: "Central bank perspective on Nigeria's economic outlook and monetary policy",
-//       },
-//     ],
-//   },
   {
     id: "tajudeen",
     name: "Rt. Hon. Abbas Tajudeen, Ph.D.",
@@ -469,94 +436,30 @@ His expertise in educational policy and administration has been particularly val
       },
     ],
   },
+   {
+    id: "adebimpe",
+    name: "Engr. Adebimpe Daniells",
+    title: "Senior Solutions Architect Amazon Web Services (AWS)",
+    image: "/images/adebimpe.jpg?height=450&width=400",
+    shortBio: "Senior Solutions Architect Amazon Web Services (AWS)",
+    fullBio: `Adebimpe is a multifaceted leader who thrives where technology, social impact, and creative expression converge. As a Senior Solutions Architect and AI expert at AWS, she partners with Private Equity firms, wielding the power of cloud computing (migration, modernization), machine learning, and AI to fuel their investment growth and ignite innovation. Her expertise extends to developing and implementing AI decision-making strategies, empowering companies to build and deploy AI workloads seamlessly on the AWS platform.`,
+    achievements: [
+      "Developed and implemented AI decision-making frameworks for global enterprises",
+      "Empowered companies to build and deploy scalable AI workloads on AWS",
+      "Partnered with Private Equity firms to drive technology innovation and investment growth",
+      "Advocate for women in technology and STEM leadership",
+      "Speaker at international conferences on cloud computing and artificial intelligence",
+    ],
+    sessions: [
+      {
+        title: "Economic Session",
+        time: "Friday, Sept 19 | 11:00 AM - 12:45 PM",
+        description: "Chair | Moderator, Economic Session",
+      },
+    ],
+  },
 ]
 
-const featuredSpeakers = [
-  {
-    id: "adebayo",
-    name: "Dr. Folake Adebayo",
-    title: "Director, African Development Institute",
-    image: "/placeholder.svg?height=300&width=300",
-    shortBio: "Leading expert in sustainable development and community empowerment across Africa.",
-    sessions: [
-      {
-        title: "Community Empowerment Strategies",
-        time: "Friday, Sept 19 | 2:00 PM - 3:00 PM",
-      },
-    ],
-    expertise: ["Sustainable Development", "Community Building", "Social Innovation"],
-  },
-  {
-    id: "johnson",
-    name: "Prof. Michael Johnson",
-    title: "Cultural Heritage Specialist, UNESCO",
-    image: "/placeholder.svg?height=300&width=300",
-    shortBio: "Internationally recognized expert in cultural preservation and heritage management.",
-    sessions: [
-      {
-        title: "Preserving Cultural Heritage in Modern Times",
-        time: "Saturday, Sept 20 | 10:00 AM - 11:00 AM",
-      },
-    ],
-    expertise: ["Cultural Preservation", "Heritage Management", "International Relations"],
-  },
-  {
-    id: "williams",
-    name: "Mrs. Aisha Williams",
-    title: "CEO, Global Youth Leadership Foundation",
-    image: "/placeholder.svg?height=300&width=300",
-    shortBio: "Passionate advocate for youth development and leadership training worldwide.",
-    sessions: [
-      {
-        title: "Bridging Generations: Youth Leadership",
-        time: "Saturday, Sept 20 | 4:00 PM - 5:00 PM",
-      },
-    ],
-    expertise: ["Youth Development", "Leadership Training", "Mentorship"],
-  },
-  {
-    id: "okafor",
-    name: "Dr. Chinedu Okafor",
-    title: "Senior Partner, Okafor & Associates",
-    image: "/placeholder.svg?height=300&width=300",
-    shortBio: "Distinguished legal practitioner specializing in international law and governance.",
-    sessions: [
-      {
-        title: "Legal Frameworks for Community Organizations",
-        time: "Sunday, Sept 21 | 9:00 AM - 10:00 AM",
-      },
-    ],
-    expertise: ["International Law", "Corporate Governance", "Legal Consulting"],
-  },
-  {
-    id: "thompson",
-    name: "Ms. Grace Thompson",
-    title: "Director of Operations, Diaspora Connect",
-    image: "/placeholder.svg?height=300&width=300",
-    shortBio: "Expert in diaspora engagement and international community building.",
-    sessions: [
-      {
-        title: "Strengthening Diaspora Networks",
-        time: "Sunday, Sept 21 | 3:00 PM - 4:00 PM",
-      },
-    ],
-    expertise: ["Diaspora Relations", "International Networks", "Community Engagement"],
-  },
-  {
-    id: "ibrahim",
-    name: "Dr. Amina Ibrahim",
-    title: "Health Policy Advisor, WHO Africa",
-    image: "/placeholder.svg?height=300&width=300",
-    shortBio: "Leading public health expert focused on community health and wellness programs.",
-    sessions: [
-      {
-        title: "Community Health and Wellness",
-        time: "Friday, Sept 19 | 4:00 PM - 5:00 PM",
-      },
-    ],
-    expertise: ["Public Health", "Health Policy", "Community Wellness"],
-  },
-]
 
 export default function SpeakersPage() {
   const [isScrolled, setIsScrolled] = useState(false)
