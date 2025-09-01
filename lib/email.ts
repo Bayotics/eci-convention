@@ -20,6 +20,11 @@ interface CancelData {
   email: string
   registrationId: string
 }
+interface ImmigrationData {
+  name:string,
+  service: string,
+  email: string
+}
 function generateCancelConfirmationHTML(cancelData: CancelData): string {
   return `
     <!DOCTYPE html>
@@ -47,6 +52,44 @@ function generateCancelConfirmationHTML(cancelData: CancelData): string {
           <tr>
             <td style="font-weight: bold; padding-right: 8px;">Registration ID:</td>
             <td>${cancelData.registrationId}</td>
+          </tr>
+        </table>
+        <p>
+          If you did not request this cancellation or have any questions, please contact us at
+          <a href="mailto:info@waletayo2000@yahoo.com">info@waletayo2000@yahoo.com</a>.
+        </p>
+        <p style="color: #6b7280; font-size: 13px; margin-top: 32px;">
+          Thank you,<br />
+          ECI Convention Team
+        </p>
+      </div>
+    </body>
+    </html>
+  `
+}
+function generateVisaConfirmationHTML(immigrationData: ImmigrationData): string {
+  return `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Immigration Service Registration Confirmed</title>
+    </head>
+    <body style="font-family: Arial, sans-serif; background: #fff; margin: 0; padding: 0;">
+      <div style="max-width: 600px; margin: 0 auto; padding: 24px;">
+        <h2 style="color: #b91c1c;">ECI Immigration Service Registration Confirmation</h2>
+        <p>Dear ${immigrationData.name},</p>
+        <p>
+          This is to confirm that your registration for the ECI Immigration service has been <b>saved</b>.
+        </p>
+        <table style="margin: 24px 0; font-size: 15px;">
+          <tr>
+            <td style="font-weight: bold; padding-right: 8px;">Name:</td>
+            <td>${immigrationData.name}</td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold; padding-right: 8px;">Service:</td>
+            <td>${immigrationData.service}</td>
           </tr>
         </table>
         <p>
@@ -370,6 +413,29 @@ export async function sendCancelConfirmation(cancelData: CancelData) {
     return { success: true, data }
   } catch (error) {
     console.error("Cancel confirmation email service error:", error)
+    return { success: false, error }
+  }
+}
+export async function sendImmigrationConfirmation(immigrationData: ImmigrationData) {
+  try {
+    console.log("immigration function is fired")
+    console.log(immigrationData)
+    const { data, error } = await resend.emails.send({
+      from: "ECI@25 Convention <www@ekoclub.org>",
+      to: [immigrationData.email],
+      subject: "Your ECI Convention Immigration service registration Has Been confirmed",
+      html: generateVisaConfirmationHTML(immigrationData),
+    })
+
+    if (error) {
+      console.error("Immigration confirmation email error:", error)
+      return { success: false, error }
+    }
+
+    console.log("Immigration confirmation email sent:", data)
+    return { success: true, data }
+  } catch (error) {
+    console.error("Immigration confirmation email service error:", error)
     return { success: false, error }
   }
 }
