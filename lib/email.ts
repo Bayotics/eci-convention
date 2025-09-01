@@ -93,7 +93,7 @@ function generateVisaConfirmationHTML(immigrationData: ImmigrationData): string 
           </tr>
         </table>
         <p>
-          If you did not request this cancellation or have any questions, please contact us at
+          If you did not request this registration or have any questions, please contact us at
           <a href="mailto:info@waletayo2000@yahoo.com">info@waletayo2000@yahoo.com</a>.
         </p>
         <p style="color: #6b7280; font-size: 13px; margin-top: 32px;">
