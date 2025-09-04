@@ -76,6 +76,19 @@ function generateVisaConfirmationHTML(immigrationData: ImmigrationData): string 
       <title>Immigration Service Registration Confirmed</title>
     </head>
     <body style="font-family: Arial, sans-serif; background: #fff; margin: 0; padding: 0;">
+    <div style="margin:auto; text-align: center; margin-bottom: 30px; border-bottom: 3px solid #7c3aed; padding: 30px 20px 20px 20px; background: linear-gradient(135deg, #7c3aed 0%, #059669 100%); color: white;">
+          <!-- ECI Logo -->
+          <div style="margin-bottom: 20px;">
+            <img 
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Eko_club_logo-removebg-preview-SAUiEpYRjmONtSd1YKYL42qyW13AzD.png" 
+              alt="ECI Logo" 
+              style="width: 120px; height: auto; display: block; margin: 0 auto;" 
+            />
+          </div>
+          <div style="background-color: rgba(255,255,255,0.2); padding: 12px 24px; border-radius: 25px; display: inline-block;">
+            <p style="color: white; font-size: 20px; font-weight: bold; margin: 0;">✅ Registration Confirmed!</p>
+          </div>
+        </div>
       <div style="max-width: 600px; margin: 0 auto; padding: 24px;">
         <h2 style="color: #b91c1c;">ECI Immigration Service Registration Confirmation</h2>
         <p>Dear ${immigrationData.name},</p>
@@ -93,8 +106,35 @@ function generateVisaConfirmationHTML(immigrationData: ImmigrationData): string 
           </tr>
         </table>
         <p>
+        Great News! 🎉 <br/>
+
+        Consular Services will be available at the ECI Biennial Convention & 25th Anniversary. <br/>
+
+        👉 All applicants must first apply online through the official Nigeria Immigration Service website: passport.immigration.gov.ng <br/>
+
+        👉 After applying, print your application slip and bring it along with a self-addressed prepaid envelope to the convention. <br/>
+
+        📌 At the convention:<br/>
+          •	Your application will be verified & validated by the consular team.<br/>
+          •	Biometrics will be captured onsite.<br/>
+          •	The self-addressed envelope will be collected, and your new passport will be delivered directly to your home.<br/>
+
+        This is a special opportunity to complete your passport processing quickly & conveniently during the convention! 🇳🇬✨ <br/>
+
+        </p>
+        <br/>
+        <a
+          href="http://nigeriaconsulatenewyork.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-5 bg-white text-green-700 font-semibold px-5 py-2 rounded-lg shadow hover:bg-gray-100 transition"
+        >
+          Visit Consulate Website Here
+        </a>
+        <br/><br/><br/>
+        <p>
           If you did not request this registration or have any questions, please contact us at
-          <a href="mailto:info@waletayo2000@yahoo.com">info@waletayo2000@yahoo.com</a>.
+          <a href="mailto:pr@ekoclub.org">pr@ekoclub.org</a>.
         </p>
         <p style="color: #6b7280; font-size: 13px; margin-top: 32px;">
           Thank you,<br />

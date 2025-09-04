@@ -100,7 +100,41 @@ export default function ImmigrationPage() {
           </p>
         </div>
       </section>
+         {/* ✅ Announcement Section */}
+      <div className="bg-green-300 text-green-800 shadow-lg p-6 mb-8 text-center" >
+        <h2 className="text-2xl font-bold mb-3">Great News! 🎉</h2>
+        <p className="mb-3">
+          Consular Services will be available at the <span className="font-semibold">ECI Biennial Convention & 25th Anniversary</span>.
+        </p>
+        <ul className="space-y-2 mb-4">
+          <li>👉 All applicants must first apply online through the official Nigeria Immigration Service website:{" "}
+            <a href="https://passport.immigration.gov.ng" target="_blank" rel="noopener noreferrer" className="underline font-medium">
+              passport.immigration.gov.ng
+            </a>
+          </li>
+          <li>👉 After applying, print your application slip and bring it along with a self-addressed prepaid envelope to the convention.</li>
+        </ul>
 
+        <p className="font-semibold mb-2">📌 At the convention:</p>
+        <ul className="list-disc list-inside space-y-1">
+          <li>Your application will be verified & validated by the consular team.</li>
+          <li>Biometrics will be captured onsite.</li>
+          <li>The self-addressed envelope will be collected, and your new passport will be delivered directly to your home.</li>
+        </ul>
+
+        <p className="mt-4">
+          ✨ This is a <span className="font-bold">special opportunity</span> to complete your passport processing quickly & conveniently during the convention!
+        </p>
+
+        <a
+          href="http://nigeriaconsulatenewyork.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-5 bg-white text-green-700 font-semibold px-5 py-2 rounded-lg shadow hover:bg-gray-100 transition"
+        >
+          Visit Consulate Website
+        </a>
+      </div>
       {/* Services Grid */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
