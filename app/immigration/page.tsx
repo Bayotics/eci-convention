@@ -158,7 +158,7 @@ export default function ImmigrationPage() {
       <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
-            Apply for a Service
+            Pre-register for consular service during the economic session of the ECI 25th Anniversary.
           </h2>
           <form
             onSubmit={handleSubmit}
