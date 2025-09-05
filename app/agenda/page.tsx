@@ -38,6 +38,30 @@ const staggerContainer = {
   },
 }
 
+// Utility function to render description as structured list
+function renderDescription(description: string) {
+  return description
+    .split("\n")
+    .filter((line) => line.trim() !== "") // remove empty lines
+    .map((line, i) => {
+      // If line starts with a bullet (• or -), render as list item
+      if (line.trim().startsWith("•") || line.trim().startsWith("-")) {
+        return (
+          <li key={i} className="ml-6 list-none">
+            {line.replace(/^•|-/, "").trim()}
+          </li>
+        )
+      }
+      // Otherwise render as a paragraph
+      return (
+        <p key={i} className="font-semibold mt-3">
+          {line.trim()}
+        </p>
+      )
+    })
+}
+
+
 // Agenda data organized by day
 const agendaData = {
   "2025-09-17": {
@@ -147,12 +171,9 @@ const agendaData = {
         title: "Economic Session",
         description:
           `Economic Session:
-          • Keynote – H.E. Bola Ahmed Tinubu, President of the Federal Republic of Nigeria:
-            'Nigeria and the New African Economy: A Diaspora-Driven Blueprint'
-          • Special Address – Dr. Tunji Alausa, Hon. Minister of Education, Federal Republic of Nigeria:
-            'Education as the Foundation for Africa’s Future'
-          • Special Address – H.E. Governor Babajide Olusola Sanwoolu: 'The Lagos
-            Advantage: Urban Innovation and Diaspora Investment'
+          • Keynote – H.E. Bola Ahmed Tinubu, President of the Federal Republic of Nigeria: 'Nigeria and the New African Economy: A Diaspora-Driven Blueprint'
+          • Special Address – Dr. Tunji Alausa, Hon. Minister of Education, Federal Republic of Nigeria: 'Education as the Foundation for Africa’s Future'
+          • Special Address – H.E. Governor Babajide Olusola Sanwoolu: 'The Lagos Advantage: Urban Innovation and Diaspora Investment'
           • Panel – Speakers:
             - Mr. Olayemi Cardoso, Governor, Central Bank of Nigeria
             - Rt. Hon. Abbas Tajudeen, Ph.D., Speaker, Federal House of Representatives
@@ -161,8 +182,7 @@ const agendaData = {
             - Rt. Hon. Mudashiru Obasa, Speaker, Lagos State House of Assembly
             - Hon. Olatunbosun Alake, Hon. Commissioner for Innovation, Science & Technology, Lagos State
             - AWS Kuiper Representative
-          • Dialogue – Kayode Opeifa, Managing Director, Nigerian Railway Corporation:
-            'Transportation as Catalyst for Growth'
+          • Dialogue – Kayode Opeifa, Managing Director, Nigerian Railway Corporation:'Transportation as Catalyst for Growth'
           • Closing Call to Action – Moderator: Adebimpe Daniells, Chair, Economic Session; Senior Solutions Architect, Amazon`,
         location: "Main Conference Hall",
         organizer: "ECI Economic Session Committee",
@@ -245,15 +265,16 @@ const agendaData = {
         id: "general-sessions",
         time: "09:00 AM - 11:30 PM",
         title: "General Sessions",
-        description: ` General Session 1 – Keynote: Hon. Bosun Tijani, Hon. Minister of Communications
- & Digital Economy, Federal Republic of Nigeria: 'Building a Digital Nigeria: Diaspora
- Partnerships for Global Competitiveness.  General Session 2 – Policy Roundtable:- Rt. Hon. Abbas Tajudeen, Ph.D., Speaker, Federal House of Representatives- Rt. Hon. Mudashiru Obasa, Speaker, Lagos State House of Assembly- Mr. Jamiu Tolani Alli-Balogun, Hon. Commissioner for Education, Lagos State`,
+        description: `General Session 1 – Keynote: Hon. Bosun Tijani, Hon. Minister of Communications & Digital Economy, Federal Republic of Nigeria: 'Building a Digital Nigeria: Diaspora Partnerships for Global Competitiveness. 
+        General Session 2 – Policy Roundtable Speakers:- 
+        • Rt. Hon. Abbas Tajudeen, Ph.D., Speaker, Federal House of Representatives  
+        • Rt. Hon. Mudashiru Obasa, Speaker, Lagos State House of Assembly
+        • Mr. Jamiu Tolani Alli-Balogun, Hon. Commissioner for Education, Lagos State`,
         location: "Main Conference Hall",
         organizer: "ECI Executive Committee",
         type: "session",
         icon: Mic,
-        speakers: [`Hon. Bosun Tijani, Hon. Minister of Communications
- & Digital Economy`, ` Rt. Hon. Mudashiru Obasa, Speaker, Lagos State House of Assembly`, ` Mr. Jamiu Tolani Alli-Balogun, Hon. Commissioner for Education, Lagos State`, `Committee Chairs`],
+        speakers: [`Hon. Bosun Tijani,`, ` Rt. Hon. Mudashiru Obasa,`, ` Mr. Jamiu Tolani Alli-Balogun,`, `Committee Chairs`],
       },
       {
         id: "saturday-lunch",
@@ -815,7 +836,7 @@ export default function AgendaPage() {
                                     </span>
                                   </div>
 
-                                  <p className="text-gray-600 leading-relaxed mb-4">{session.description}</p>
+                                  <ul className="text-gray-600 leading-relaxed mb-4">{renderDescription(session.description)}</ul>
 
                                   <div className="space-y-2">
                                     <div className="flex items-start space-x-2">

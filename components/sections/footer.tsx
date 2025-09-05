@@ -72,7 +72,7 @@ export function Footer() {
             <div className="text-gray-400 space-y-2">
               <p>Convention Chairman</p>
               <p>waletayo2000@yahoo.com</p>
-              <p>+1 (555) 123-4567</p>
+              <p>+1 (610) 203-0370</p>
             </div>
           </div>
         </div>

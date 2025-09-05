@@ -434,7 +434,7 @@ export default function SponsorsPage() {
                 <p className="text-purple-100 mb-2">
                   <strong>Hon. Wallace</strong>
                 </p>
-                <p className="text-purple-100 mb-2">ConventionChairman</p>
+                <p className="text-purple-100 mb-2">Convention Chairman</p>
                 <p className="text-purple-100">waletayo2000@yahoo.com</p>
                 <p className="text-purple-100">+1 (610) 203-0370</p>
               </div>

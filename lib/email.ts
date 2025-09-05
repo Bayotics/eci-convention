@@ -293,7 +293,7 @@ function generateConfirmationEmailHTML(registrationData: RegistrationData): stri
                 <strong>📧 Email:</strong> <a href="mailto:waletayo2000@yahoo.com" style="color: #7c3aed;">info@ekoclubevents.org</a>
               </p>
               <p style="color: #1f2937; margin: 0 0 8px 0;">
-                <strong>📱 Phone:</strong> <a href="tel:+15551234567" style="color: #7c3aed;">+1 (555) 123-4567</a>
+                <strong>📱 Phone:</strong> <a href="tel:+15551234567" style="color: #7c3aed;">+1 (610) 203-0370</a>
               </p>
               <p style="color: #1f2937; margin: 0;">
                 <strong>🌐 Website:</strong> <a href="https://www.ekoclubevents.org" style="color: #7c3aed;">www.ekoclubevents.org</a>

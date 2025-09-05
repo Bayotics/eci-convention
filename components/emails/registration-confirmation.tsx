@@ -182,7 +182,7 @@ export const RegistrationConfirmationEmail: React.FC<RegistrationConfirmationEma
           <strong>Email:</strong> waletayo2000@yahoo.com
         </p>
         <p style={{ color: "#1f2937", margin: "0 0 5px 0" }}>
-          <strong>Phone:</strong> +1 (555) 123-4567
+          <strong>Phone:</strong> +1 (610) 203-0370
         </p>
         <p style={{ color: "#1f2937", margin: "0" }}>
           <strong>Website:</strong> www.ekoclubevents.org
