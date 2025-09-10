@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Raleway } from 'next/font/google'
 import "./globals.css"
+import { Analytics } from '@vercel/analytics/next';
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -113,7 +114,7 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#7c3aed" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
       </head>
-      <body className={`${raleway.className} antialiased`}>{children}</body>
+      <body className={`${raleway.className} antialiased`}>{children}<Analytics /></body>
     </html>
   )
 }
