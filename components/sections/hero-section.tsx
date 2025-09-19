@@ -127,6 +127,7 @@ export function HeroSection() {
                 Register Now
               </Button>
             </Link>
+            <Link href="/livestream">
             <Button
               size="lg"
               variant="outline"
@@ -134,6 +135,8 @@ export function HeroSection() {
             >
               Watch Livestream
             </Button>
+            </Link>
+            
           </motion.div>
         </motion.div>
       </div>
