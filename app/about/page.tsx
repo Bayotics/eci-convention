@@ -23,7 +23,7 @@ import {
   Palmtree,
   Mountain,
   Fish,
-  X,
+  X, BookOpen
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -823,6 +823,503 @@ export default function AboutPage() {
             </motion.div>
           </div>
         </section>
+        <section
+          className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50"
+          style={{
+            backgroundImage: "url('/images/bg-skin.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center mb-12 sm:mb-16"
+            >
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-800">
+                Eko without <span className="text-purple-600">Borders</span>: Silver Jubilee{" "}
+                <span className="text-pink-600">Chronicles</span>
+              </h2>
+              <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                A comprehensive chronicle of our 25-year journey, celebrating the remarkable legacy of Eko Club
+                International USA, Canada, and Europe.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="max-w-6xl mx-auto"
+            >
+              <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 md:p-10 lg:p-12">
+                <div className="prose prose-lg max-w-none">
+                  <div className="mb-6 p-4 bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg border-l-4 border-purple-500">
+                    <p className="text-sm text-gray-600 mb-2 font-medium">By Otunba T J Abass</p>
+                    <p className="text-gray-700 italic leading-relaxed">
+                      "A flame was lit in a foreign land. They thought it would not burn this long, burn this bright,
+                      burn this far. Today, 25 years on, Eko Club International USA, Canada, and Europe stand at the
+                      golden gates of history as a living legacy of Lagosians in the diaspora."
+                    </p>
+                  </div>
+
+                  <div id="preview-content" className="space-y-6">
+                    <p className="text-gray-700 leading-relaxed">
+                      That flame has grown into a fire of fellowship that has crossed borders, defied distance, and
+                      gained strength year after year.
+                    </p>
+
+                    <p className="text-gray-700 leading-relaxed">
+                      This Silver Jubilee is, without question, a moment of collective pride for every member. It bears
+                      witness to our unity, resilience, and the enduring relevance of our mission.
+                    </p>
+
+                    <p className="text-gray-700 leading-relaxed">
+                      Rooted in heritage and rising through service, ECI has carried our culture with dignity and
+                      planted the seeds of progress everywhere the Lagos' footstep is found, from Toronto to Houston,
+                      from London to New Jersey, and across the world.
+                    </p>
+
+                    <p className="text-gray-700 leading-relaxed">
+                      This celebration is not just the ticking of years on the calendar; it is the telling of a story
+                      written in sacrifice, service, and shared triumph. We honor those who first lit the torch with
+                      sacrifice, we celebrate those who have kept it burning with vision and vigor, and we charge those
+                      coming behind to carry it higher, brighter, and further.
+                    </p>
+
+                    <p className="text-gray-700 leading-relaxed">
+                      Indeed, this 25th anniversary is not the last chapter of our book; it is a new title in our
+                      publication series.
+                    </p>
+
+                    <p className="text-gray-700 leading-relaxed">
+                      For some of us who laid the first stone of this organization, this celebration feels like a
+                      personal win, a badge of honor, and a bragging right. To have been part of a journey so rich in
+                      sacrifice, vision, and triumph is nothing short of extraordinary. If this odyssey were ever
+                      transcribed into a movie script, it would surely earn a nomination for an Oscar.
+                    </p>
+
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mt-8 mb-4">
+                      <span className="text-purple-600">The Genesis</span>
+                    </h3>
+
+                    <p className="text-gray-700 leading-relaxed">
+                      The story of Eko Club International began with the voice of a leader in exile, President Bola
+                      Ahmed Tinubu, who called upon Lagosians scattered abroad to remember our root and gather beneath
+                      one banner which would bound our hearts to home. His goal was for members to carry Lagos beyond
+                      its shores and showcase it on the world stage.
+                    </p>
+
+                    <p className="text-gray-700 leading-relaxed">
+                      From its cradle, Eko Club International bore the seal of destiny, guided by the vision of Asiwaju
+                      Bola Ahmed Tinubu during his exile. Although the organization was officially incorporated in Texas
+                      in 2000, the seed was planted earlier in 1997 when Eko Club Houston was formally registered,
+                      carrying forward Asiwaju Tinubu's call to pool resources and energies to advance Lagos State.
+                    </p>
+
+                    <div className="bg-gradient-to-r from-teal-50 to-green-50 p-6 rounded-lg border-l-4 border-teal-500">
+                      <h4 className="text-lg font-semibold text-gray-800 mb-3">Early Eko Clubs (Before 2000)</h4>
+                      <ul className="space-y-2 text-gray-700">
+                        <li className="flex items-start">
+                          <span className="text-teal-600 mr-2">•</span>
+                          <span>Lagosians of Chicago, registered in 1991</span>
+                        </li>
+                        <li className="flex items-start">
+                          <span className="text-teal-600 mr-2">•</span>
+                          <span>Eko Club Canada</span>
+                        </li>
+                        <li className="flex items-start">
+                          <span className="text-teal-600 mr-2">•</span>
+                          <span>Eko Club Houston registered in Texas in 1997</span>
+                        </li>
+                        <li className="flex items-start">
+                          <span className="text-teal-600 mr-2">•</span>
+                          <span>Eko Club New York, registered in 1998</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="text-center mt-8">
+                    <button
+                      onClick={() => {
+                        const modal = document.getElementById("chronicles-modal")
+                        if (modal) modal.style.display = "flex"
+                      }}
+                      className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                    >
+                      <BookOpen className="mr-2 h-5 w-5" />
+                      Read Full Chronicles
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Chronicles Modal */}
+        <div
+          id="chronicles-modal"
+          className="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              e.currentTarget.style.display = "none"
+            }
+          }}
+        >
+          <div className="bg-white rounded-2xl max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl">
+            <div className="sticky top-0 bg-gradient-to-r from-purple-600 to-pink-600 text-white p-6 flex justify-between items-center">
+              <h3 className="text-xl sm:text-2xl font-bold">Eko without Borders: Silver Jubilee Chronicles</h3>
+              <button
+                onClick={() => {
+                  const modal = document.getElementById("chronicles-modal")
+                  if (modal) modal.style.display = "none"
+                }}
+                className="text-white hover:text-gray-200 transition-colors"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+            <div className="p-6 sm:p-8 overflow-y-auto max-h-[calc(90vh-100px)]">
+              <div className="prose prose-lg max-w-none">
+                <div className="mb-6 p-4 bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg border-l-4 border-purple-500">
+                  <p className="text-sm text-gray-600 mb-2 font-medium">By Otunba T J Abass</p>
+                  <p className="text-gray-700 italic leading-relaxed">
+                    "A flame was lit in a foreign land. They thought it would not burn this long, burn this bright, burn
+                    this far. Today, 25 years on, Eko Club International USA, Canada, and Europe stand at the golden
+                    gates of history as a living legacy of Lagosians in the diaspora."
+                  </p>
+                </div>
+
+                <div className="space-y-6">
+                  <p className="text-gray-700 leading-relaxed">
+                    That flame has grown into a fire of fellowship that has crossed borders, defied distance, and gained
+                    strength year after year.
+                  </p>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    This Silver Jubilee is, without question, a moment of collective pride for every member. It bears
+                    witness to our unity, resilience, and the enduring relevance of our mission.
+                  </p>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    Rooted in heritage and rising through service, ECI has carried our culture with dignity and planted
+                    the seeds of progress everywhere the Lagos' footstep is found, from Toronto to Houston, from London
+                    to New Jersey, and across the world.
+                  </p>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    This celebration is not just the ticking of years on the calendar; it is the telling of a story
+                    written in sacrifice, service, and shared triumph. We honor those who first lit the torch with
+                    sacrifice, we celebrate those who have kept it burning with vision and vigor, and we charge those
+                    coming behind to carry it higher, brighter, and further.
+                  </p>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    Indeed, this 25th anniversary is not the last chapter of our book; it is a new title in our
+                    publication series.
+                  </p>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    For some of us who laid the first stone of this organization, this celebration feels like a personal
+                    win, a badge of honor, and a bragging right. To have been part of a journey so rich in sacrifice,
+                    vision, and triumph is nothing short of extraordinary. If this odyssey were ever transcribed into a
+                    movie script, it would surely earn a nomination for an Oscar.
+                  </p>
+
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mt-8 mb-4">
+                    <span className="text-purple-600">The Genesis</span>
+                  </h3>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    The story of Eko Club International began with the voice of a leader in exile, President Bola Ahmed
+                    Tinubu, who called upon Lagosians scattered abroad to remember our root and gather beneath one
+                    banner which would bound our hearts to home. His goal was for members to carry Lagos beyond its
+                    shores and showcase it on the world stage.
+                  </p>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    Our organization's story must not be told like a personal account; it must stand in the court of
+                    history, with documents as evidence and dates as witnesses. Our organization's story must be
+                    preserved in both memory and record.
+                  </p>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    If history is indeed a record of past events, encompassing successes, challenges, and
+                    accomplishments, then the following accounts of Eko Club International's journey since its formation
+                    in September 2000 provides a truthful and accurate reflection of its significant achievements and
+                    the obstacles it has overcome.
+                  </p>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    From its cradle, Eko Club International bore the seal of destiny, guided by the vision of Asiwaju
+                    Bola Ahmed Tinubu during his exile. Although the organization was officially incorporated in Texas
+                    in 2000, the seed was planted earlier in 1997 when Eko Club Houston was formally registered,
+                    carrying forward Asiwaju Tinubu's call to pool resources and energies to advance Lagos State.
+                  </p>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    That seed soon became a torch passed across borders. The trio of Otunba Sam Dipeolu, Otunba T.J.
+                    Abass, and the late Mr. Yesir Ganiyu traveled to Canada to engage with their counterparts in Eko
+                    Club Canada, one of the earliest diaspora branches established in 1991.
+                  </p>
+
+                  <div className="bg-gradient-to-r from-teal-50 to-green-50 p-6 rounded-lg border-l-4 border-teal-500">
+                    <h4 className="text-lg font-semibold text-gray-800 mb-3">Early Eko Clubs (Before 2000)</h4>
+                    <ul className="space-y-2 text-gray-700">
+                      <li className="flex items-start">
+                        <span className="text-teal-600 mr-2">•</span>
+                        <span>Lagosians of Chicago, registered in 1991</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-teal-600 mr-2">•</span>
+                        <span>Eko Club Canada</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-teal-600 mr-2">•</span>
+                        <span>Eko Club Houston registered in Texas in 1997</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-teal-600 mr-2">•</span>
+                        <span>Eko Club New York, registered in 1998</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    A pivotal meeting took place in January 2000 at the residence of Mr. & Mrs. Akeem and Biola Nosiru.
+                    In attendance were the three representatives from Houston, the late Alhaji Agiri, and Mrs. Abiola
+                    Nosiru.
+                  </p>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    While the formal meeting occurred in January 2000, discussions with Eko Club Canada had begun as
+                    early as 1998, paving the way for the 2000 meeting in Canada and the convention in Houston.
+                  </p>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    This meeting proved highly productive. From it came a Memorandum of Understanding (MOU) that cleared
+                    the path for the registration of Eko Club International in Texas. More importantly, it spread the
+                    great canopy of Eko Club International, USA, Canada & Europe; an umbrella body whose shade has
+                    nurtured growth in Lagos State and in the host communities of its chapters abroad.
+                  </p>
+
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mt-8 mb-4">
+                    <span className="text-pink-600">The First Convention</span>
+                  </h3>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    Another seed sown in that meeting blossomed into the very first Eko Club International Convention,
+                    held in Houston in March 2000, with attendance from only three chapters: Chicago, Canada, and
+                    Houston.
+                  </p>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    Eko Club Houston proudly hosted the 1st Eko Club International Convention in March 2000. Two other
+                    chapters participated in this historic gathering:
+                  </p>
+
+                  <div className="bg-gradient-to-r from-orange-50 to-yellow-50 p-6 rounded-lg border-l-4 border-orange-500">
+                    <h4 className="text-lg font-semibold text-gray-800 mb-3">Participating Chapters (2000)</h4>
+                    <ul className="space-y-2 text-gray-700">
+                      <li className="flex items-start">
+                        <span className="text-orange-600 mr-2">•</span>
+                        <span>
+                          Eko Club Canada, represented by the late Alhaji Agiri (then President), alongside Ms. Biola
+                          Nosiru, Kemmy Baljack, and Anu Oluwapo
+                        </span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-orange-600 mr-2">•</span>
+                        <span>
+                          Lagosians of Chicago, represented by Alhaji Wahab Owokoniran, Dr. Nurudeen Olowopopo, Dr.
+                          Shafi Amuwo, and Dr. Maruf Tunji Alausa
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    For nine days, the Adams Mark Hotel became a stage for an event that stamped a milestone of pride
+                    into our organization's dossier. It was a gathering of crowns and captains, where traditional
+                    rulers, industry leaders, and Lagos State officials stood shoulder to shoulder. At its helm was the
+                    then-Executive Governor, Asiwaju Bola Ahmed Tinubu.
+                  </p>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    A significant convention highlight was Asiwaju's official visit to the Mayor of Houston, Mr. Lee
+                    Brown. This visit resulted in a bilateral agreement between the City of Houston and Lagos State,
+                    marking a milestone in international cooperation.
+                  </p>
+
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mt-8 mb-4">
+                    <span className="text-purple-600">The Enron Deal</span>
+                  </h3>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    It was also this convention that further discussions were held with Enron's top management. The
+                    Enron Independent Power Project – one of the largest of its kind - was an initiative of Governor
+                    Bola Tinubu's administration. This project was also a bold step to shatter PHCN's monopoly and flood
+                    Lagos with light without flickers.
+                  </p>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    Sadly, what was initially conceived as a transformative initiative to improve millions of lives was
+                    poisoned at its root by selfish interests and unscrupulous elements.
+                  </p>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    Still, the 2000 convention remains a monument in time. It laid the foundation for a formidable
+                    partnership with the administration of Asiwaju Bola Ahmed Tinubu and subsequent Lagos State
+                    administrations over the past 25 years.
+                  </p>
+
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mt-8 mb-4">
+                    <span className="text-teal-600">Leadership Through the Years</span>
+                  </h3>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    From its inception, Eko Club International has walked the path of democracy, holding fast to values
+                    that light its way. Seven times, the torch of leadership has been passed through the will of the
+                    ballot, proving our enduring commitment to orderly transitions and stability:
+                  </p>
+
+                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg border-l-4 border-blue-500">
+                    <h4 className="text-lg font-semibold text-gray-800 mb-3">Presidential Timeline</h4>
+                    <ul className="space-y-2 text-gray-700">
+                      <li className="flex items-start">
+                        <span className="text-blue-600 mr-2">•</span>
+                        <span>2000–2001: Interim President, Late Prince Adelani Adeniji Adele</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-blue-600 mr-2">•</span>
+                        <span>2001–2003: Late Alhaji Olusisi Dawodu</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-blue-600 mr-2">•</span>
+                        <span>2003–2005: Attorney O.J. Lawal</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-blue-600 mr-2">•</span>
+                        <span>2005–2009: Otunba T.J. Abass</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-blue-600 mr-2">•</span>
+                        <span>2009–2013: Alhaji Zainudeen Popoola</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-blue-600 mr-2">•</span>
+                        <span>2013–2017: Alhaji Bisi Gaji</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-blue-600 mr-2">•</span>
+                        <span>2017–2021: Dr. Lanre Ojo</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-blue-600 mr-2">•</span>
+                        <span>2021–2025: Chief Saheed Olushi</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mt-8 mb-4">
+                    <span className="text-green-600">Community Impact & Projects</span>
+                  </h3>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    This proud record of steady democratic leadership has made Eko Club International a poster child of
+                    stability. Over the last 25 years, Eko Club International has lived out its creed with a litany of
+                    life-changing initiatives that have reached the very heart of society, particularly the
+                    underprivileged.
+                  </p>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    A crown jewel project of this club is the Medical Mission, exclusively championed by the parent
+                    body. This project carries a healing touch with free medical services for the people of Lagos State.
+                    These services have included surgeries, dental care, and the provision of eyeglasses, all at no cost
+                    to beneficiaries.
+                  </p>
+
+                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-lg border-l-4 border-green-500">
+                    <h4 className="text-lg font-semibold text-gray-800 mb-3">Major Community Projects</h4>
+                    <ul className="space-y-2 text-gray-700">
+                      <li className="flex items-start">
+                        <span className="text-green-600 mr-2">•</span>
+                        <span>Computerization of LASU</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-green-600 mr-2">•</span>
+                        <span>Provision of school uniforms to all secondary schools in Ikeja</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-green-600 mr-2">•</span>
+                        <span>Scholarship for the conjoined "Shortcake Twins"</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-green-600 mr-2">•</span>
+                        <span>Scholarships for deserving students in both the U.S. and Nigeria</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-green-600 mr-2">•</span>
+                        <span>Adoption of Massey Street Children's Hospital</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-green-600 mr-2">•</span>
+                        <span>Renovation of Ansarudeen Alakoro</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-green-600 mr-2">•</span>
+                        <span>Computerization of Ansarudeen Aroloya</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-green-600 mr-2">•</span>
+                        <span>Annual Thanksgiving Dinner for the Homeless</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-green-600 mr-2">•</span>
+                        <span>Education Endowment Fund for conjoined twins</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mt-8 mb-4">
+                    <span className="text-purple-600">Looking Forward</span>
+                  </h3>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    Eko Club International is more than an organization; it is a living story. These past twenty-five
+                    years have built a bridge across oceans, the heartbeat of Lagosians in the diaspora, and a tree with
+                    roots that run deep and branches that spread wide. We have faced trials and turned them into
+                    triumphs; carried burdens that became our badges of honor; and crossed distances that only drew us
+                    closer.
+                  </p>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    On this 25th anniversary, we are not just looking back, but also looking forward. The story of Eko
+                    Club International is still being written: each member, a pen, each convention, a chapter, each act
+                    of service, a sentence in our book of legacy.
+                  </p>
+
+                  <p className="text-gray-700 leading-relaxed font-semibold">
+                    At this silver harvest of 25 years, we give thanks for the road already traveled and lift our eyes
+                    to the horizon, praying for many more years of service, progress, and fulfillment.
+                  </p>
+
+                  <div className="text-center mt-8 p-6 bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg">
+                    <p className="text-lg font-bold text-gray-800">Congratulations on this remarkable milestone!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
 
         {/* What to Expect Section */}
         <section
