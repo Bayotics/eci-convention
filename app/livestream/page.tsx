@@ -41,7 +41,7 @@ export default function LiveStream () {
       >
         <iframe
           className="w-full h-full"
-          src="https://www.youtube.com/embed/4kV11_VvYOw"
+          src="https://www.youtube.com/embed/wjUAcTOLKUo"
           title="YouTube Live Stream"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
